@@ -365,29 +365,28 @@ unsigned int CCParticleBatchNode::searchNewPositionInChildrenForZ(int z)
 // override removeChild:
 void  CCParticleBatchNode::removeChild(CCNode* child, bool cleanup)
 {
-	CCAssert(false, "Not implemented."); 
-    //// explicit nil handling
-    //if (child == NULL)
-    //{
-    //    return;
-    //}
-    //
-    //CCAssert( dynamic_cast<CCParticleSystem*>(child) != NULL, "CCParticleBatchNode only supports CCQuadParticleSystems as children");
-    //CCAssert(m_pChildren->containsObject(child), "CCParticleBatchNode doesn't contain the sprite. Can't remove it");
+    // explicit nil handling
+    if (child == NULL)
+    {
+        return;
+    }
+    
+    CCAssert( dynamic_cast<CCParticleSystem*>(child) != NULL, "CCParticleBatchNode only supports CCQuadParticleSystems as children");
+    CCAssert(m_pChildren->containsObject(child), "CCParticleBatchNode doesn't contain the sprite. Can't remove it");
 
-    //CCParticleSystem* pChild = (CCParticleSystem*)child;
-    //CCNode::removeChild(pChild, cleanup);
+    CCParticleSystem* pChild = (CCParticleSystem*)child;
+    CCNode::removeChild(pChild, cleanup);
 
-    //// remove child helper
-    //m_pTextureAtlas->removeQuadsAtIndex(pChild->getAtlasIndex(), pChild->getTotalParticles());
+    // remove child helper
+    m_pTextureAtlas->removeQuadAtIndex(pChild->getAtlasIndex());
 
-    //// after memmove of data, empty the quads at the end of array
-    //m_pTextureAtlas->fillWithEmptyQuadsFromIndex(m_pTextureAtlas->getTotalQuads(), pChild->getTotalParticles());
+    // after memmove of data, empty the quads at the end of array
+    m_pTextureAtlas->insertQuadFromIndex(m_pTextureAtlas->getTotalQuads(), pChild->getTotalParticles());
 
-    //// particle could be reused for self rendering
-    //pChild->setBatchNode(NULL);
+    // particle could be reused for self rendering
+    pChild->setBatchNode(NULL);
 
-    //updateAllAtlasIndexes();
+    updateAllAtlasIndexes();
 }
 
 void CCParticleBatchNode::removeChildAtIndex(unsigned int index, bool doCleanup)
