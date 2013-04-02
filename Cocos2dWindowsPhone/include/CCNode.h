@@ -113,6 +113,7 @@ Camera:
 class CC_DLL CCNode : public CCObject
 {
 
+public:
 	// variable property
 
 	/** The z order of the node relative to it's "brothers": children of the same parent */
@@ -276,7 +277,7 @@ protected:
 
 	int m_nScriptHandler;
 
-private:
+public:
 
 	//! lazy allocs
 	void childrenAlloc(void);

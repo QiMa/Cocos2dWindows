@@ -210,33 +210,31 @@ void CCParticleBatchNode::addChild(CCNode * child, int zOrder, int tag)
 // this helper is almost equivalent to CCNode's addChild, but doesn't make use of the lazy sorting
 unsigned int CCParticleBatchNode::addChildHelper(CCParticleSystem* child, int z, int aTag)
 {
-	CCAssert(false, "Not implemented."); 
-	return 0;
-    //CCAssert( child != NULL, "Argument must be non-nil");
-    //CCAssert( child->getParent() == NULL, "child already added. It can't be added again");
+    CCAssert( child != NULL, "Argument must be non-nil");
+    CCAssert( child->getParent() == NULL, "child already added. It can't be added again");
 
-    //if( ! m_pChildren ) 
-    //{
-    //    m_pChildren = new CCArray();
-    //    m_pChildren->initWithCapacity(4);
-    //}
+    if( ! m_pChildren ) 
+    {
+        m_pChildren = new CCArray();
+        m_pChildren->initWithCapacity(4);
+    }
 
-    ////don't use a lazy insert
-    //unsigned int pos = searchNewPositionInChildrenForZ(z);
+    //don't use a lazy insert
+    unsigned int pos = searchNewPositionInChildrenForZ(z);
 
-    //m_pChildren->insertObject(child, pos);
+    m_pChildren->insertObject(child, pos);
 
-    //child->setTag(aTag);
-    //child->_setZOrder(z);
+    child->setTag(aTag);
+    child->setZOrder(z);
 
-    //child->setParent(this);
+    child->setParent(this);
 
-    //if( m_bRunning ) 
-    //{
-    //    child->onEnter();
-    //    child->onEnterTransitionDidFinish();
-    //}
-    //return pos;
+    if( m_bRunning ) 
+    {
+        child->onEnter();
+        child->onEnterTransitionDidFinish();
+    }
+    return pos;
 }
 
 // Reorder will be done in this function, no "lazy" reorder to particles
