@@ -123,7 +123,6 @@ bool CCParticleBatchNode::initWithFile(const char* fileImage, unsigned int capac
 // Don't call visit on it's children
 void CCParticleBatchNode::visit()
 {
-	CCAssert(false, "Not implemented."); 
 	// CAREFUL:
     // This visit is almost identical to CCNode#visit
     // with the exception that it doesn't call visit on it's children
@@ -131,29 +130,29 @@ void CCParticleBatchNode::visit()
     // The alternative is to have a void CCSprite#visit, but
     // although this is less maintainable, is faster
     //
-    //if (!m_bVisible)
-    //{
-    //    return;
-    //}
+    if (!m_bVisible)
+    {
+        return;
+    }
 
-    //kmGLPushMatrix();
+    kmGLPushMatrix();
 
-    //if ( m_pGrid && m_pGrid->isActive())
-    //{
-    //    m_pGrid->beforeDraw();
-    //    transformAncestors();
-    //}
+    if ( m_pGrid && m_pGrid->isActive())
+    {
+        m_pGrid->beforeDraw();
+        transformAncestors();
+    }
 
-    //transform();
+    transform();
 
-    //draw();
+    draw();
 
-    //if ( m_pGrid && m_pGrid->isActive())
-    //{
-    //    m_pGrid->afterDraw(this);
-    //}
+    if ( m_pGrid && m_pGrid->isActive())
+    {
+        m_pGrid->afterDraw(this);
+    }
 
-    //kmGLPopMatrix();
+    kmGLPopMatrix();
 }
 
 // override addChild:

@@ -519,20 +519,20 @@
     <ClInclude Include="include\CCFileUtils.h" />
     <ClInclude Include="include\CCMenu.h" />
     <ClInclude Include="include\ccTypeInfo.h" />
-    <ClInclude Include="kazmath\include\kazmath\aabb.h" />
-    <ClInclude Include="kazmath\include\kazmath\GL\mat4stack.h" />
-    <ClInclude Include="kazmath\include\kazmath\GL\matrix.h" />
-    <ClInclude Include="kazmath\include\kazmath\kazmath.h" />
-    <ClInclude Include="kazmath\include\kazmath\mat3.h" />
-    <ClInclude Include="kazmath\include\kazmath\mat4.h" />
-    <ClInclude Include="kazmath\include\kazmath\neon_matrix_impl.h" />
-    <ClInclude Include="kazmath\include\kazmath\plane.h" />
-    <ClInclude Include="kazmath\include\kazmath\quaternion.h" />
-    <ClInclude Include="kazmath\include\kazmath\ray2.h" />
-    <ClInclude Include="kazmath\include\kazmath\utility.h" />
-    <ClInclude Include="kazmath\include\kazmath\vec2.h" />
-    <ClInclude Include="kazmath\include\kazmath\vec3.h" />
-    <ClInclude Include="kazmath\include\kazmath\vec4.h" />
+    <ClInclude Include="include\kazmath\aabb.h" />
+    <ClInclude Include="include\kazmath\GL\mat4stack.h" />
+    <ClInclude Include="include\kazmath\GL\matrix.h" />
+    <ClInclude Include="include\kazmath\kazmath.h" />
+    <ClInclude Include="include\kazmath\mat3.h" />
+    <ClInclude Include="include\kazmath\mat4.h" />
+    <ClInclude Include="include\kazmath\neon_matrix_impl.h" />
+    <ClInclude Include="include\kazmath\plane.h" />
+    <ClInclude Include="include\kazmath\quaternion.h" />
+    <ClInclude Include="include\kazmath\ray2.h" />
+    <ClInclude Include="include\kazmath\utility.h" />
+    <ClInclude Include="include\kazmath\vec2.h" />
+    <ClInclude Include="include\kazmath\vec3.h" />
+    <ClInclude Include="include\kazmath\vec4.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include=".\shaders\CCDrawingPixelShader.hlsl">

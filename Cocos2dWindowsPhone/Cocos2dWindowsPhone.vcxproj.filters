@@ -122,14 +122,11 @@
     <Filter Include="kazmath\src\GL">
       <UniqueIdentifier>{5980e5c2-a920-44a1-ada7-cdbbc07190cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="kazmath\include">
-      <UniqueIdentifier>{86164cba-8d78-4330-898f-b1a3d72b0f6f}</UniqueIdentifier>
+    <Filter Include="include\kazmath">
+      <UniqueIdentifier>{a2fc3aaa-b66a-4d52-8b8c-d46d182753dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="kazmath\include\kazmath">
-      <UniqueIdentifier>{c1dc6236-5b33-4870-9be8-fcad80dad191}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="kazmath\include\kazmath\GL">
-      <UniqueIdentifier>{d348e864-2294-4502-b0c2-05e8d096328a}</UniqueIdentifier>
+    <Filter Include="include\kazmath\GL">
+      <UniqueIdentifier>{193bf721-c6c2-47c5-bf29-2128e316e2e1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -803,47 +800,47 @@
     <ClInclude Include="include\CCApplication_win8_metro.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\aabb.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\aabb.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\kazmath.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\kazmath.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\mat3.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\mat3.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\mat4.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\mat4.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\neon_matrix_impl.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\neon_matrix_impl.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\plane.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\plane.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\quaternion.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\quaternion.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\ray2.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\ray2.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\utility.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\utility.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\vec2.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\vec2.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\vec3.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\vec3.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\vec4.h">
-      <Filter>kazmath\include\kazmath</Filter>
+    <ClInclude Include="include\kazmath\vec4.h">
+      <Filter>include\kazmath</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\GL\mat4stack.h">
-      <Filter>kazmath\include\kazmath\GL</Filter>
+    <ClInclude Include="include\kazmath\GL\mat4stack.h">
+      <Filter>include\kazmath\GL</Filter>
     </ClInclude>
-    <ClInclude Include="kazmath\include\kazmath\GL\matrix.h">
-      <Filter>kazmath\include\kazmath\GL</Filter>
+    <ClInclude Include="include\kazmath\GL\matrix.h">
+      <Filter>include\kazmath\GL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
