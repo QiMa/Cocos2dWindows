@@ -95,13 +95,13 @@ bool CCParticleBatchNode::initWithTexture(CCTexture2D *tex, unsigned int capacit
     m_pTextureAtlas = new CCTextureAtlas();
     m_pTextureAtlas->initWithTexture(tex, capacity);
 
-	CCAssert(false, "Not implemented."); 
+	//CCAssert(false, "Not implemented."); 
     //// no lazy alloc in this node
-    //m_pChildren = new CCArray();
-    //m_pChildren->initWithCapacity(capacity);
+    m_pChildren = new CCArray();
+    m_pChildren->initWithCapacity(capacity);
 
-    //m_tBlendFunc.src = CC_BLEND_SRC;
-    //m_tBlendFunc.dst = CC_BLEND_DST;
+    m_tBlendFunc.src = CC_BLEND_SRC;
+    m_tBlendFunc.dst = CC_BLEND_DST;
 
     //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
     
@@ -123,7 +123,7 @@ bool CCParticleBatchNode::initWithFile(const char* fileImage, unsigned int capac
 // Don't call visit on it's children
 void CCParticleBatchNode::visit()
 {
-	CCAssert(false, "Not implemented."); 
+	//CCAssert(false, "Not implemented."); 
 	// CAREFUL:
     // This visit is almost identical to CCNode#visit
     // with the exception that it doesn't call visit on it's children
@@ -131,29 +131,29 @@ void CCParticleBatchNode::visit()
     // The alternative is to have a void CCSprite#visit, but
     // although this is less maintainable, is faster
     //
-    //if (!m_bVisible)
-    //{
-    //    return;
-    //}
+    if (!m_bVisible)
+    {
+        return;
+    }
 
-    //kmGLPushMatrix();
+    kmGLPushMatrix();
 
-    //if ( m_pGrid && m_pGrid->isActive())
-    //{
-    //    m_pGrid->beforeDraw();
-    //    transformAncestors();
-    //}
+    if ( m_pGrid && m_pGrid->isActive())
+    {
+        m_pGrid->beforeDraw();
+        transformAncestors();
+    }
 
-    //transform();
+    transform();
 
-    //draw();
+    draw();
 
-    //if ( m_pGrid && m_pGrid->isActive())
-    //{
-    //    m_pGrid->afterDraw(this);
-    //}
+    if ( m_pGrid && m_pGrid->isActive())
+    {
+        m_pGrid->afterDraw(this);
+    }
 
-    //kmGLPopMatrix();
+    kmGLPopMatrix();
 }
 
 // override addChild:
@@ -496,11 +496,11 @@ void CCParticleBatchNode::updateAllAtlasIndexes()
 
 void CCParticleBatchNode::updateBlendFunc(void)
 {
-	CCAssert(false, "Not implemented."); 
-    //if( ! m_pTextureAtlas->getTexture()->hasPremultipliedAlpha()) {
-    //    m_tBlendFunc.src = GL_SRC_ALPHA;
-    //    m_tBlendFunc.dst = GL_ONE_MINUS_SRC_ALPHA;
-    //}
+	 
+    if( ! m_pTextureAtlas->getTexture()->hasPremultipliedAlpha()) {
+        m_tBlendFunc.src = CC_SRC_ALPHA;
+        m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
+    }
 }
 
 void CCParticleBatchNode::setTexture(CCTexture2D* texture)

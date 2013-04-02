@@ -789,7 +789,7 @@ void CCParticleSystem::updateBlendFunc()
 
     if(m_pTexture)
     {
-        bool premultiplied = m_pTexture->getHasPremultipliedAlpha();
+        bool premultiplied = m_pTexture->hasPremultipliedAlpha();
         
         m_bOpacityModifyRGB = false;
         
@@ -823,7 +823,7 @@ void CCParticleSystem::setBlendAdditive(bool additive)
     }
     else
     {
-        if( m_pTexture && ! m_pTexture->getHasPremultipliedAlpha() )
+        if( m_pTexture && ! m_pTexture->hasPremultipliedAlpha() )
         {
             m_tBlendFunc.src = CC_SRC_ALPHA;
             m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;

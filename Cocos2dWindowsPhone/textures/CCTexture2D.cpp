@@ -177,7 +177,7 @@ void* CCTexture2D::keepData(void *data, unsigned int length)
 	return data;
 }
 
-bool CCTexture2D::getHasPremultipliedAlpha()
+bool CCTexture2D::hasPremultipliedAlpha()
 {
 	return m_bHasPremultipliedAlpha;
 }

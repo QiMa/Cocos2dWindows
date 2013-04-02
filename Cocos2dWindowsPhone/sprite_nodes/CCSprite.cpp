@@ -1099,7 +1099,7 @@ void CCSprite::updateBlendFunc(void)
 	CCAssert (! m_bUsesBatchNode, "CCSprite: updateBlendFunc doesn't work when the sprite is rendered using a CCSpriteSheet");
 
 	// it's possible to have an untextured sprite
-	if (! m_pobTexture || ! m_pobTexture->getHasPremultipliedAlpha())
+	if (! m_pobTexture || ! m_pobTexture->hasPremultipliedAlpha())
 	{
 		m_sBlendFunc.src = CC_SRC_ALPHA;
 		m_sBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;

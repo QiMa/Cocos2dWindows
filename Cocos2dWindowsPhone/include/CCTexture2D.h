@@ -117,8 +117,7 @@ class CC_DLL CCTexture2D : public CCObject
 	CC_PROPERTY(CCfloat, m_fMaxS, MaxS)
 	/** texture max T */
 	CC_PROPERTY(CCfloat, m_fMaxT, MaxT)
-	/** whether or not the texture has their Alpha premultiplied */
-	CC_PROPERTY_READONLY(bool, m_bHasPremultipliedAlpha, HasPremultipliedAlpha);
+    bool hasPremultipliedAlpha();
 	CC_PROPERTY(ccResolutionType, m_eResolutionType, ResolutionType);
 public:
 
@@ -256,6 +255,9 @@ private:
 	ID3D11ShaderResourceView* m_pTextureResource;
 
 	ID3D11SamplerState* m_sampleState;
+
+	    /** whether or not the texture has their Alpha premultiplied */
+    bool m_bHasPremultipliedAlpha;
 	/*
 	ID3D11Buffer *m_vertexBuffer;
 	ID3D11Buffer* m_indexBuffer;

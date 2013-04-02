@@ -502,11 +502,11 @@ CCMenuItemSprite * CCMenuItemSprite::create(CCNode* normalSprite, CCNode* select
 CCMenuItemSprite * CCMenuItemSprite::create(CCNode *normalSprite, CCNode *selectedSprite, CCNode *disabledSprite, CCObject *target, SEL_MenuHandler selector)
 {
 	CCMenuItemSprite *pRet = new CCMenuItemSprite();
-	pRet->initFromNormalSprite(normalSprite, selectedSprite, disabledSprite, target, selector); 
+	pRet->initWithNormalSprite(normalSprite, selectedSprite, disabledSprite, target, selector); 
 	pRet->autorelease();
 	return pRet;
 }
-bool CCMenuItemSprite::initFromNormalSprite(CCNode* normalSprite, CCNode* selectedSprite, CCNode* disabledSprite, CCObject* target, SEL_MenuHandler selector)
+bool CCMenuItemSprite::initWithNormalSprite(CCNode* normalSprite, CCNode* selectedSprite, CCNode* disabledSprite, CCObject* target, SEL_MenuHandler selector)
 {
 	CCAssert(normalSprite != NULL, "");
 	CCMenuItem::initWithTarget(target, selector); 
@@ -662,7 +662,7 @@ bool CCMenuItemImage::initWithNormalImage(const char *normalImage, const char *s
 	{
 		disabledSprite = CCSprite::create(disabledImage);
 	}
-	return initFromNormalSprite(normalSprite, selectedSprite, disabledSprite, target, selector);
+	return initWithNormalSprite(normalSprite, selectedSprite, disabledSprite, target, selector);
 }
 //
 // MenuItemToggle

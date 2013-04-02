@@ -528,7 +528,7 @@ void CCSpriteBatchNode::removeSpriteFromAtlas(CCSprite *pobSprite)
 
 void CCSpriteBatchNode::updateBlendFunc(void)
 {
-	if (! m_pobTextureAtlas->getTexture()->getHasPremultipliedAlpha())
+	if (! m_pobTextureAtlas->getTexture()->hasPremultipliedAlpha())
 	{
 		m_blendFunc.src = CC_SRC_ALPHA;
 		m_blendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;

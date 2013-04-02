@@ -187,7 +187,7 @@ void CCAtlasNode::setOpacityModifyRGB(bool bValue)
 
 void CCAtlasNode::updateOpacityModifyRGB()
 {
-	m_bIsOpacityModifyRGB = m_pTextureAtlas->getTexture()->getHasPremultipliedAlpha();
+	m_bIsOpacityModifyRGB = m_pTextureAtlas->getTexture()->hasPremultipliedAlpha();
 }
 
 // CCAtlasNode - CocosNodeTexture protocol
@@ -204,7 +204,7 @@ void CCAtlasNode::setBlendFunc(ccBlendFunc blendFunc)
 
 void CCAtlasNode::updateBlendFunc()
 {
-	if( ! m_pTextureAtlas->getTexture()->getHasPremultipliedAlpha() ) {
+	if( ! m_pTextureAtlas->getTexture()->hasPremultipliedAlpha() ) {
 		m_tBlendFunc.src = CC_SRC_ALPHA;
 		m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
 	}

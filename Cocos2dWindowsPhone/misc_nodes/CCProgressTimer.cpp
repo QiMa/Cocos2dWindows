@@ -223,7 +223,7 @@ void CCProgressTimer::updateColor(void)
 	ccColor3B c3b = m_pSprite->getColor();
 
 	ccColor4B color = {c3b.r, c3b.g, c3b.b, op};
-	if (m_pSprite->getTexture()->getHasPremultipliedAlpha())
+	if (m_pSprite->getTexture()->hasPremultipliedAlpha())
 	{
 		color.r *= op / 255;
 		color.g *= op / 255;
