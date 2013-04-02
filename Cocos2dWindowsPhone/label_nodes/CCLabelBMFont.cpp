@@ -792,7 +792,7 @@ bool CCLabelBMFont::initWithString(const char *theString, const char *fntFile, f
         m_cOpacity = 255;
         m_tColor = ccWHITE;
         m_obContentSize = CCSizeZero;
-        m_bIsOpacityModifyRGB = m_pobTextureAtlas->getTexture()->getHasPremultipliedAlpha();
+        m_bIsOpacityModifyRGB = m_pobTextureAtlas->getTexture()->hasPremultipliedAlpha();
         m_obAnchorPoint = ccp(0.5f, 0.5f);
         
         m_pReusedChar = new CCSprite();
@@ -840,7 +840,7 @@ bool CCLabelBMFont::initWithString(const char *theString, const char *fntFile, C
 		m_cOpacity = 255;
 		m_tColor = ccWHITE;
 		m_tContentSize = CCSizeZero;
-		m_bIsOpacityModifyRGB = m_pobTextureAtlas->getTexture()->getHasPremultipliedAlpha();
+		m_bIsOpacityModifyRGB = m_pobTextureAtlas->getTexture()->hasPremultipliedAlpha();
 		this->setString(theString);
 		setAnchorPoint(ccp(0.5f, 0.5f));
 		return true;

@@ -235,7 +235,7 @@ public:
 	/** creates a menu item with a normal,selected  and disabled image with target/selector */
 	static CCMenuItemSprite * create(CCNode* normalSprite, CCNode* selectedSprite, CCNode* disabledSprite, CCObject* target, SEL_MenuHandler selector);
 	/** initializes a menu item with a normal, selected  and disabled image with target/selector */
-	bool initFromNormalSprite(CCNode* normalSprite, CCNode* selectedSprite, CCNode* disabledSprite, CCObject* target, SEL_MenuHandler selector);
+	bool initWithNormalSprite(CCNode* normalSprite, CCNode* selectedSprite, CCNode* disabledSprite, CCObject* target, SEL_MenuHandler selector);
 	// super methods
 	virtual void setColor(const ccColor3B& color);
 	virtual const ccColor3B& getColor();

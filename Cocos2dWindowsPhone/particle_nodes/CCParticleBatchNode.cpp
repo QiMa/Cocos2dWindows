@@ -95,13 +95,13 @@ bool CCParticleBatchNode::initWithTexture(CCTexture2D *tex, unsigned int capacit
     m_pTextureAtlas = new CCTextureAtlas();
     m_pTextureAtlas->initWithTexture(tex, capacity);
 
-	CCAssert(false, "Not implemented."); 
+	//CCAssert(false, "Not implemented."); 
     //// no lazy alloc in this node
-    //m_pChildren = new CCArray();
-    //m_pChildren->initWithCapacity(capacity);
+    m_pChildren = new CCArray();
+    m_pChildren->initWithCapacity(capacity);
 
-    //m_tBlendFunc.src = CC_BLEND_SRC;
-    //m_tBlendFunc.dst = CC_BLEND_DST;
+    m_tBlendFunc.src = CC_BLEND_SRC;
+    m_tBlendFunc.dst = CC_BLEND_DST;
 
     //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
     
@@ -209,33 +209,31 @@ void CCParticleBatchNode::addChild(CCNode * child, int zOrder, int tag)
 // this helper is almost equivalent to CCNode's addChild, but doesn't make use of the lazy sorting
 unsigned int CCParticleBatchNode::addChildHelper(CCParticleSystem* child, int z, int aTag)
 {
-	CCAssert(false, "Not implemented."); 
-	return 0;
-    //CCAssert( child != NULL, "Argument must be non-nil");
-    //CCAssert( child->getParent() == NULL, "child already added. It can't be added again");
+    CCAssert( child != NULL, "Argument must be non-nil");
+    CCAssert( child->getParent() == NULL, "child already added. It can't be added again");
 
-    //if( ! m_pChildren ) 
-    //{
-    //    m_pChildren = new CCArray();
-    //    m_pChildren->initWithCapacity(4);
-    //}
+    if( ! m_pChildren ) 
+    {
+        m_pChildren = new CCArray();
+        m_pChildren->initWithCapacity(4);
+    }
 
-    ////don't use a lazy insert
-    //unsigned int pos = searchNewPositionInChildrenForZ(z);
+    //don't use a lazy insert
+    unsigned int pos = searchNewPositionInChildrenForZ(z);
 
-    //m_pChildren->insertObject(child, pos);
+    m_pChildren->insertObject(child, pos);
 
-    //child->setTag(aTag);
-    //child->_setZOrder(z);
+    child->setTag(aTag);
+    child->setZOrder(z);
 
-    //child->setParent(this);
+    child->setParent(this);
 
-    //if( m_bRunning ) 
-    //{
-    //    child->onEnter();
-    //    child->onEnterTransitionDidFinish();
-    //}
-    //return pos;
+    if( m_bRunning ) 
+    {
+        child->onEnter();
+        child->onEnterTransitionDidFinish();
+    }
+    return pos;
 }
 
 // Reorder will be done in this function, no "lazy" reorder to particles
@@ -366,29 +364,28 @@ unsigned int CCParticleBatchNode::searchNewPositionInChildrenForZ(int z)
 // override removeChild:
 void  CCParticleBatchNode::removeChild(CCNode* child, bool cleanup)
 {
-	CCAssert(false, "Not implemented."); 
-    //// explicit nil handling
-    //if (child == NULL)
-    //{
-    //    return;
-    //}
-    //
-    //CCAssert( dynamic_cast<CCParticleSystem*>(child) != NULL, "CCParticleBatchNode only supports CCQuadParticleSystems as children");
-    //CCAssert(m_pChildren->containsObject(child), "CCParticleBatchNode doesn't contain the sprite. Can't remove it");
+    // explicit nil handling
+    if (child == NULL)
+    {
+        return;
+    }
+    
+    CCAssert( dynamic_cast<CCParticleSystem*>(child) != NULL, "CCParticleBatchNode only supports CCQuadParticleSystems as children");
+    CCAssert(m_pChildren->containsObject(child), "CCParticleBatchNode doesn't contain the sprite. Can't remove it");
 
-    //CCParticleSystem* pChild = (CCParticleSystem*)child;
-    //CCNode::removeChild(pChild, cleanup);
+    CCParticleSystem* pChild = (CCParticleSystem*)child;
+    CCNode::removeChild(pChild, cleanup);
 
-    //// remove child helper
-    //m_pTextureAtlas->removeQuadsAtIndex(pChild->getAtlasIndex(), pChild->getTotalParticles());
+    // remove child helper
+    m_pTextureAtlas->removeQuadAtIndex(pChild->getAtlasIndex());
 
-    //// after memmove of data, empty the quads at the end of array
-    //m_pTextureAtlas->fillWithEmptyQuadsFromIndex(m_pTextureAtlas->getTotalQuads(), pChild->getTotalParticles());
+    // after memmove of data, empty the quads at the end of array
+    m_pTextureAtlas->insertQuadFromIndex(m_pTextureAtlas->getTotalQuads(), pChild->getTotalParticles());
 
-    //// particle could be reused for self rendering
-    //pChild->setBatchNode(NULL);
+    // particle could be reused for self rendering
+    pChild->setBatchNode(NULL);
 
-    //updateAllAtlasIndexes();
+    updateAllAtlasIndexes();
 }
 
 void CCParticleBatchNode::removeChildAtIndex(unsigned int index, bool doCleanup)
@@ -495,11 +492,11 @@ void CCParticleBatchNode::updateAllAtlasIndexes()
 
 void CCParticleBatchNode::updateBlendFunc(void)
 {
-	CCAssert(false, "Not implemented."); 
-    //if( ! m_pTextureAtlas->getTexture()->hasPremultipliedAlpha()) {
-    //    m_tBlendFunc.src = GL_SRC_ALPHA;
-    //    m_tBlendFunc.dst = GL_ONE_MINUS_SRC_ALPHA;
-    //}
+	 
+    if( ! m_pTextureAtlas->getTexture()->hasPremultipliedAlpha()) {
+        m_tBlendFunc.src = CC_SRC_ALPHA;
+        m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
+    }
 }
 
 void CCParticleBatchNode::setTexture(CCTexture2D* texture)
