@@ -239,60 +239,60 @@ unsigned int CCParticleBatchNode::addChildHelper(CCParticleSystem* child, int z,
 // Reorder will be done in this function, no "lazy" reorder to particles
 void CCParticleBatchNode::reorderChild(CCNode * child, int zOrder)
 {
-	CCAssert(false, "Not implemented."); 
-    //CCAssert( child != NULL, "Child must be non-NULL");
-    //CCAssert( dynamic_cast<CCParticleSystem*>(child) != NULL, "CCParticleBatchNode only supports CCQuadParticleSystems as children");
-    //CCAssert( m_pChildren->containsObject(child), "Child doesn't belong to batch" );
 
-    //CCParticleSystem* pChild = (CCParticleSystem*)(child);
+    CCAssert( child != NULL, "Child must be non-NULL");
+    CCAssert( dynamic_cast<CCParticleSystem*>(child) != NULL, "CCParticleBatchNode only supports CCQuadParticleSystems as children");
+    CCAssert( m_pChildren->containsObject(child), "Child doesn't belong to batch" );
 
-    //if( zOrder == child->getZOrder() ) 
-    //{
-    //    return;
-    //}
+    CCParticleSystem* pChild = (CCParticleSystem*)(child);
 
-    //// no reordering if only 1 child
-    //if( m_pChildren->count() > 1)
-    //{
-    //    unsigned int newIndex = 0, oldIndex = 0;
+    if( zOrder == child->getZOrder() ) 
+    {
+        return;
+    }
 
-    //    getCurrentIndex(&oldIndex, &newIndex, pChild, zOrder);
+    // no reordering if only 1 child
+    if( m_pChildren->count() > 1)
+    {
+        unsigned int newIndex = 0, oldIndex = 0;
 
-    //    if( oldIndex != newIndex )
-    //    {
+        getCurrentIndex(&oldIndex, &newIndex, pChild, zOrder);
 
-    //        // reorder m_pChildren->array
-    //        pChild->retain();
-    //        m_pChildren->removeObjectAtIndex(oldIndex);
-    //        m_pChildren->insertObject(pChild, newIndex);
-    //        pChild->release();
+        if( oldIndex != newIndex )
+        {
 
-    //        // save old altasIndex
-    //        unsigned int oldAtlasIndex = pChild->getAtlasIndex();
+            // reorder m_pChildren->array
+            pChild->retain();
+            m_pChildren->removeObjectAtIndex(oldIndex);
+            m_pChildren->insertObject(pChild, newIndex);
+            pChild->release();
 
-    //        // update atlas index
-    //        updateAllAtlasIndexes();
+            // save old altasIndex
+            unsigned int oldAtlasIndex = pChild->getAtlasIndex();
 
-    //        // Find new AtlasIndex
-    //        unsigned int newAtlasIndex = 0;
-    //        for( unsigned int i=0;i < m_pChildren->count();i++)
-    //        {
-    //            CCParticleSystem* pNode = (CCParticleSystem*)m_pChildren->objectAtIndex(i);
-    //            if( pNode == pChild ) 
-    //            {
-    //                newAtlasIndex = pChild->getAtlasIndex();
-    //                break;
-    //            }
-    //        }
+            // update atlas index
+            updateAllAtlasIndexes();
 
-    //        // reorder textureAtlas quads
-    //        m_pTextureAtlas->moveQuadsFromIndex(oldAtlasIndex, pChild->getTotalParticles(), newAtlasIndex);
+            // Find new AtlasIndex
+            unsigned int newAtlasIndex = 0;
+            for( unsigned int i=0;i < m_pChildren->count();i++)
+            {
+                CCParticleSystem* pNode = (CCParticleSystem*)m_pChildren->objectAtIndex(i);
+                if( pNode == pChild ) 
+                {
+                    newAtlasIndex = pChild->getAtlasIndex();
+                    break;
+                }
+            }
 
-    //        pChild->updateWithNoTime();
-    //    }
-    //}
+            // reorder textureAtlas quads
+            m_pTextureAtlas->moveQuadsFromIndex(oldAtlasIndex, pChild->getTotalParticles(), newAtlasIndex);
 
-    //pChild->_setZOrder(zOrder);
+            pChild->updateWithNoTime();
+        }
+    }
+
+    pChild->setZOrder(zOrder);
 }
 
 void CCParticleBatchNode::getCurrentIndex(unsigned int* oldIndex, unsigned int* newIndex, CCNode* child, int z)
@@ -395,12 +395,12 @@ void CCParticleBatchNode::removeChildAtIndex(unsigned int index, bool doCleanup)
 
 void CCParticleBatchNode::removeAllChildrenWithCleanup(bool doCleanup)
 {
-	CCAssert(false, "Not implemented."); 
-//arrayMakeObjectsPerformSelectorWithObject(m_pChildren, setBatchNode, NULL, CCParticleSystem*);
-//
-//    CCNode::removeAllChildrenWithCleanup(doCleanup);
-//
-//    m_pTextureAtlas->removeAllQuads();
+	//CCAssert(false, "Not implemented."); 
+   arrayMakeObjectsPerformSelectorWithObject(m_pChildren, setBatchNode, NULL, CCParticleSystem*);
+
+    CCNode::removeAllChildrenWithCleanup(doCleanup);
+
+    m_pTextureAtlas->removeAllQuads();
 }
 
 void CCParticleBatchNode::draw(void)
@@ -426,16 +426,16 @@ void CCParticleBatchNode::draw(void)
 
 void CCParticleBatchNode::increaseAtlasCapacityTo(unsigned int quantity)
 {
-	CCAssert(false, "Not implemented."); 
-    //CCLOG("cocos2d: CCParticleBatchNode: resizing TextureAtlas capacity from [%lu] to [%lu].",
-    //      (long)m_pTextureAtlas->getCapacity(),
-    //      (long)quantity);
+	//CCAssert(false, "Not implemented."); 
+    CCLOG("cocos2d: CCParticleBatchNode: resizing TextureAtlas capacity from [%lu] to [%lu].",
+          (long)m_pTextureAtlas->getCapacity(),
+          (long)quantity);
 
-    //if( ! m_pTextureAtlas->resizeCapacity(quantity) ) {
-    //    // serious problems
-    //    CCLOGWARN("cocos2d: WARNING: Not enough memory to resize the atlas");
-    //    CCAssert(false,"XXX: CCParticleBatchNode #increaseAtlasCapacity SHALL handle this assert");
-    //}
+    if( ! m_pTextureAtlas->resizeCapacity(quantity) ) {
+        // serious problems
+        CCLOG("cocos2d: WARNING: Not enough memory to resize the atlas");
+        CCAssert(false,"XXX: CCParticleBatchNode #increaseAtlasCapacity SHALL handle this assert");
+    }
 }
 
 //sets a 0'd quad into the quads array
@@ -450,42 +450,42 @@ void CCParticleBatchNode::disableParticle(unsigned int particleIndex)
 // add child helper
 void CCParticleBatchNode::insertChild(CCParticleSystem* pSystem, unsigned int index)
 {
-	CCAssert(false, "Not implemented."); 
-    //pSystem->setAtlasIndex(index);
 
-    //if(m_pTextureAtlas->getTotalQuads() + pSystem->getTotalParticles() > m_pTextureAtlas->getCapacity())
-    //{
-    //    increaseAtlasCapacityTo(m_pTextureAtlas->getTotalQuads() + pSystem->getTotalParticles());
+    pSystem->setAtlasIndex(index);
 
-    //    // after a realloc empty quads of textureAtlas can be filled with gibberish (realloc doesn't perform calloc), insert empty quads to prevent it
-    //    m_pTextureAtlas->fillWithEmptyQuadsFromIndex(m_pTextureAtlas->getCapacity() - pSystem->getTotalParticles(), pSystem->getTotalParticles());
-    //}
+    if(m_pTextureAtlas->getTotalQuads() + pSystem->getTotalParticles() > m_pTextureAtlas->getCapacity())
+    {
+        increaseAtlasCapacityTo(m_pTextureAtlas->getTotalQuads() + pSystem->getTotalParticles());
 
-    //// make room for quads, not necessary for last child
-    //if (pSystem->getAtlasIndex() + pSystem->getTotalParticles() != m_pTextureAtlas->getTotalQuads())
-    //{
-    //    m_pTextureAtlas->moveQuadsFromIndex(index, index+pSystem->getTotalParticles());
-    //}
+        // after a realloc empty quads of textureAtlas can be filled with gibberish (realloc doesn't perform calloc), insert empty quads to prevent it
+		m_pTextureAtlas->insertQuadFromIndex(m_pTextureAtlas->getCapacity() - pSystem->getTotalParticles(), pSystem->getTotalParticles());
+    }
 
-    //// increase totalParticles here for new particles, update method of particle-system will fill the quads
-    //m_pTextureAtlas->increaseTotalQuadsWith(pSystem->getTotalParticles());
+    // make room for quads, not necessary for last child
+    if (pSystem->getAtlasIndex() + pSystem->getTotalParticles() != m_pTextureAtlas->getTotalQuads())
+    {
+        m_pTextureAtlas->moveQuadsFromIndex(index, index+pSystem->getTotalParticles());
+    }
 
-    //updateAllAtlasIndexes();
+    // increase totalParticles here for new particles, update method of particle-system will fill the quads
+    m_pTextureAtlas->increaseTotalQuadsWith(pSystem->getTotalParticles());
+
+    updateAllAtlasIndexes();
 }
 
 //rebuild atlas indexes
 void CCParticleBatchNode::updateAllAtlasIndexes()
 {
-	CCAssert(false, "Not implemented."); 
-    //CCObject *pObj = NULL;
-    //unsigned int index = 0;
+	
+    CCObject *pObj = NULL;
+    unsigned int index = 0;
 
-    //CCARRAY_FOREACH(m_pChildren,pObj)
-    //{
-    //    CCParticleSystem* child = (CCParticleSystem*)pObj;
-    //    child->setAtlasIndex(index);
-    //    index += child->getTotalParticles();
-    //}
+    CCARRAY_FOREACH(m_pChildren,pObj)
+    {
+        CCParticleSystem* child = (CCParticleSystem*)pObj;
+        child->setAtlasIndex(index);
+        index += child->getTotalParticles();
+    }
 }
 
 // CCParticleBatchNode - CocosNodeTexture protocol
@@ -501,15 +501,15 @@ void CCParticleBatchNode::updateBlendFunc(void)
 
 void CCParticleBatchNode::setTexture(CCTexture2D* texture)
 {
-	CCAssert(false, "Not implemented."); 
-    //m_pTextureAtlas->setTexture(texture);
+	
+    m_pTextureAtlas->setTexture(texture);
 
-    //// If the new texture has No premultiplied alpha, AND the blendFunc hasn't been changed, then update it
-    //if( texture && ! texture->hasPremultipliedAlpha() && ( m_tBlendFunc.src == CC_BLEND_SRC && m_tBlendFunc.dst == CC_BLEND_DST ) )
-    //{
-    //        m_tBlendFunc.src = GL_SRC_ALPHA;
-    //        m_tBlendFunc.dst = GL_ONE_MINUS_SRC_ALPHA;
-    //}
+    // If the new texture has No premultiplied alpha, AND the blendFunc hasn't been changed, then update it
+    if( texture && ! texture->hasPremultipliedAlpha() && ( m_tBlendFunc.src == CC_BLEND_SRC && m_tBlendFunc.dst == CC_BLEND_DST ) )
+    {
+            m_tBlendFunc.src =CC_SRC_ALPHA;
+            m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
+    }
 }
 
 CCTexture2D* CCParticleBatchNode::getTexture(void)

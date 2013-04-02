@@ -386,7 +386,60 @@ bool CCTextureAtlas::resizeCapacity(unsigned int newCapacity)
 
 	return true;
 }
+void CCTextureAtlas::increaseTotalQuadsWith(unsigned int amount)
+{
+    m_uTotalQuads += amount;
+}
 
+void CCTextureAtlas::moveQuadsFromIndex(unsigned int oldIndex, unsigned int amount, unsigned int newIndex)
+{
+    CCAssert(newIndex + amount <= m_uTotalQuads, "insertQuadFromIndex:atIndex: Invalid index");
+    CCAssert(oldIndex < m_uTotalQuads, "insertQuadFromIndex:atIndex: Invalid index");
+
+    if( oldIndex == newIndex )
+    {
+        return;
+    }
+    //create buffer
+    size_t quadSize = sizeof(ccV3F_C4B_T2F_Quad);
+    ccV3F_C4B_T2F_Quad* tempQuads = (ccV3F_C4B_T2F_Quad*)malloc( quadSize * amount);
+    memcpy( tempQuads, &m_pQuads[oldIndex], quadSize * amount );
+
+    if (newIndex < oldIndex)
+    {
+        // move quads from newIndex to newIndex + amount to make room for buffer
+        memmove( &m_pQuads[newIndex], &m_pQuads[newIndex+amount], (oldIndex-newIndex)*quadSize);
+    }
+    else
+    {
+        // move quads above back
+        memmove( &m_pQuads[oldIndex], &m_pQuads[oldIndex+amount], (newIndex-oldIndex)*quadSize);
+    }
+    memcpy( &m_pQuads[newIndex], tempQuads, amount*quadSize);
+
+    free(tempQuads);
+
+    m_bDirty = true;
+}
+
+void CCTextureAtlas::moveQuadsFromIndex(unsigned int index, unsigned int newIndex)
+{
+    CCAssert(newIndex + (m_uTotalQuads - index) <= m_uCapacity, "moveQuadsFromIndex move is out of bounds");
+
+    memmove(m_pQuads + newIndex,m_pQuads + index, (m_uTotalQuads - index) * sizeof(m_pQuads[0]));
+}
+
+void CCTextureAtlas::fillWithEmptyQuadsFromIndex(unsigned int index, unsigned int amount)
+{
+    ccV3F_C4B_T2F_Quad quad;
+    memset(&quad, 0, sizeof(quad));
+
+    unsigned int to = index + amount;
+    for (unsigned int i = index ; i < to ; i++)
+    {
+        m_pQuads[i] = quad;
+    }
+}
 // TextureAtlas - Drawing
 
 void CCTextureAtlas::drawQuads()

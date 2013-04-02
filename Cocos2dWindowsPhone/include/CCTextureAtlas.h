@@ -68,7 +68,7 @@ protected:
 	CC_PROPERTY(ccV3F_C4B_T2F_Quad *, m_pQuads, Quads)
 
 public:
-
+	bool m_bDirty; //indicates whether or not the array buffer of the VBO needs to be updated
 	CCTextureAtlas();
 	virtual ~CCTextureAtlas();
 
@@ -138,7 +138,32 @@ public:
 	* If it fails to resize the capacity it will return NO with a new capacity of 0.
 	*/
 	bool resizeCapacity(unsigned int n);
+	/**
+	Used internally by CCParticleBatchNode
+	don't use this unless you know what you're doing
+	@since 1.1
+	*/
+	void increaseTotalQuadsWith(unsigned int amount);
 
+	/** Moves an amount of quads from oldIndex at newIndex
+	@since v1.1
+	*/
+	void moveQuadsFromIndex(unsigned int oldIndex, unsigned int amount, unsigned int newIndex);
+
+	/*
+	Moves quads from index till totalQuads to the newIndex
+	Used internally by CCParticleBatchNode
+	This method doesn't enlarge the array if newIndex + quads to be moved > capacity
+	@since 1.1
+	*/
+	void moveQuadsFromIndex(unsigned int index, unsigned int newIndex);
+
+	/**
+	Ensures that after a realloc quads are still empty
+	Used internally by CCParticleBatchNode
+	@since 1.1
+	*/
+	void fillWithEmptyQuadsFromIndex(unsigned int index, unsigned int amount);
 
 	/** draws n quads
 	* n can't be greater than the capacity of the Atlas
