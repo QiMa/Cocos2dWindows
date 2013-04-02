@@ -45,7 +45,7 @@ bool AppDelegate::initInstance()
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
 
 	// fix bug: 16bit aligned
-	void* buff=_aligned_malloc(sizeof(CCEGLView),16);
+	//void* buff=_aligned_malloc(sizeof(CCEGLView),16);
 	CCEGLView* mainView = CCEGLView::sharedOpenGLView();
 	mainView->setFrameSize(480,800);
 	//mainView->setDesignResolution(480, 320);

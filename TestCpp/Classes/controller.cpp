@@ -46,8 +46,8 @@ static TestScene* CreateTestScene(int nIdx)
         pScene = new ActionManagerTestScene(); break;
     case TEST_LAYER:
         pScene = new LayerTestScene(); break;
-    //case TEST_SCENE:
-    //    pScene = new SceneTestScene(); break;
+    case TEST_SCENE:
+       pScene = new SceneTestScene(); break;
     case TEST_PARALLAX:
         pScene = new ParallaxTestScene(); break;
     case TEST_TILE_MAP:
