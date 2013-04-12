@@ -55,6 +55,9 @@
 
 #include <string>
 
+#ifndef CC_DIRECTOR_STATS_POSITION
+#define CC_DIRECTOR_STATS_POSITION CCDirector::sharedDirector()->getVisibleOrigin()
+#endif
 using namespace std;
 using namespace cocos2d;
 namespace  cocos2d 
@@ -99,7 +102,7 @@ bool CCDirector::init(void)
 	m_pProjectionDelegate = NULL;
 
 	// FPS
-	m_bDisplayFPS = false;
+	m_bDisplayStats = false;
 	m_uTotalFrames = m_uFrames = 0;
 	m_pszFPS = new char[10];
 	m_pLastUpdate = new struct cc_timeval();
@@ -223,7 +226,7 @@ void CCDirector::drawScene(void)
 		m_pNotificationNode->visit();
 	}
 
-	if (m_bDisplayFPS)
+	if (m_bDisplayStats)
 	{
 		showFPS();
 	}
@@ -943,6 +946,41 @@ CCAccelerometer* CCDirector::getAccelerometer()
     return m_pAccelerometer;
 }
 
+void CCDirector::createStatsLabel()
+{
+    if( m_pFPSLabel && m_pSPFLabel ) 
+    {
+        CC_SAFE_RELEASE_NULL(m_pFPSLabel);
+        CC_SAFE_RELEASE_NULL(m_pSPFLabel);
+        CC_SAFE_RELEASE_NULL(m_pDrawsLabel);
+
+        CCFileUtils::sharedFileUtils()->purgeCachedEntries();
+    }
+
+    int fontSize = 0;
+    if (m_obWinSizeInPoints.width > m_obWinSizeInPoints.height)
+    {
+        fontSize = (int)(m_obWinSizeInPoints.height / 320.0f * 24);
+    }
+    else
+    {
+        fontSize = (int)(m_obWinSizeInPoints.width / 320.0f * 24);
+    }
+    
+    m_pFPSLabel = CCLabelTTF::create("00.0", "Arial", fontSize);
+    m_pFPSLabel->retain();
+    m_pSPFLabel = CCLabelTTF::create("0.000", "Arial", fontSize);
+    m_pSPFLabel->retain();
+    m_pDrawsLabel = CCLabelTTF::create("000", "Arial", fontSize);
+    m_pDrawsLabel->retain();
+
+    CCSize contentSize = m_pDrawsLabel->getContentSize();
+    m_pDrawsLabel->setPosition(ccpAdd(ccp(contentSize.width/2, contentSize.height*5/2), CC_DIRECTOR_STATS_POSITION));
+    contentSize = m_pSPFLabel->getContentSize();
+    m_pSPFLabel->setPosition(ccpAdd(ccp(contentSize.width/2, contentSize.height*3/2), CC_DIRECTOR_STATS_POSITION));
+    contentSize = m_pFPSLabel->getContentSize();
+    m_pFPSLabel->setPosition(ccpAdd(ccp(contentSize.width/2, contentSize.height/2), CC_DIRECTOR_STATS_POSITION));
+}
 
 
 

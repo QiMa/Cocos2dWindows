@@ -718,12 +718,12 @@ void CCFileUtils::setFilenameLookupDictionary(CCDictionary* pFilenameLookupDict)
 //////////////////////////////////////////////////////////////////////////
 static bool s_bPopupNotify = true;
 
-void CCFileUtils::setIsPopupNotify(bool bNotify)
+void CCFileUtils::setPopupNotify(bool bNotify)
 {
     s_bPopupNotify = bNotify;
 }
 
-bool CCFileUtils::getIsPopupNotify()
+bool CCFileUtils::IsPopupNotify()
 {
     return s_bPopupNotify;
 }

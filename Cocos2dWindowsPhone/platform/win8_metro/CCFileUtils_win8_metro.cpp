@@ -209,7 +209,7 @@ unsigned char* CCFileUtils::getFileDataPlatform(const char* pszFileName, const c
 
 	} while (0);
 
-	if (! pBuffer && getIsPopupNotify())
+	if (! pBuffer && IsPopupNotify())
 	{
 		std::string title = "Notification";
 		std::string msg = "Get data from file(";

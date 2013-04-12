@@ -169,7 +169,8 @@ public:
      */
     virtual CCPoint getVisibleOrigin() const;
 
-
+	virtual void setDesignResolutionSize(float width, float height, ResolutionPolicy resolutionPolicy);
+	virtual const CCSize&  getDesignResolutionSize() const;
 	 /**
      * Get the frame size of EGL view.
      * In general, it returns the screen size since the EGL view is a fullscreen view.
@@ -251,6 +252,7 @@ protected:
 		CCSize m_obScreenSize;
 		float  m_fScaleX;
 		float  m_fScaleY;
+		CCRect m_obViewPortRect;
 private:
     ID3D11Device1*           m_d3dDevice;
     ID3D11DeviceContext1*    m_d3dContext;

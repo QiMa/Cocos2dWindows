@@ -355,7 +355,7 @@ public:
 	 * lua script can not init with undetermined number of variables
 	 * so add these functinons to be used with lua.
 	 */
-	static CCLayerMultiplex * layerWithLayer(CCLayer* layer);
+	static CCLayerMultiplex * createWithLayer(CCLayer* layer);
 	void addLayer(CCLayer* layer);
 	bool initWithLayer(CCLayer* layer);
 

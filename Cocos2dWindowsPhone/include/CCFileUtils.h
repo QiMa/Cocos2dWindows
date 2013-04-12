@@ -239,8 +239,8 @@ public:
 	/**
 	@brief Set/Get whether pop-up a message box when the image load failed
 	*/
-	static void setIsPopupNotify(bool bNotify);
-	static bool getIsPopupNotify();
+	static void setPopupNotify(bool bNotify);
+	static bool IsPopupNotify();
 
 	///////////////////////////////////////////////////
 	// interfaces on wophone

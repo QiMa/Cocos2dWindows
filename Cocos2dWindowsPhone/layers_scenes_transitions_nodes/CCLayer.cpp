@@ -1124,7 +1124,7 @@ CCLayerMultiplex * CCLayerMultiplex::layerWithLayers(CCLayer * layer, ...)
 	return NULL;
 }
 
-CCLayerMultiplex * CCLayerMultiplex::layerWithLayer(CCLayer* layer)
+CCLayerMultiplex * CCLayerMultiplex::createWithLayer(CCLayer* layer)
 {
 	CCLayerMultiplex * pMultiplexLayer = new CCLayerMultiplex();
 	pMultiplexLayer->initWithLayer(layer);

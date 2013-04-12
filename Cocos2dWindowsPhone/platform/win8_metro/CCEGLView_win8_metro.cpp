@@ -132,6 +132,51 @@ void CCEGLView::release()
     CC_SAFE_DELETE(m_pDelegate);
     DirectXRender::SharedDXRender()->CloseWindow();
 }
+
+void CCEGLView::setDesignResolutionSize(float width, float height, ResolutionPolicy resolutionPolicy)
+{
+    CCAssert(resolutionPolicy != kResolutionUnKnown, "should set resolutionPolicy");
+    
+    if (width == 0.0f || height == 0.0f)
+    {
+        return;
+    }
+
+    m_obDesignResolutionSize.setSize(width, height);
+    
+    m_fScaleX = (float)m_obScreenSize.width / m_obDesignResolutionSize.width;
+    m_fScaleY = (float)m_obScreenSize.height / m_obDesignResolutionSize.height;
+    
+    if (resolutionPolicy == kResolutionNoBorder)
+    {
+        m_fScaleX = m_fScaleY = MAX(m_fScaleX, m_fScaleY);
+    }
+    
+    if (resolutionPolicy == kResolutionShowAll)
+    {
+        m_fScaleX = m_fScaleY = MIN(m_fScaleX, m_fScaleY);
+    }
+
+    // calculate the rect of viewport    
+    float viewPortW = m_obDesignResolutionSize.width * m_fScaleX;
+    float viewPortH = m_obDesignResolutionSize.height * m_fScaleY;
+
+    m_obViewPortRect.setRect((m_obScreenSize.width - viewPortW) / 2, (m_obScreenSize.height - viewPortH) / 2, viewPortW, viewPortH);
+    
+    m_eResolutionPolicy = resolutionPolicy;
+    
+	// reset director's member variables to fit visible rect
+    CCDirector::sharedDirector()->m_obWinSizeInPoints = getDesignResolutionSize();
+    CCDirector::sharedDirector()->createStatsLabel();
+    CCDirector::sharedDirector()->setGLDefaultValues();
+}
+
+const CCSize& CCEGLView::getDesignResolutionSize() const 
+{
+    return m_obDesignResolutionSize;
+}
+
+
 const CCSize& CCEGLView::getFrameSize() const
 {
     return m_obScreenSize;

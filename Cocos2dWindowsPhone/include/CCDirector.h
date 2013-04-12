@@ -187,10 +187,11 @@ public:
 	/** Set the FPS value. */
 	virtual void setAnimationInterval(double dValue) = 0;
 
+
 	/** Whether or not to display the FPS on the bottom-left corner */
-	inline bool isDisplayFPS(void) { return m_bDisplayFPS; }
-	/** Display the FPS on the bottom-left corner */
-	inline void setDisplayFPS(bool bDisplayFPS) { m_bDisplayFPS = bDisplayFPS; }
+    inline bool isDisplayStats(void) { return m_bDisplayStats; }
+    /** Display the FPS on the bottom-left corner */
+    inline void setDisplayStats(bool bDisplayStats) { m_bDisplayStats = bDisplayStats; }
 
 	/** Get the CCEGLView, where everything is rendered */
     inline CCEGLView* getOpenGLView(void) { return m_pobOpenGLView; }
@@ -430,11 +431,14 @@ public:
 	/** returns a shared instance of the director */
 	static CCDirector* sharedDirector(void);
 	void resetDirector();
-
-
+	void createStatsLabel();
+	/* window size in points */
+	CCSize	m_obWinSizeInPoints;
 
 protected:
-
+	
+	CCLabelTTF *m_pSPFLabel;
+	CCLabelTTF *m_pDrawsLabel;
 	void purgeDirector();
 	bool m_bPurgeDirecotorInNextLoop; // this flag will be set to true in end()
 	
@@ -459,7 +463,7 @@ protected:
 	/* landscape mode ? */
 	bool m_bLandscape;
 	
-	bool m_bDisplayFPS;
+	bool m_bDisplayStats;
 	ccTime m_fAccumDt;
 	ccTime m_fFrameRate;
 #if	CC_DIRECTOR_FAST_FPS
@@ -498,8 +502,7 @@ protected:
 	/* projection used */
 	ccDirectorProjection m_eProjection;
 
-	/* window size in points */
-	CCSize	m_obWinSizeInPoints;
+
 
 	/* window size in pixels */
 	CCSize m_obWinSizeInPixels;

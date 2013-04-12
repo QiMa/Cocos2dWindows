@@ -330,11 +330,11 @@ bool CCParticleSystem::initWithDictionary(CCDictionary *dictionary, const char *
                 if (textureName.length() > 0)
                 {
                     // set not pop-up message box when load image failed
-                    bool bNotify = CCFileUtils::sharedFileUtils()->getIsPopupNotify();
-                    CCFileUtils::sharedFileUtils()->setIsPopupNotify(false);
+                    bool bNotify = CCFileUtils::sharedFileUtils()->IsPopupNotify();
+                    CCFileUtils::sharedFileUtils()->setPopupNotify(false);
                     tex = CCTextureCache::sharedTextureCache()->addImage(textureName.c_str());
                     // reset the value of UIImage notify
-                    CCFileUtils::sharedFileUtils()->setIsPopupNotify(bNotify);
+                    CCFileUtils::sharedFileUtils()->setPopupNotify(bNotify);
                 }
                 
                 if (tex)
