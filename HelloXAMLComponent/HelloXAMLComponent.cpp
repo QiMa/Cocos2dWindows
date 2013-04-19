@@ -55,7 +55,7 @@ void Direct3DBackground::OnPointerReleased(DrawingSurfaceManipulationHost^ sende
 HRESULT Direct3DBackground::Connect(_In_ IDrawingSurfaceRuntimeHostNative* host, _In_ ID3D11Device1* device)
 {
 	m_renderer = ref new cocos2d::DirectXRender();
-	m_renderer->Initialize(device);
+//	m_renderer->Initialize(device);
 	//m_renderer->UpdateForWindowSizeChange(WindowBounds.Width, WindowBounds.Height);
 
 	// 在呈现器完成初始化后重新启动计时器。
