@@ -83,7 +83,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>./;../external;../Cocos2dWindowsPhone/include/;../Cocos2dWindowsPhone/platform/third_party;../Cocos2dWindowsPhone/include/libpng;../Cocos2dWindowsPhone/include/libjpeg;../Cocos2dWindowsPhone/include/freetype;../Cocos2dWindowsPhone/include/zlib$(IntermediateOutputPath);../CocosDenshionWindowsPhone/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../external;../Cocos2dWindowsPhone/include/;../Cocos2dWindowsPhone/platform/third_party;../Cocos2dWindowsPhone/include/libpng;../Cocos2dWindowsPhone/include/libjpeg;../Cocos2dWindowsPhone/include/freetype;../Cocos2dWindowsPhone/include/zlib$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <CompileAsWinRT>true</CompileAsWinRT>
       <PreprocessorDefinitions>TIXML_USE_STL;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -94,7 +94,7 @@
       <AdditionalUsingDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;Cocos2dWindowsPhone.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;Cocos2dWindowsPhone.lib;CocosDenshionWindowsPhone.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -334,9 +334,10 @@
     <ProjectReference Include="..\Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj">
       <Project>{8c939c76-a430-450e-9607-56cec95dee2f}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\CocosDenshionWindowsPhone\CocosDenshionWindowsPhone.vcxproj">
-      <Project>{54d5a760-05c6-4560-bb0e-6804d248f14a}</Project>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\tamboura.mp3" />
+    <Media Include="Assets\tamboura.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />

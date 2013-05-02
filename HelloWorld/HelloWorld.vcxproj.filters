@@ -498,4 +498,12 @@
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\tamboura.mp3">
+      <Filter>Assets</Filter>
+    </Media>
+    <Media Include="Assets\tamboura.wav">
+      <Filter>Assets</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

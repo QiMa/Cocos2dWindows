@@ -128,6 +128,9 @@
     <Filter Include="include\kazmath\GL">
       <UniqueIdentifier>{193bf721-c6c2-47c5-bf29-2128e316e2e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cocosdension">
+      <UniqueIdentifier>{84521a5e-a4c7-4b8e-ba68-178b3fe9dd98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include=".\actions\CCAction.cpp">
@@ -490,6 +493,15 @@
     <ClCompile Include="kazmath\src\GL\matrix.c">
       <Filter>kazmath\src\GL</Filter>
     </ClCompile>
+    <ClCompile Include="cocosdension\Audio.cpp">
+      <Filter>cocosdension</Filter>
+    </ClCompile>
+    <ClCompile Include="cocosdension\MediaStreamer.cpp">
+      <Filter>cocosdension</Filter>
+    </ClCompile>
+    <ClCompile Include="cocosdension\SimpleAudioEngine.cpp">
+      <Filter>cocosdension</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocoa\CCNS.h">
@@ -841,6 +853,18 @@
     </ClInclude>
     <ClInclude Include="include\kazmath\GL\matrix.h">
       <Filter>include\kazmath\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="cocosdension\Audio.h">
+      <Filter>cocosdension</Filter>
+    </ClInclude>
+    <ClInclude Include="cocosdension\corewrappers.h">
+      <Filter>cocosdension</Filter>
+    </ClInclude>
+    <ClInclude Include="cocosdension\MediaStreamer.h">
+      <Filter>cocosdension</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SimpleAudioEngine.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

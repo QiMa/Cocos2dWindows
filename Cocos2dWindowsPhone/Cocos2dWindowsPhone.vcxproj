@@ -283,6 +283,9 @@
     <ClCompile Include="cocoa\CCArray.cpp" />
     <ClCompile Include="cocoa\CCDictionary.cpp" />
     <ClCompile Include="cocoa\CCString.cpp" />
+    <ClCompile Include="cocosdension\Audio.cpp" />
+    <ClCompile Include="cocosdension\MediaStreamer.cpp" />
+    <ClCompile Include="cocosdension\SimpleAudioEngine.cpp" />
     <ClCompile Include="kazmath\src\aabb.c">
       <CompileAsWinRT Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsWinRT>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -515,6 +518,9 @@
     <ClInclude Include=".\support\zip_support\unzip.h" />
     <ClInclude Include=".\support\zip_support\ZipUtils.h" />
     <ClInclude Include=".\targetver.h" />
+    <ClInclude Include="cocosdension\Audio.h" />
+    <ClInclude Include="cocosdension\corewrappers.h" />
+    <ClInclude Include="cocosdension\MediaStreamer.h" />
     <ClInclude Include="include\CCApplication_win8_metro.h" />
     <ClInclude Include="include\CCFileUtils.h" />
     <ClInclude Include="include\CCMenu.h" />
@@ -533,6 +539,7 @@
     <ClInclude Include="include\kazmath\vec2.h" />
     <ClInclude Include="include\kazmath\vec3.h" />
     <ClInclude Include="include\kazmath\vec4.h" />
+    <ClInclude Include="include\SimpleAudioEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include=".\shaders\CCDrawingPixelShader.hlsl">

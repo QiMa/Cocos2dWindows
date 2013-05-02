@@ -24,12 +24,12 @@
 #include <CCParticleExamples.h>
 #include <vector>
 #include <time.h>
-
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace Windows::Foundation;
 using namespace Windows::Devices::Sensors;
-
+using namespace CocosDenshion;
 HelloWorld::~HelloWorld()
 {
 
@@ -71,7 +71,7 @@ bool HelloWorld::init()
 			break;
 		}
 
-
+		
 		CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
 		pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
@@ -85,7 +85,8 @@ bool HelloWorld::init()
 		b->setPosition(ccp(0, 0));
 		b->setPosition(ccp(size.width * 0.5, size.height * 0.5));
 		this->addChild(b);
-
+		//SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.wav", true);
+		SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.mp3", true);
 		setTouchEnabled(true);
 
 		bRet = true;
