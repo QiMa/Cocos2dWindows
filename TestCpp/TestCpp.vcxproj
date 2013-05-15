@@ -126,27 +126,91 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\animations\dragon_animation-hd.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\animations\dragon_animation.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\animations\ghosts.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\animations\grossini-aliases.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\animations\grossini.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\animations\grossini_blue.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\animations\grossini_family.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\animations\grossini_gray.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="Assets\ApplicationIcon.png" />
-    <Image Include="Assets\fonts\arial-unicode-26.png" />
-    <Image Include="Assets\fonts\arial16.png" />
-    <Image Include="Assets\fonts\bitmapFontChinese.png" />
-    <Image Include="Assets\fonts\bitmapFontTest.png" />
-    <Image Include="Assets\fonts\bitmapFontTest2.bmp" />
-    <Image Include="Assets\fonts\bitmapFontTest2.png" />
-    <Image Include="Assets\fonts\bitmapFontTest3.png" />
-    <Image Include="Assets\fonts\bitmapFontTest4.png" />
-    <Image Include="Assets\fonts\bitmapFontTest5.png" />
-    <Image Include="Assets\fonts\boundsTestFont.png" />
-    <Image Include="Assets\fonts\font-issue1343-hd.png" />
-    <Image Include="Assets\fonts\font-issue1343.png" />
-    <Image Include="Assets\fonts\futura-48.png" />
-    <Image Include="Assets\fonts\helvetica-geneva-32.png" />
-    <Image Include="Assets\fonts\konqa32.png" />
-    <Image Include="Assets\fonts\labelatlas.png" />
-    <Image Include="Assets\fonts\larabie-16.png" />
-    <Image Include="Assets\fonts\markerFelt.png" />
-    <Image Include="Assets\fonts\tuffy_bold_italic-charmap.png" />
-    <Image Include="Assets\fonts\west_england-64.png" />
+    <Image Include="Assets\fonts\arial-unicode-26.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\arial16.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontChinese.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest2.bmp">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest3.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest4.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest5.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\boundsTestFont.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\font-issue1343-hd.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\font-issue1343.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\futura-48.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\helvetica-geneva-32.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\konqa32.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\labelatlas.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\larabie-16.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\markerFelt.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\tuffy_bold_italic-charmap.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\fonts\west_england-64.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="Assets\HelloWorld.png" />
     <Image Include="Assets\Images\arrows.png" />
     <Image Include="Assets\Images\arrowsBar.png" />
@@ -306,6 +370,42 @@
     <Image Include="Assets\Images\texture2048x2048.png" />
     <Image Include="Assets\Images\texture512x512.png" />
     <Image Include="Assets\Images\white-512x512.png" />
+    <Image Include="Assets\TileMaps\fixed-ortho-test2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\hexa-tiles.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\iso-test.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\iso-test2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\iso.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\ortho-test1.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\ortho-test1_bw.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\ortho-test2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\tiles-hd.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\tiles.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\tmw_desert_spacing-hd.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\TileMaps\tmw_desert_spacing.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
     <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />
@@ -314,7 +414,12 @@
     <Image Include="Assets\Tiles\IconicTileSmall.png" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Assets\fonts\strings.xml" />
+    <Xml Include="Assets\animations\grossini.plist.xml">
+      <DeploymentContent>true</DeploymentContent>
+    </Xml>
+    <Xml Include="Assets\fonts\strings.xml">
+      <DeploymentContent>true</DeploymentContent>
+    </Xml>
     <Xml Include="WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -570,26 +675,87 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\fonts\arial-unicode-26.fnt" />
-    <None Include="Assets\fonts\arial-unicode-26.GlyphProject" />
-    <None Include="Assets\fonts\arial16.fnt" />
-    <None Include="Assets\fonts\bitmapFontChinese.fnt" />
-    <None Include="Assets\fonts\bitmapFontTest.fnt" />
-    <None Include="Assets\fonts\bitmapFontTest2.fnt" />
-    <None Include="Assets\fonts\bitmapFontTest3.fnt" />
-    <None Include="Assets\fonts\bitmapFontTest4.fnt" />
-    <None Include="Assets\fonts\bitmapFontTest5.fnt" />
-    <None Include="Assets\fonts\boundsTestFont.fnt" />
-    <None Include="Assets\fonts\font-issue1343-hd.fnt" />
-    <None Include="Assets\fonts\font-issue1343.fnt" />
-    <None Include="Assets\fonts\futura-48.fnt" />
-    <None Include="Assets\fonts\geneva-32.fnt" />
-    <None Include="Assets\fonts\helvetica-32.fnt" />
-    <None Include="Assets\fonts\konqa32.fnt" />
-    <None Include="Assets\fonts\larabie-16.plist" />
-    <None Include="Assets\fonts\markerFelt.fnt" />
-    <None Include="Assets\fonts\tuffy_bold_italic-charmap.plist" />
-    <None Include="Assets\fonts\west_england-64.fnt" />
+    <None Include="Assets\animations\ghosts.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini-aliases.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini.ztp">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini_blue.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini_family.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini_gray.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\arial-unicode-26.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\arial-unicode-26.GlyphProject">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\arial16.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontChinese.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest2.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest3.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest4.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest5.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\boundsTestFont.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\font-issue1343-hd.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\font-issue1343.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\futura-48.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\geneva-32.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\helvetica-32.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\konqa32.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\larabie-16.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\markerFelt.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\tuffy_bold_italic-charmap.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\west_england-64.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
     <None Include="Assets\Images\bitmapFontTest3.fnt" />
     <None Include="Assets\Images\bugs\circle.plist" />
     <None Include="Assets\Images\fire_rgba8888.pvr" />
@@ -637,6 +803,81 @@
     <None Include="Assets\Images\test_image_rgba5551_v3.pvr" />
     <None Include="Assets\Images\test_image_rgba8888.pvr" />
     <None Include="Assets\Images\test_image_rgba8888_v3.pvr" />
+    <None Include="Assets\TileMaps\hexa-test.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-bug787.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-movelayer.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-objectgroup.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-vertexz.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-zorder.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test1.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test2-uncompressed.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test2.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\levelmap.tga">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\ortho-objects.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-movelayer.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-vertexz.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-zorder.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test1.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test1.tsx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test2.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test3.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test4-hd.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test4.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test5.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test6-hd.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test6.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\test-object-layer.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
     <None Include="CCDrawingPixelShader.cso">
       <DeploymentContent>true</DeploymentContent>
     </None>
@@ -692,19 +933,45 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Assets\fonts\A Damn Mess.ttf" />
-    <Font Include="Assets\fonts\Abberancy.ttf" />
-    <Font Include="Assets\fonts\Abduction.ttf" />
-    <Font Include="Assets\fonts\American Typewriter.ttf" />
-    <Font Include="Assets\fonts\arial.ttf" />
-    <Font Include="Assets\fonts\Courier New.ttf" />
-    <Font Include="Assets\fonts\Marker Felt.ttf" />
-    <Font Include="Assets\fonts\Paint Boy.ttf" />
-    <Font Include="Assets\fonts\Schwarzwald Regular.ttf" />
-    <Font Include="Assets\fonts\Scissor Cuts.ttf" />
-    <Font Include="Assets\fonts\tahoma.ttf" />
-    <Font Include="Assets\fonts\Thonburi.ttf" />
-    <Font Include="Assets\fonts\ThonburiBold.ttf" />
+    <Font Include="Assets\fonts\A Damn Mess.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\Abberancy.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\Abduction.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\American Typewriter.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\arial.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\Courier New.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\Marker Felt.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\Paint Boy.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\Schwarzwald Regular.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\Scissor Cuts.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\tahoma.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\Thonburi.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
+    <Font Include="Assets\fonts\ThonburiBold.ttf">
+      <DeploymentContent>true</DeploymentContent>
+    </Font>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />

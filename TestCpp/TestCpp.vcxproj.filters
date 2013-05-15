@@ -131,6 +131,12 @@
     <Filter Include="Classes\ZwoptexTest">
       <UniqueIdentifier>{4eb00927-8dcc-4c99-af21-0613df5d0fcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\TileMaps">
+      <UniqueIdentifier>{07c08985-a1e5-46e9-92d2-ff7807d9d647}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\animations">
+      <UniqueIdentifier>{24eea36c-6b8a-4ac0-9698-274d77a5e8a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -690,6 +696,66 @@
     </Image>
     <Image Include="Assets\fonts\west_england-64.png">
       <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\fixed-ortho-test2.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\hexa-tiles.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\iso.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\iso-test.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\iso-test2.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\ortho-test1.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\ortho-test1_bw.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\ortho-test2.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\tiles.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\tiles-hd.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\tmw_desert_spacing.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\tmw_desert_spacing-hd.png">
+      <Filter>Assets\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\animations\dragon_animation.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\dragon_animation-hd.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\ghosts.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini_blue.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini_family.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini_gray.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini-aliases.png">
+      <Filter>Assets\animations</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -1431,6 +1497,9 @@
     <Xml Include="Assets\fonts\strings.xml">
       <Filter>Assets\fonts</Filter>
     </Xml>
+    <Xml Include="Assets\animations\grossini.plist.xml">
+      <Filter>Assets\animations</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <None Include="CCDrawingPixelShader.cso">
@@ -1681,6 +1750,102 @@
     </None>
     <None Include="Assets\fonts\west_england-64.fnt">
       <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\TileMaps\hexa-test.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test1.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test2.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test2-uncompressed.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-bug787.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-movelayer.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-objectgroup.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-vertexz.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-zorder.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\levelmap.tga">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test1.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test1.tsx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test2.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test3.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test4.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test4-hd.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test5.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test6.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test6-hd.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-movelayer.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-vertexz.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-zorder.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\ortho-objects.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\test-object-layer.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\animations\ghosts.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini.ztp">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini_blue.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini_family.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini_gray.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini-aliases.plist">
+      <Filter>Assets\animations</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
