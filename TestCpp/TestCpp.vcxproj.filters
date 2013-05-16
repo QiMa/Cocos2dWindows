@@ -137,6 +137,9 @@
     <Filter Include="Assets\animations">
       <UniqueIdentifier>{24eea36c-6b8a-4ac0-9698-274d77a5e8a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\zwoptex">
+      <UniqueIdentifier>{3700737a-a2d2-44d8-8ddd-fea7034ea72a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -756,6 +759,12 @@
     </Image>
     <Image Include="Assets\animations\grossini-aliases.png">
       <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\zwoptex\grossini-generic.png">
+      <Filter>Assets\zwoptex</Filter>
+    </Image>
+    <Image Include="Assets\zwoptex\grossini.png">
+      <Filter>Assets\zwoptex</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -1846,6 +1855,12 @@
     </None>
     <None Include="Assets\animations\grossini-aliases.plist">
       <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\zwoptex\grossini.plist">
+      <Filter>Assets\zwoptex</Filter>
+    </None>
+    <None Include="Assets\zwoptex\grossini-generic.plist">
+      <Filter>Assets\zwoptex</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

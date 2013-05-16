@@ -47,7 +47,8 @@ bool AppDelegate::initInstance()
 	// fix bug: 16bit aligned
 	//void* buff=_aligned_malloc(sizeof(CCEGLView),16);
 	CCEGLView* mainView = CCEGLView::sharedOpenGLView();
-	mainView->setFrameSize(480,800);
+	//mainView->setFrameSize(480,800);
+	
 	//mainView->setDesignResolution(480, 320);
 	//mainView->setDesignResolution(640, 1066);
 	CCLOG("Device Res:%d", m_deviceResolutionInPixels);
@@ -56,16 +57,19 @@ bool AppDelegate::initInstance()
 	case DeviceResolutionInPixels_WVGA: 
 		{
 			mainView->setDesignResolution(480, 800);
+				mainView->setFrameSize(800,480);
 			break;
 		}
 	case DeviceResolutionInPixels_720p: 
 		{
 			mainView->setDesignResolution(720, 1280);
+			mainView->setFrameSize(1280,720);
 			break;
 		}	
 	case DeviceResolutionInPixels_WXGA: 
 		{
 			mainView->setDesignResolution(768, 1280);
+				mainView->setFrameSize(1280,768);
 			break;
 		}
 	}
@@ -88,7 +92,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	// turn on display FPS
 	//pDirector->setDisplayFPS(false);
-
+	
 	pDirector->setDeviceOrientation(CCDeviceOrientationLandscapeLeft);
 	// set FPS. the default value is 1.0/60 if you don't call this
 	//pDirector->setAnimationInterval(1.0 / 60);
