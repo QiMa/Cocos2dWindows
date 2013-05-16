@@ -85,8 +85,8 @@ bool HelloWorld::init()
 		b->setPosition(ccp(0, 0));
 		b->setPosition(ccp(size.width * 0.5, size.height * 0.5));
 		this->addChild(b);
-		//SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.wav", true);
-		SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.mp3", true);
+		SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.wav", true);
+		//SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.mp3", true);
 		setTouchEnabled(true);
 
 		bRet = true;

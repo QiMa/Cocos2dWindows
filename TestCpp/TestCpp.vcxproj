@@ -406,6 +406,12 @@
     <Image Include="Assets\TileMaps\tmw_desert_spacing.png">
       <DeploymentContent>true</DeploymentContent>
     </Image>
+    <Image Include="Assets\zwoptex\grossini-generic.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\zwoptex\grossini.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
     <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />
@@ -876,6 +882,12 @@
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="Assets\TileMaps\test-object-layer.tmx">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\zwoptex\grossini-generic.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\zwoptex\grossini.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="CCDrawingPixelShader.cso">
