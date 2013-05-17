@@ -140,6 +140,9 @@
     <Filter Include="Assets\zwoptex">
       <UniqueIdentifier>{3700737a-a2d2-44d8-8ddd-fea7034ea72a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Particles">
+      <UniqueIdentifier>{5a4bc311-e2f2-4da3-842d-17798ba014bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -765,6 +768,9 @@
     </Image>
     <Image Include="Assets\zwoptex\grossini.png">
       <Filter>Assets\zwoptex</Filter>
+    </Image>
+    <Image Include="Assets\fps_images.png">
+      <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -1861,6 +1867,51 @@
     </None>
     <None Include="Assets\zwoptex\grossini-generic.plist">
       <Filter>Assets\zwoptex</Filter>
+    </None>
+    <None Include="Assets\Particles\BoilingFoam.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\BurstPipe.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\Comet.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\debian.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\ExplodingRing.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\Flower.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\Galaxy.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\LavaFlow.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\Phoenix.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\SmallSun.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\SpinningPeas.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\Spiral.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\SpookyPeas.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\TestPremultipliedAlpha.plist">
+      <Filter>Assets\Particles</Filter>
+    </None>
+    <None Include="Assets\Particles\Upsidedown.plist">
+      <Filter>Assets\Particles</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

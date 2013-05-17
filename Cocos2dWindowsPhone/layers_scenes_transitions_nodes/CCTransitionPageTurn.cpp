@@ -119,14 +119,14 @@ CCActionInterval* CCTransitionPageTurn:: actionWithSize(const CCSize& vector)
 	{
 		// Get hold of the PageTurn3DAction
 		return CCReverseTime::create
-		(
-			CCPageTurn3D::actionWithSize(vector, m_fDuration)
-		);
+			(
+			CCPageTurn3D::create(m_fDuration, vector)
+			);
 	}
 	else
 	{
 		// Get hold of the PageTurn3DAction
-		return CCPageTurn3D::actionWithSize(vector, m_fDuration);
+		return CCPageTurn3D::create(m_fDuration, vector);
 	}
 }
 

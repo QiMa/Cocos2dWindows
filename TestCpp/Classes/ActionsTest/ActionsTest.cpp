@@ -1688,7 +1688,7 @@ void ActionCardinalSpline::onEnter()
 	// Spline with no tension (tension==0)
 	//
     
-    CCCardinalSplineBy *action = CCCardinalSplineBy::create(3, array, 0);
+    CCCardinalSplineBy *action = CCCardinalSplineBy::create(3, array, 0);/////////////////////////////////////??????
     CCActionInterval *reverse = action->reverse();
 	
     CCFiniteTimeAction *seq = CCSequence::create(action, reverse, NULL);

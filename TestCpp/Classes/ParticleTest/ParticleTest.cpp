@@ -968,7 +968,7 @@ enum
     IDC_TOGGLE
 };
 
-static int sceneIdx = -1; 
+int sceneIdx = -1; 
 
 #define MAX_LAYER    43
 
@@ -1031,7 +1031,7 @@ CCLayer* createParticleLayer(int nIndex)
 CCLayer* nextParticleAction()
 {
     sceneIdx++;
-    sceneIdx = sceneIdx % MAX_LAYER;
+    //sceneIdx = sceneIdx % MAX_LAYER;
 
     CCLayer* pLayer = createParticleLayer(sceneIdx);
     pLayer->autorelease();
@@ -1885,7 +1885,7 @@ void PremultipliedAlphaTest::onEnter()
     ccBlendFunc tBlendFunc = { CC_ONE, CC_ONE_MINUS_SRC_ALPHA };
     m_emitter->setBlendFunc(tBlendFunc);
 
-//    CCAssert(m_emitter->getOpacityModifyRGB(), "Particle texture does not have premultiplied alpha, test is useless");
+    CCAssert(m_emitter->getOpacityModifyRGB(), "Particle texture does not have premultiplied alpha, test is useless");
 
     // Toggle next line to see old behavior
     //	this->emitter.opacityModifyRGB = NO;
@@ -1927,5 +1927,5 @@ void ParticleTestScene::runThisTest()
 {
     addChild(nextParticleAction());
 
-    CCDirector::sharedDirector()->replaceScene(this);
+   CCDirector::sharedDirector()->replaceScene(this);
 }

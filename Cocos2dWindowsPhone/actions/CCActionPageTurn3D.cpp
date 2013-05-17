@@ -22,13 +22,13 @@
 #include "CCActionPageTurn3D.h"
 
 NS_CC_BEGIN
-	CCPageTurn3D* CCPageTurn3D::actionWithSize(const CCSize& gridSize, ccTime time)
+CCPageTurn3D* CCPageTurn3D::create(float duration, const CCSize& gridSize)
 {
 	CCPageTurn3D *pAction = new CCPageTurn3D();
 
 	if (pAction)
 	{
-		if (pAction->initWithDuration(time, gridSize))
+		if (pAction->initWithDuration(duration, gridSize))
 		{
 			pAction->autorelease();
 		}

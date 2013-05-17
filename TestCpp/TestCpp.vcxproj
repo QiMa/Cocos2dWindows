@@ -211,86 +211,245 @@
     <Image Include="Assets\fonts\west_england-64.png">
       <DeploymentContent>true</DeploymentContent>
     </Image>
+    <Image Include="Assets\fps_images.png" />
     <Image Include="Assets\HelloWorld.png" />
-    <Image Include="Assets\Images\arrows.png" />
-    <Image Include="Assets\Images\arrowsBar.png" />
-    <Image Include="Assets\Images\atlastest.png" />
-    <Image Include="Assets\Images\b1.png" />
-    <Image Include="Assets\Images\b2.png" />
-    <Image Include="Assets\Images\background.png" />
-    <Image Include="Assets\Images\background1.jpg" />
-    <Image Include="Assets\Images\background1.png" />
-    <Image Include="Assets\Images\background2.jpg" />
-    <Image Include="Assets\Images\background2.png" />
-    <Image Include="Assets\Images\background3.jpg" />
-    <Image Include="Assets\Images\background3.png" />
-    <Image Include="Assets\Images\ball.png" />
-    <Image Include="Assets\Images\bitmapFontTest3.png" />
-    <Image Include="Assets\Images\blocks.png" />
-    <Image Include="Assets\Images\btn-about-normal.png" />
-    <Image Include="Assets\Images\btn-about-selected.png" />
-    <Image Include="Assets\Images\btn-highscores-normal.png" />
-    <Image Include="Assets\Images\btn-highscores-selected.png" />
-    <Image Include="Assets\Images\btn-play-normal.png" />
-    <Image Include="Assets\Images\btn-play-selected.png" />
-    <Image Include="Assets\Images\bugs\bug886.jpg" />
-    <Image Include="Assets\Images\bugs\bug886.png" />
-    <Image Include="Assets\Images\bugs\circle.png" />
-    <Image Include="Assets\Images\bugs\corner.png" />
-    <Image Include="Assets\Images\bugs\edge.png" />
-    <Image Include="Assets\Images\bugs\fill.png" />
-    <Image Include="Assets\Images\bugs\picture.png" />
-    <Image Include="Assets\Images\bugs\RetinaDisplay.jpg" />
-    <Image Include="Assets\Images\close.png" />
-    <Image Include="Assets\Images\Comet.png" />
-    <Image Include="Assets\Images\f1.png" />
-    <Image Include="Assets\Images\f2.png" />
-    <Image Include="Assets\Images\fire-grayscale.png" />
-    <Image Include="Assets\Images\fire.png" />
-    <Image Include="Assets\Images\Fog.png" />
-    <Image Include="Assets\Images\grossini.png" />
-    <Image Include="Assets\Images\grossinis_sister1-testalpha.png" />
-    <Image Include="Assets\Images\grossinis_sister1.png" />
-    <Image Include="Assets\Images\grossinis_sister2.png" />
-    <Image Include="Assets\Images\grossini_dance_01.png" />
-    <Image Include="Assets\Images\grossini_dance_02.png" />
-    <Image Include="Assets\Images\grossini_dance_03.png" />
-    <Image Include="Assets\Images\grossini_dance_04.png" />
-    <Image Include="Assets\Images\grossini_dance_05.png" />
-    <Image Include="Assets\Images\grossini_dance_06.png" />
-    <Image Include="Assets\Images\grossini_dance_07.png" />
-    <Image Include="Assets\Images\grossini_dance_08.png" />
-    <Image Include="Assets\Images\grossini_dance_09.png" />
-    <Image Include="Assets\Images\grossini_dance_10.png" />
-    <Image Include="Assets\Images\grossini_dance_11.png" />
-    <Image Include="Assets\Images\grossini_dance_12.png" />
-    <Image Include="Assets\Images\grossini_dance_13.png" />
-    <Image Include="Assets\Images\grossini_dance_14.png" />
-    <Image Include="Assets\Images\grossini_dance_atlas-mono.png" />
-    <Image Include="Assets\Images\grossini_dance_atlas.png" />
-    <Image Include="Assets\Images\grossini_dance_atlas_nomipmap.png" />
-    <Image Include="Assets\Images\HelloWorld.png" />
-    <Image Include="Assets\Images\hole_effect.png" />
-    <Image Include="Assets\Images\hole_stencil.png" />
-    <Image Include="Assets\Images\Icon.png" />
-    <Image Include="Assets\Images\labelatlas.png" />
-    <Image Include="Assets\Images\landscape-1024x1024.png" />
-    <Image Include="Assets\Images\menuitemsprite.png" />
-    <Image Include="Assets\Images\paddle.png" />
-    <Image Include="Assets\Images\particles.png" />
-    <Image Include="Assets\Images\pattern1.png" />
-    <Image Include="Assets\Images\Pea.png" />
-    <Image Include="Assets\Images\piece.png" />
-    <Image Include="Assets\Images\PlanetCute-1024x1024.png" />
-    <Image Include="Assets\Images\powered.png" />
-    <Image Include="Assets\Images\r1.png" />
-    <Image Include="Assets\Images\r2.png" />
-    <Image Include="Assets\Images\SendScoreButton.png" />
-    <Image Include="Assets\Images\SendScoreButtonPressed.png" />
-    <Image Include="Assets\Images\snow.png" />
-    <Image Include="Assets\Images\SpinningPeas.png" />
-    <Image Include="Assets\Images\SpookyPeas.png" />
-    <Image Include="Assets\Images\spritesheet1.png" />
+    <Image Include="Assets\Images\arrows.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\arrowsBar.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\atlastest.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\b1.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\b2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\background.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\background1.jpg">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\background1.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\background2.jpg">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\background2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\background3.jpg">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\background3.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\ball.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\bitmapFontTest3.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\blocks.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\btn-about-normal.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\btn-about-selected.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\btn-highscores-normal.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\btn-highscores-selected.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\btn-play-normal.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\btn-play-selected.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\bugs\bug886.jpg">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\bugs\bug886.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\bugs\circle.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\bugs\corner.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\bugs\edge.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\bugs\fill.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\bugs\picture.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\bugs\RetinaDisplay.jpg">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\close.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\Comet.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\f1.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\f2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\fire-grayscale.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\fire.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\Fog.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister1-testalpha.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister1.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_01.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_02.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_03.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_04.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_05.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_06.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_07.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_08.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_09.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_10.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_11.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_12.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_13.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_14.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas-mono.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas_nomipmap.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\HelloWorld.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\hole_effect.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\hole_stencil.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\Icon.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\labelatlas.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\landscape-1024x1024.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\menuitemsprite.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\paddle.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\particles.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\pattern1.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\Pea.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\piece.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\PlanetCute-1024x1024.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\powered.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\r1.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\r2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\SendScoreButton.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\SendScoreButtonPressed.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\snow.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\SpinningPeas.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\SpookyPeas.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\spritesheet1.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="Assets\Images\sprites_test\sprite-0-0.png" />
     <Image Include="Assets\Images\sprites_test\sprite-0-1.png" />
     <Image Include="Assets\Images\sprites_test\sprite-0-2.png" />
@@ -355,21 +514,51 @@
     <Image Include="Assets\Images\sprites_test\sprite-7-5.png" />
     <Image Include="Assets\Images\sprites_test\sprite-7-6.png" />
     <Image Include="Assets\Images\sprites_test\sprite-7-7.png" />
-    <Image Include="Assets\Images\stars-grayscale.png" />
-    <Image Include="Assets\Images\stars.png" />
-    <Image Include="Assets\Images\stars2-grayscale.png" />
-    <Image Include="Assets\Images\stars2.png" />
-    <Image Include="Assets\Images\streak.png" />
-    <Image Include="Assets\Images\test-rgba1.png" />
-    <Image Include="Assets\Images\test_1021x1024.png" />
-    <Image Include="Assets\Images\test_blend.png" />
-    <Image Include="Assets\Images\test_image.jpeg" />
-    <Image Include="Assets\Images\test_image.png" />
-    <Image Include="Assets\Images\test_image.tiff" />
-    <Image Include="Assets\Images\texture1024x1024.png" />
-    <Image Include="Assets\Images\texture2048x2048.png" />
-    <Image Include="Assets\Images\texture512x512.png" />
-    <Image Include="Assets\Images\white-512x512.png" />
+    <Image Include="Assets\Images\stars-grayscale.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\stars.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\stars2-grayscale.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\stars2.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\streak.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\test-rgba1.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\test_1021x1024.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\test_blend.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\test_image.jpeg">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\test_image.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\test_image.tiff">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\texture1024x1024.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\texture2048x2048.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\texture512x512.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
+    <Image Include="Assets\Images\white-512x512.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
     <Image Include="Assets\TileMaps\fixed-ortho-test2.png">
       <DeploymentContent>true</DeploymentContent>
     </Image>
@@ -464,7 +653,9 @@
     <ClInclude Include="Classes\MutiTouchTest\MutiTouchTest.h" />
     <ClInclude Include="Classes\NodeTest\NodeTest.h" />
     <ClInclude Include="Classes\ParallaxTest\ParallaxTest.h" />
-    <ClInclude Include="Classes\ParticleTest\ParticleTest.h" />
+    <ClInclude Include="Classes\ParticleTest\ParticleTest.h">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="Classes\PerformanceTest\PerformanceNodeChildrenTest.h" />
     <ClInclude Include="Classes\PerformanceTest\PerformanceParticleTest.h" />
     <ClInclude Include="Classes\PerformanceTest\PerformanceSpriteTest.h" />
@@ -654,7 +845,9 @@
     <ClCompile Include="Classes\MutiTouchTest\MutiTouchTest.cpp" />
     <ClCompile Include="Classes\NodeTest\NodeTest.cpp" />
     <ClCompile Include="Classes\ParallaxTest\ParallaxTest.cpp" />
-    <ClCompile Include="Classes\ParticleTest\ParticleTest.cpp" />
+    <ClCompile Include="Classes\ParticleTest\ParticleTest.cpp">
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
     <ClCompile Include="Classes\PerformanceTest\PerformanceNodeChildrenTest.cpp" />
     <ClCompile Include="Classes\PerformanceTest\PerformanceParticleTest.cpp" />
     <ClCompile Include="Classes\PerformanceTest\PerformanceSpriteTest.cpp" />
@@ -762,53 +955,192 @@
     <None Include="Assets\fonts\west_england-64.fnt">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Assets\Images\bitmapFontTest3.fnt" />
-    <None Include="Assets\Images\bugs\circle.plist" />
-    <None Include="Assets\Images\fire_rgba8888.pvr" />
-    <None Include="Assets\Images\grossinis_sister1-testalpha.ppng" />
-    <None Include="Assets\Images\grossini_128x256_mipmap.pvr" />
-    <None Include="Assets\Images\grossini_pvr_rgba4444.pvr" />
-    <None Include="Assets\Images\grossini_pvr_rgba8888.pvr" />
-    <None Include="Assets\Images\logo-mipmap.pvr" />
-    <None Include="Assets\Images\logo-nomipmap.pvr" />
-    <None Include="Assets\Images\test_1021x1024_a8.pvr" />
-    <None Include="Assets\Images\test_1021x1024_a8.pvr.gz" />
-    <None Include="Assets\Images\test_1021x1024_rgb888.pvr" />
-    <None Include="Assets\Images\test_1021x1024_rgb888.pvr.gz" />
-    <None Include="Assets\Images\test_1021x1024_rgba4444.pvr" />
-    <None Include="Assets\Images\test_1021x1024_rgba4444.pvr.gz" />
-    <None Include="Assets\Images\test_1021x1024_rgba8888.pvr" />
-    <None Include="Assets\Images\test_1021x1024_rgba8888.pvr.gz" />
-    <None Include="Assets\Images\test_image-bad_encoding.pvr" />
-    <None Include="Assets\Images\test_image.pvr" />
-    <None Include="Assets\Images\test_image.pvrraw" />
-    <None Include="Assets\Images\test_image_a8.pvr" />
-    <None Include="Assets\Images\test_image_a8_v3.pvr" />
-    <None Include="Assets\Images\test_image_ai88.pvr" />
-    <None Include="Assets\Images\test_image_ai88_v3.pvr" />
-    <None Include="Assets\Images\test_image_bgra8888.pvr" />
-    <None Include="Assets\Images\test_image_bgra8888_v3.pvr" />
-    <None Include="Assets\Images\test_image_i8.pvr" />
-    <None Include="Assets\Images\test_image_i8_v3.pvr" />
-    <None Include="Assets\Images\test_image_pvrtc2bpp.pvr" />
-    <None Include="Assets\Images\test_image_pvrtc2bpp_v3.pvr" />
-    <None Include="Assets\Images\test_image_pvrtc4bpp.pvr" />
-    <None Include="Assets\Images\test_image_pvrtc4bpp_v3.pvr" />
-    <None Include="Assets\Images\test_image_pvrtcii2bpp_v3.pvr" />
-    <None Include="Assets\Images\test_image_pvrtcii4bpp_v3.pvr" />
-    <None Include="Assets\Images\test_image_rgb565.pvr" />
-    <None Include="Assets\Images\test_image_rgb565_v3.pvr" />
-    <None Include="Assets\Images\test_image_rgb888.pvr" />
-    <None Include="Assets\Images\test_image_rgb888_v3.pvr" />
-    <None Include="Assets\Images\test_image_rgba4444.pvr" />
-    <None Include="Assets\Images\test_image_rgba4444.pvr.ccz" />
-    <None Include="Assets\Images\test_image_rgba4444.pvr.gz" />
-    <None Include="Assets\Images\test_image_rgba4444_mipmap.pvr" />
-    <None Include="Assets\Images\test_image_rgba4444_v3.pvr" />
-    <None Include="Assets\Images\test_image_rgba5551.pvr" />
-    <None Include="Assets\Images\test_image_rgba5551_v3.pvr" />
-    <None Include="Assets\Images\test_image_rgba8888.pvr" />
-    <None Include="Assets\Images\test_image_rgba8888_v3.pvr" />
+    <None Include="Assets\Images\bitmapFontTest3.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\bugs\circle.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\fire_rgba8888.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\grossinis_sister1-testalpha.ppng">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\grossini_128x256_mipmap.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\grossini_pvr_rgba4444.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\grossini_pvr_rgba8888.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\logo-mipmap.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\logo-nomipmap.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_a8.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_a8.pvr.gz">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgb888.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgb888.pvr.gz">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba4444.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba4444.pvr.gz">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba8888.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba8888.pvr.gz">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image-bad_encoding.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image.pvrraw">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_a8.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_a8_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_ai88.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_ai88_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_bgra8888.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_bgra8888_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_i8.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_i8_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc2bpp.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc2bpp_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc4bpp.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc4bpp_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtcii2bpp_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtcii4bpp_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgb565.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgb565_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgb888.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgb888_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr.ccz">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr.gz">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444_mipmap.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgba5551.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgba5551_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgba8888.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image_rgba8888_v3.pvr">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\BoilingFoam.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\BurstPipe.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\Comet.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\debian.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\ExplodingRing.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\Flower.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\Galaxy.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\LavaFlow.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\Phoenix.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\SmallSun.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\SpinningPeas.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\Spiral.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\SpookyPeas.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\TestPremultipliedAlpha.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Particles\Upsidedown.plist">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
     <None Include="Assets\TileMaps\hexa-test.tmx">
       <DeploymentContent>true</DeploymentContent>
     </None>
