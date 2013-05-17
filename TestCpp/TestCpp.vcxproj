@@ -94,11 +94,11 @@
       <AdditionalUsingDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;Cocos2dWindowsPhone.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;Cocos2dWindowsPhone.lib;Box2DWindowsPhone.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>..\Cocos2dWindowsPhone\libraries\$(PlatformTarget);..\$(Platform)\$(Configuration)\Cocos2dWindowsPhone;..\$(Platform)\$(Configuration)\CocosDenshionWindowsPhone</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Cocos2dWindowsPhone\libraries\$(PlatformTarget);..\$(Platform)\$(Configuration)\Cocos2dWindowsPhone;..\$(Platform)\$(Configuration)\Box2DWindowsPhone;..\$(Platform)\$(Configuration)\CocosDenshionWindowsPhone</AdditionalLibraryDirectories>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
       <WindowsMetadataFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)$(RootNamespace).winmd</WindowsMetadataFile>
     </Link>
@@ -1274,6 +1274,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj">
       <Project>{8c939c76-a430-450e-9607-56cec95dee2f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\external\Box2D\Box2DWindowsPhone.vcxproj">
+      <Project>{06ecb3ca-e6cc-4cfb-874e-6979f9dc280b}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

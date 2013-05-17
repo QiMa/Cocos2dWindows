@@ -38,8 +38,8 @@ static TestScene* CreateTestScene(int nIdx)
         pScene = new DrawPrimitivesTestScene(); break;*/
     case TEST_COCOSNODE:
         pScene = new CocosNodeTestScene(); break;
-   // case TEST_TOUCHES:
-       // pScene = new PongScene(); break;
+   case TEST_TOUCHES:
+       pScene = new PongScene(); break;
     case TEST_MENU:
         pScene = new MenuTestScene(); break;
     case TEST_ACTION_MANAGER:
@@ -70,8 +70,8 @@ static TestScene* CreateTestScene(int nIdx)
 //    case TEST_CHIPMUNK:
 //        pScene = new ChipmunkAccelTouchTestScene(); break;
 //#endif
-    //case TEST_BOX2D:
-    //    pScene = new Box2DTestScene(); break;
+//    case TEST_BOX2D:
+   //     pScene = new Box2DTestScene(); break;
     //case TEST_BOX2DBED:
     //    pScene = new Box2dTestBedScene(); break;
     case TEST_EFFECT_ADVANCE:

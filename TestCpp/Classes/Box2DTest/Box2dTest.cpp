@@ -3,7 +3,7 @@
 #include "../testResource.h"
 //#include "cocos-ext.h"
 //USING_NS_CC_EXT;
-
+#define CC_ENABLE_BOX2D_INTEGRATION 1
 #define PTM_RATIO 32
 
 enum {
@@ -144,15 +144,15 @@ void Box2DTestLayer::draw()
     //
     CCLayer::draw();
 
-#if CC_ENABLE_BOX2D_INTEGRATION
-    ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
-
-    kmGLPushMatrix();
-
-    world->DrawDebugData();
-
-    kmGLPopMatrix();
-#endif
+////#if CC_ENABLE_BOX2D_INTEGRATION
+////    ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
+//
+//    kmGLPushMatrix();
+//
+//    world->DrawDebugData();
+//
+//    kmGLPopMatrix();
+//#endif
 }
 
 void Box2DTestLayer::addNewSpriteAtPosition(CCPoint p)
@@ -178,19 +178,19 @@ void Box2DTestLayer::addNewSpriteAtPosition(CCPoint p)
     fixtureDef.friction = 0.3f;
     body->CreateFixture(&fixtureDef);    
     
-#if CC_ENABLE_BOX2D_INTEGRATION
-    CCNode *parent = this->getChildByTag(kTagParentNode);
-    
-    //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
-    //just randomly picking one of the images
-    int idx = (CCRANDOM_0_1() > .5 ? 0:1);
-    int idy = (CCRANDOM_0_1() > .5 ? 0:1);
-    CCPhysicsSprite *sprite = CCPhysicsSprite::createWithTexture(m_pSpriteTexture,CCRectMake(32 * idx,32 * idy,32,32));
-    parent->addChild(sprite);
-    sprite->setB2Body(body);
-    sprite->setPTMRatio(PTM_RATIO);
-    sprite->setPosition( ccp( p.x, p.y) );
-#endif
+//#if CC_ENABLE_BOX2D_INTEGRATION
+//    CCNode *parent = this->getChildByTag(kTagParentNode);
+//    
+//    //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
+//    //just randomly picking one of the images
+//    int idx = (CCRANDOM_0_1() > .5 ? 0:1);
+//    int idy = (CCRANDOM_0_1() > .5 ? 0:1);
+//    CCPhysicsSprite *sprite = CCPhysicsSprite::createWithTexture(m_pSpriteTexture,CCRectMake(32 * idx,32 * idy,32,32));
+//    parent->addChild(sprite);
+//    sprite->setB2Body(body);
+//    sprite->setPTMRatio(PTM_RATIO);
+//    sprite->setPosition( ccp( p.x, p.y) );
+//#endif
 }
 
 

@@ -24,7 +24,7 @@
 #include "SpriteTest/SpriteTest.h"
 //#include "SchedulerTest/SchedulerTest.h"
 //#include "RenderTextureTest/RenderTextureTest.h"
-//#include "Box2DTest/Box2dTest.h"
+#include "Box2DTest/Box2dTest.h"
 #include "Box2DTestBed/Box2dView.h"
 #include "EffectsAdvancedTest/EffectsAdvancedTest.h"
 #include "AccelerometerTest/AccelerometerTest.h"
@@ -65,7 +65,7 @@ enum
     TEST_PARTICLE,
     TEST_EASE_ACTIONS,
     TEST_MOTION_STREAK,
-    TEST_DRAW_PRIMITIVES,
+  //  TEST_DRAW_PRIMITIVES,
     TEST_COCOSNODE,
     TEST_TOUCHES,
     TEST_MENU,
@@ -78,36 +78,36 @@ enum
     TEST_LABEL,
     TEST_TEXT_INPUT,
     TEST_SPRITE,
-    TEST_SCHEDULER,
-    TEST_RENDERTEXTURE,
+   // TEST_SCHEDULER,
+    //TEST_RENDERTEXTURE,
     TEST_TEXTURE2D,
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-    TEST_CHIPMUNK,
-#endif
-    TEST_BOX2D,
-    TEST_BOX2DBED,
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
+//    TEST_CHIPMUNK,
+//#endif
+    //TEST_BOX2D,
+    //TEST_BOX2DBED,
     TEST_EFFECT_ADVANCE,
     TEST_ACCELEROMRTER,
     TEST_KEYPAD,
     TEST_COCOSDENSHION,
     TEST_PERFORMANCE,
     TEST_ZWOPTEX,
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
-    TEST_CURL,
-#endif
-#endif
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
+//    TEST_CURL,
+//#endif
+//#endif
     TEST_USERDEFAULT,
     TEST_BUGS,
     TEST_FONTS,
     TEST_CURRENT_LANGUAGE,
     TEST_TEXTURECACHE,
-    TEST_EXTENSIONS,
-    TEST_SHADER,
+   // TEST_EXTENSIONS,
+  //  TEST_SHADER,
     TEST_MUTITOUCH,
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-    TEST_CLIPPINGNODE,
-#endif
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
+//    TEST_CLIPPINGNODE,
+//#endif
     TEST_FILEUTILS,
     TESTS_COUNT,    
 };
@@ -122,7 +122,7 @@ const std::string g_aTestNames[TESTS_COUNT] = {
     "ParticleTest",
     "ActionsEaseTest",
     "MotionStreakTest",
-    "DrawPrimitivesTest",
+    //"DrawPrimitivesTest",
     "NodeTest",
     "TouchesTest",
     "MenuTest",
@@ -135,36 +135,36 @@ const std::string g_aTestNames[TESTS_COUNT] = {
     "LabelTest",
     "TextInputTest",
     "SpriteTest",
-    "SchedulerTest",
-    "RenderTextureTest",
+   // "SchedulerTest",
+   // "RenderTextureTest",
     "Texture2DTest",
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-    "ChipmunkTest",
-#endif
-    "Box2dTest",
-    "Box2dTestBed",
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
+//    "ChipmunkTest",
+//#endif
+    //"Box2dTest",
+   // "Box2dTestBed",
     "EffectAdvancedTest",
     "Accelerometer",
     "KeypadTest",
     "CocosDenshionTest",
     "PerformanceTest",
     "ZwoptexTest",
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
-    "CurlTest",
-#endif
-#endif
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
+//    "CurlTest",
+//#endif
+//#endif
     "UserDefaultTest",
     "BugsTest",
     "FontTest",
     "CurrentLanguageTest",
     "TextureCacheTest",
-    "ExtensionsTest",
-    "ShaderTest",
+    //"ExtensionsTest",
+   // "ShaderTest",
     "MutiTouchTest",
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-    "ClippingNodeTest",
-#endif
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
+//    "ClippingNodeTest",
+//#endif
     "FileUtilsTest"
 };
 
