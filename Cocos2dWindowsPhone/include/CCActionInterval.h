@@ -397,6 +397,7 @@ namespace cocos2d {
 		CCPoint			m_delta;
 		float			m_height;
 		unsigned int    m_nJumps;
+		CCPoint         m_previousPos;
 	};
 
 	/** @brief Moves a CCNode object to a parabolic position simulating a jump movement by modifying it's position attribute.

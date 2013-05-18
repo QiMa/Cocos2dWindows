@@ -206,8 +206,8 @@ THE SOFTWARE.
 #include "CCAnimation.h"
 #include "CCAnimationCache.h"
 #include "CCSprite.h"
-//#include "CCSpriteBatchNode.h"
-//#include "CCSpriteFrame.h"
+#include "CCSpriteBatchNode.h"
+#include "CCSpriteFrame.h"
 #include "CCSpriteFrameCache.h"
 
 // support

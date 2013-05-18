@@ -1358,7 +1358,7 @@ CCObject* CCJumpBy::copyWithZone(CCZone *pZone)
 void CCJumpBy::startWithTarget(CCNode *pTarget)
 {
 	CCActionInterval::startWithTarget(pTarget);
-	m_startPosition = pTarget->getPosition();
+	m_previousPos = m_startPosition = pTarget->getPosition();
 }
 
 void CCJumpBy::update(float time)
@@ -1366,11 +1366,21 @@ void CCJumpBy::update(float time)
 	// parabolic jump (since v0.8.2)
 	if (m_pTarget)
 	{
-		float frac = fmodf(time * m_nJumps, 1.0f);
-		float y = m_height * 4 * frac * (1 - frac);
-		y += m_delta.y * time;
-		float x = m_delta.x * time;
-		m_pTarget->setPosition(ccp(m_startPosition.x + x, m_startPosition.y + y));
+		 float frac = fmodf( time * m_nJumps, 1.0f );
+        float y = m_height * 4 * frac * (1 - frac);
+        y += m_delta.y * time;
+
+        float x = m_delta.x * time;
+
+        CCPoint currentPos = m_pTarget->getPosition();
+
+        CCPoint diff = ccpSub( currentPos, m_previousPos );
+        m_startPosition = ccpAdd( diff, m_startPosition);
+
+        CCPoint newPos = ccpAdd( m_startPosition, ccp(x,y));
+        m_pTarget->setPosition(newPos);
+
+        m_previousPos = newPos;
 	}
 }
 

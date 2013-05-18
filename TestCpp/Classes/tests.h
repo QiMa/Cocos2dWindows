@@ -89,7 +89,7 @@ enum
     TEST_EFFECT_ADVANCE,
     TEST_ACCELEROMRTER,
     TEST_KEYPAD,
-    TEST_COCOSDENSHION,
+   // TEST_COCOSDENSHION,
     TEST_PERFORMANCE,
     TEST_ZWOPTEX,
 //#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
@@ -146,7 +146,7 @@ const std::string g_aTestNames[TESTS_COUNT] = {
     "EffectAdvancedTest",
     "Accelerometer",
     "KeypadTest",
-    "CocosDenshionTest",
+    //"CocosDenshionTest",
     "PerformanceTest",
     "ZwoptexTest",
 //#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)

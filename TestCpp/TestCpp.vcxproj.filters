@@ -1913,6 +1913,9 @@
     <None Include="Assets\Particles\Upsidedown.plist">
       <Filter>Assets\Particles</Filter>
     </None>
+    <None Include="Assets\animations\animations.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\fonts\A Damn Mess.ttf">
