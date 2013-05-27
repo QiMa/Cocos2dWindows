@@ -262,6 +262,7 @@ public:
 	bool isFlipY(void);
 
 	void updateColor(void);
+	virtual void setTextureCoords(CCRect rect);
     /**
      * Changes the premultipliedAlphaOpacity property.
      *
@@ -337,6 +338,11 @@ public:
 
 	/** updates the texture rect of the CCSprite in points. */
     virtual void setTextureRect(const CCRect& rect);
+	/**
+	* Sets the texture rect, rectRotated and untrimmed size of the CCSprite in points.
+	* It will update the texture coordinates and the vertex rectangle.
+	*/
+	virtual void setTextureRect(const CCRect& rect, bool rotated, const CCSize& untrimmedSize);
 
 	 virtual void setVertexRect(const CCRect& rect);
 	 /** updates the texture rect, rectRotated and untrimmed size of the CCSprite in pixels

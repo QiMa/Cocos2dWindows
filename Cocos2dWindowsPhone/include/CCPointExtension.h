@@ -186,6 +186,11 @@ ccpLengthSQ(const CCPoint& v)
 	return ccpDot(v, v);
 }
 
+static inline float
+ccpDistanceSQ(const CCPoint p1, const CCPoint p2)
+{
+    return ccpLengthSQ(ccpSub(p1, p2));
+}
 /** Calculates distance between point an origin
  @return CGFloat
  @since v0.7.2

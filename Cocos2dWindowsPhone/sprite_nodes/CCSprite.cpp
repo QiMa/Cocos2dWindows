@@ -256,6 +256,7 @@ bool CCSprite::initWithTexture(CCTexture2D *pTexture)
 	return initWithTexture(pTexture, rect);
 }
 
+
 bool CCSprite::initWithRect(CCRect *pRectangle)
 {
 	return true;
@@ -377,15 +378,145 @@ void CCSprite::useBatchNode(CCSpriteBatchNode *batchNode)
 
 void CCSprite::setTextureRect(const CCRect& rect)
 {
-	CCRect rectInPixels = CC_RECT_POINTS_TO_PIXELS(rect);
-	setTextureRectInPixels(rectInPixels, false, rectInPixels.size);
+	/*CCRect rectInPixels = CC_RECT_POINTS_TO_PIXELS(rect);
+	setTextureRectInPixels(rectInPixels, false, rectInPixels.size);*/
+	setTextureRect(rect, false, rect.size);
 }
+void CCSprite::setTextureRect(const CCRect& rect, bool rotated, const CCSize& untrimmedSize)
+{
+    m_bRectRotated = rotated;
+
+    setContentSize(untrimmedSize);
+    setVertexRect(rect);
+    setTextureCoords(rect);
+
+    CCPoint relativeOffset = m_obUnflippedOffsetPositionFromCenter;
+
+    // issue #732
+    if (m_bFlipX)
+    {
+        relativeOffset.x = -relativeOffset.x;
+    }
+    if (m_bFlipY)
+    {
+        relativeOffset.y = -relativeOffset.y;
+    }
+
+    m_obOffsetPosition.x = relativeOffset.x + (m_obContentSize.width - m_obRect.size.width) / 2;
+    m_obOffsetPosition.y = relativeOffset.y + (m_obContentSize.height - m_obRect.size.height) / 2;
+
+    // rendering using batch node
+    if (m_pobBatchNode)
+    {
+        // update dirty_, don't update recursiveDirty_
+        setDirty(true);
+    }
+    else
+    {
+        // self rendering
+        
+        // Atlas: Vertex
+        float x1 = 0 + m_obOffsetPosition.x;
+        float y1 = 0 + m_obOffsetPosition.y;
+        float x2 = x1 + m_obRect.size.width;
+        float y2 = y1 + m_obRect.size.height;
+
+        // Don't update Z.
+        m_sQuad.bl.vertices = vertex3(x1, y1, 0);
+        m_sQuad.br.vertices = vertex3(x2, y1, 0);
+        m_sQuad.tl.vertices = vertex3(x1, y2, 0);
+        m_sQuad.tr.vertices = vertex3(x2, y2, 0);
+    }
+}
+
+
 // override this method to generate "double scale" sprites
 void CCSprite::setVertexRect(const CCRect& rect)
 {
     m_obRect = rect;
 }
+void CCSprite::setTextureCoords(CCRect rect)
+{
+    rect = CC_RECT_POINTS_TO_PIXELS(rect);
 
+    CCTexture2D *tex = m_pobBatchNode ? m_pobTextureAtlas->getTexture() : m_pobTexture;
+    if (! tex)
+    {
+        return;
+    }
+
+    float atlasWidth = (float)tex->getPixelsWide();
+    float atlasHeight = (float)tex->getPixelsHigh();
+
+    float left, right, top, bottom;
+
+    if (m_bRectRotated)
+    {
+#if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
+        left    = (2*rect.origin.x+1)/(2*atlasWidth);
+        right    = left+(rect.size.height*2-2)/(2*atlasWidth);
+        top        = (2*rect.origin.y+1)/(2*atlasHeight);
+        bottom    = top+(rect.size.width*2-2)/(2*atlasHeight);
+#else
+        left    = rect.origin.x/atlasWidth;
+        right    = (rect.origin.x+rect.size.height) / atlasWidth;
+        top        = rect.origin.y/atlasHeight;
+        bottom    = (rect.origin.y+rect.size.width) / atlasHeight;
+#endif // CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
+
+        if (m_bFlipX)
+        {
+            CC_SWAP(top, bottom, float);
+        }
+
+        if (m_bFlipY)
+        {
+            CC_SWAP(left, right, float);
+        }
+
+        m_sQuad.bl.texCoords.u = left;
+        m_sQuad.bl.texCoords.v = top;
+        m_sQuad.br.texCoords.u = left;
+        m_sQuad.br.texCoords.v = bottom;
+        m_sQuad.tl.texCoords.u = right;
+        m_sQuad.tl.texCoords.v = top;
+        m_sQuad.tr.texCoords.u = right;
+        m_sQuad.tr.texCoords.v = bottom;
+    }
+    else
+    {
+#if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
+        left    = (2*rect.origin.x+1)/(2*atlasWidth);
+        right    = left + (rect.size.width*2-2)/(2*atlasWidth);
+        top        = (2*rect.origin.y+1)/(2*atlasHeight);
+        bottom    = top + (rect.size.height*2-2)/(2*atlasHeight);
+#else
+        left    = rect.origin.x/atlasWidth;
+        right    = (rect.origin.x + rect.size.width) / atlasWidth;
+        top        = rect.origin.y/atlasHeight;
+        bottom    = (rect.origin.y + rect.size.height) / atlasHeight;
+#endif // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
+
+        if(m_bFlipX)
+        {
+            CC_SWAP(left,right,float);
+        }
+
+        if(m_bFlipY)
+        {
+            CC_SWAP(top,bottom,float);
+        }
+
+        m_sQuad.bl.texCoords.u = left;
+        m_sQuad.bl.texCoords.v = bottom;
+        m_sQuad.br.texCoords.u = right;
+        m_sQuad.br.texCoords.v = bottom;
+        m_sQuad.tl.texCoords.u = left;
+        m_sQuad.tl.texCoords.v = top;
+        m_sQuad.tr.texCoords.u = right;
+        m_sQuad.tr.texCoords.v = top;
+    }
+}
 
 void CCSprite::setTextureRectInPixels(const CCRect& rect, bool rotated, const CCSize& size)
 {

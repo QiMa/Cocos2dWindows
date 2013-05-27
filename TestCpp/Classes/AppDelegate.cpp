@@ -69,7 +69,8 @@ bool AppDelegate::initInstance()
 	case DeviceResolutionInPixels_WXGA: 
 		{
 			mainView->setDesignResolution(768, 1280);
-				mainView->setFrameSize(1280,768);
+			mainView->setFrameSize(1280,768);
+		
 			break;
 		}
 	}

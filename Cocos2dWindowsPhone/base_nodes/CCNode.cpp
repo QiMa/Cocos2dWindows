@@ -549,6 +549,7 @@ CCRect CCNode::boundingBox()
 {
 	CCRect ret = boundingBoxInPixels();
 	return CC_RECT_PIXELS_TO_POINTS(ret);
+
 }
 
 CCRect CCNode::boundingBoxInPixels()

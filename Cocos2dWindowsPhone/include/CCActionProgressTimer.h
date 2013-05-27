@@ -30,8 +30,7 @@ THE SOFTWARE.
 
 #include "CCActionInterval.h"
 
-namespace cocos2d
-{
+NS_CC_BEGIN
 
 /**
 @brief Progress to percentage
@@ -80,6 +79,6 @@ protected:
 	float m_fFrom;
 };
 
-} // end of namespace cocos2d
+NS_CC_END
 
 #endif // __ACTION_CCPROGRESS_TIMER_H__

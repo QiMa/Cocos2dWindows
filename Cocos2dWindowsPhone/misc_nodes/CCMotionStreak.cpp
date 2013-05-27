@@ -22,7 +22,7 @@
 #include "CCMotionStreak.h"
 #include "CCPointExtension.h"
 #include "CCRibbon.h"
-namespace cocos2d {
+NS_CC_BEGIN
 
 /*
  * Motion Streak manages a Ribbon based on it's motion in absolute space.
@@ -34,6 +34,39 @@ namespace cocos2d {
  * is vertically aligned along the streak segemnts. 
  */
 //implementation CCMotionStreak
+
+CCMotionStreak::CCMotionStreak()
+: m_bFastMode(false)
+, m_pTexture(NULL)
+, m_tPositionR(CCPointZero)
+, m_tColor(ccc3(0,0,0))
+, m_fStroke(0.0f)
+, m_fFadeDelta(0.0f)
+, m_fMinSeg(0.0f)
+, m_uMaxPoints(0)
+, m_uNuPoints(0)
+, m_uPreviousNuPoints(0)
+, m_pPointVertexes(NULL)
+, m_pPointState(NULL)
+, m_pVertices(NULL)
+, m_pColorPointer(NULL)
+, m_pTexCoords(NULL)
+, m_bStartingPositionInitialized(false)
+{
+    m_tBlendFunc.src = CC_SRC_ALPHA;
+    m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
+}
+
+CCMotionStreak::~CCMotionStreak()
+{
+    CC_SAFE_RELEASE(m_pTexture);
+    CC_SAFE_FREE(m_pPointState);
+    CC_SAFE_FREE(m_pPointVertexes);
+    CC_SAFE_FREE(m_pVertices);
+    CC_SAFE_FREE(m_pColorPointer);
+    CC_SAFE_FREE(m_pTexCoords);
+}
+
 CCMotionStreak* CCMotionStreak::create(float fade, float minSeg, float stroke, ccColor3B color, const char* path)
 {
     CCMotionStreak *pRet = new CCMotionStreak();
@@ -97,7 +130,7 @@ bool CCMotionStreak::initWithFade(float fade, float minSeg, float stroke, ccColo
     m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
 
     // shader program
-    //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
+   // setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
 
     setTexture(texture);
     setColor(color);
@@ -106,46 +139,48 @@ bool CCMotionStreak::initWithFade(float fade, float minSeg, float stroke, ccColo
     return true;
 }
 
-
-void CCMotionStreak::update(ccTime delta)
+void CCMotionStreak::setPosition(const CCPoint& position)
 {
-	CCPoint location = this->convertToWorldSpace(CCPointZero);
-	m_pRibbon->setPosition(ccp(-1*location.x, -1*location.y));
-    float len = ccpLength(ccpSub(m_tLastLocation, location));
-	if (len > m_fSegThreshold)
-	{
-		m_pRibbon->addPointAt(location, m_fWidth);
-		m_tLastLocation = location;
-	}
-	m_pRibbon->update(delta);
+    m_bStartingPositionInitialized = true;
+    m_tPositionR = position;
 }
 
-//MotionStreak - CocosNodeTexture protocol
-
-void CCMotionStreak::setTexture(CCTexture2D* texture)
+void CCMotionStreak::tintWithColor(ccColor3B colors)
 {
-	m_pRibbon->setTexture(texture);
+    setColor(colors);
+
+    // Fast assignation
+    for(unsigned int i = 0; i<m_uNuPoints*2; i++) 
+    {
+        *((ccColor3B*) (m_pColorPointer+i*4)) = colors;
+    }
 }
 
-CCTexture2D * CCMotionStreak::getTexture()
+CCTexture2D* CCMotionStreak::getTexture(void)
 {
-	return m_pRibbon->getTexture();
+    return m_pTexture;
 }
 
-ccBlendFunc CCMotionStreak::getBlendFunc()
+void CCMotionStreak::setTexture(CCTexture2D *texture)
 {
-	return m_pRibbon->getBlendFunc();
+    if (m_pTexture != texture)
+    {
+        CC_SAFE_RETAIN(texture);
+        CC_SAFE_RELEASE(m_pTexture);
+        m_pTexture = texture;
+    }
 }
 
 void CCMotionStreak::setBlendFunc(ccBlendFunc blendFunc)
 {
-	m_pRibbon->setBlendFunc(blendFunc);
+    m_tBlendFunc = blendFunc;
 }
 
-CCRibbon * CCMotionStreak::getRibbon()
+ccBlendFunc CCMotionStreak::getBlendFunc(void)
 {
-	return m_pRibbon;
+    return m_tBlendFunc;
 }
+
 void CCMotionStreak::setColor(const ccColor3B& color)
 {
     m_tColor = color;
@@ -155,4 +190,172 @@ const ccColor3B& CCMotionStreak::getColor(void)
 {
     return m_tColor;
 }
-}// namespace cocos2d
+
+void CCMotionStreak::setOpacity(CCubyte opacity)
+{
+    CCAssert(false, "Set opacity no supported");
+}
+
+CCubyte CCMotionStreak::getOpacity(void)
+{
+    CCAssert(false, "Opacity no supported");
+    return 0;
+}
+
+void CCMotionStreak::setOpacityModifyRGB(bool bValue)
+{
+    CC_UNUSED_PARAM(bValue);
+}
+
+bool CCMotionStreak::isOpacityModifyRGB(void)
+{
+    return false;
+}
+
+void CCMotionStreak::update(float delta)
+{
+    if (!m_bStartingPositionInitialized)
+    {
+        return;
+    }
+    
+    delta *= m_fFadeDelta;
+
+    unsigned int newIdx, newIdx2, i, i2;
+    unsigned int mov = 0;
+
+    // Update current points
+    for(i = 0; i<m_uNuPoints; i++)
+    {
+        m_pPointState[i]-=delta;
+
+        if(m_pPointState[i] <= 0)
+            mov++;
+        else
+        {
+            newIdx = i-mov;
+
+            if(mov>0)
+            {
+                // Move data
+                m_pPointState[newIdx] = m_pPointState[i];
+
+                // Move point
+                m_pPointVertexes[newIdx] = m_pPointVertexes[i];
+
+                // Move vertices
+                i2 = i*2;
+                newIdx2 = newIdx*2;
+                m_pVertices[newIdx2] = m_pVertices[i2];
+                m_pVertices[newIdx2+1] = m_pVertices[i2+1];
+
+                // Move color
+                i2 *= 4;
+                newIdx2 *= 4;
+                m_pColorPointer[newIdx2+0] = m_pColorPointer[i2+0];
+                m_pColorPointer[newIdx2+1] = m_pColorPointer[i2+1];
+                m_pColorPointer[newIdx2+2] = m_pColorPointer[i2+2];
+                m_pColorPointer[newIdx2+4] = m_pColorPointer[i2+4];
+                m_pColorPointer[newIdx2+5] = m_pColorPointer[i2+5];
+                m_pColorPointer[newIdx2+6] = m_pColorPointer[i2+6];
+            }else
+                newIdx2 = newIdx*8;
+
+            const CCubyte op = (CCubyte)(m_pPointState[newIdx] * 255.0f);
+            m_pColorPointer[newIdx2+3] = op;
+            m_pColorPointer[newIdx2+7] = op;
+        }
+    }
+    m_uNuPoints-=mov;
+
+    // Append new point
+    bool appendNewPoint = true;
+    if(m_uNuPoints >= m_uMaxPoints)
+    {
+        appendNewPoint = false;
+    }
+
+    else if(m_uNuPoints>0)
+    {
+        bool a1 = ccpDistanceSQ(m_pPointVertexes[m_uNuPoints-1], m_tPositionR) < m_fMinSeg;
+        bool a2 = (m_uNuPoints == 1) ? false : (ccpDistanceSQ(m_pPointVertexes[m_uNuPoints-2], m_tPositionR) < (m_fMinSeg * 2.0f));
+        if(a1 || a2)
+        {
+            appendNewPoint = false;
+        }
+    }
+
+    if(appendNewPoint)
+    {
+        m_pPointVertexes[m_uNuPoints] = m_tPositionR;
+        m_pPointState[m_uNuPoints] = 1.0f;
+
+        // Color assignment
+        const unsigned int offset = m_uNuPoints*8;
+        *((ccColor3B*)(m_pColorPointer + offset)) = m_tColor;
+        *((ccColor3B*)(m_pColorPointer + offset+4)) = m_tColor;
+
+        // Opacity
+        m_pColorPointer[offset+3] = 255;
+        m_pColorPointer[offset+7] = 255;
+
+        // Generate polygon
+        if(m_uNuPoints > 0 && m_bFastMode )
+        {
+           /* if(m_uNuPoints > 1)
+            {
+                ccVertexLineToPolygon(m_pPointVertexes, m_fStroke, m_pVertices, m_uNuPoints, 1);
+            }
+            else
+            {
+                ccVertexLineToPolygon(m_pPointVertexes, m_fStroke, m_pVertices, 0, 2);
+            }*/
+        }
+
+        m_uNuPoints ++;
+    }
+
+  /*  if( ! m_bFastMode )
+    {
+        ccVertexLineToPolygon(m_pPointVertexes, m_fStroke, m_pVertices, 0, m_uNuPoints);
+    }*/
+
+    // Updated Tex Coords only if they are different than previous step
+    if( m_uNuPoints  && m_uPreviousNuPoints != m_uNuPoints ) {
+        float texDelta = 1.0f / m_uNuPoints;
+        for( i=0; i < m_uNuPoints; i++ ) {
+            m_pTexCoords[i*2] = tex2(0, texDelta*i);
+            m_pTexCoords[i*2+1] = tex2(1, texDelta*i);
+        }
+
+        m_uPreviousNuPoints = m_uNuPoints;
+    }
+}
+
+void CCMotionStreak::reset()
+{
+    m_uNuPoints = 0;
+}
+
+void CCMotionStreak::draw()
+{
+	CCAssert("Unfinished");
+    if(m_uNuPoints <= 1)
+        return;
+
+    //CC_NODE_DRAW_SETUP();
+
+    //ccGLEnableVertexAttribs(kCCVertexAttribFlag_PosColorTex );
+    //ccGLBlendFunc( m_tBlendFunc.src, m_tBlendFunc.dst );
+
+    //ccGLBindTexture2D( m_pTexture->getName() );
+
+    //glVertexAttribPointer(kCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, 0, m_pVertices);
+    //glVertexAttribPointer(kCCVertexAttrib_TexCoords, 2, GL_FLOAT, GL_FALSE, 0, m_pTexCoords);
+    //glVertexAttribPointer(kCCVertexAttrib_Color, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, m_pColorPointer);
+
+    //glDrawArrays(GL_TRIANGLE_STRIP, 0, (GLsizei)m_uNuPoints*2);
+
+    //CC_INCREMENT_GL_DRAWS(1);
+}
+NS_CC_END

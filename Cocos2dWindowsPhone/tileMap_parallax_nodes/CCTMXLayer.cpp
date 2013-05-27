@@ -309,7 +309,7 @@ CCSprite * CCTMXLayer::insertTileForGID(unsigned int gid, const CCPoint& pos)
 	unsigned int indexForZ = atlasIndexForNewZ(z);
 
 	// Optimization: add the quad without adding a child
-	this->addQuadFromSprite(m_pReusedTile, indexForZ);
+	this->insertQuadFromSprite(m_pReusedTile, indexForZ);
 
 	// insert it into the local atlasindex array
 	ccCArrayInsertValueAtIndex(m_pAtlasIndexArray, (void*)z, indexForZ);
@@ -395,7 +395,7 @@ CCSprite * CCTMXLayer::appendTileForGID(unsigned int gid, const CCPoint& pos)
 	unsigned int indexForZ = m_pAtlasIndexArray->num;
 
 	// don't add it using the "standard" way.
-	addQuadFromSprite(m_pReusedTile, indexForZ);
+	insertQuadFromSprite(m_pReusedTile, indexForZ);
 
 	// append should be after addQuadFromSprite since it modifies the quantity values
 	ccCArrayInsertValueAtIndex(m_pAtlasIndexArray, (void*)z, indexForZ);

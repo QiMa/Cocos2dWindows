@@ -140,7 +140,7 @@ TestController::TestController()
  //   CCMenuItemImage *pCloseItem = CCMenuItemImage::create(s_pPathClose, s_pPathClose, this, menu_selector(TestController::closeCallback) );
  //   CCMenu* pMenu =CCMenu::create(pCloseItem, NULL);
 	
-	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	
  //   pMenu->setPosition( CCPointZero ); 
  // pCloseItem->setPosition(ccp( VisibleRect::right().x -0, VisibleRect::top().y - 30));
 	//pCloseItem->setPosition(ccp(size.width*0.95,size.height*0.95));
@@ -157,7 +157,7 @@ TestController::TestController()
         CCMenuItemLabel* pMenuItem = CCMenuItemLabel::create(label, this, menu_selector(TestController::menuCallback));
 
         m_pItemMenu->addChild(pMenuItem, i + 10000);
-       pMenuItem->setPosition( ccp( VisibleRect::center().x, (VisibleRect::top().y - (i + 1) * LINE_SPACE) ));
+		pMenuItem->setPosition( ccp( VisibleRect::center().x, (VisibleRect::top().y - (i + 1) * LINE_SPACE) ));
 		
 		//pMenuItem->setPosition( ccp(size.width*0.5, (/*VisibleRect::top().y*/ 768 - (i + 1) * LINE_SPACE) ));
 		//CCLOG("m_pItemMenu %s position x is %d, y is %d,",  g_aTestNames[i].c_str(), m_pItemMenu->getPosition().x, m_pItemMenu->getPosition().y);

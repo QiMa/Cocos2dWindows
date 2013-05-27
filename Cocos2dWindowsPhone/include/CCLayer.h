@@ -137,7 +137,7 @@ public:
     You can enable / disable accelerometer events with this property.
     it's new in cocos2d-x
     */
-    CC_PROPERTY(bool, m_bIsKeypadEnabled, IsKeypadEnabled)
+    CC_PROPERTY(bool, m_bIsKeypadEnabled, IsKeypadEnabled);
 
 private:
 	 int m_nTouchPriority;
@@ -341,36 +341,48 @@ Features:
 class CC_DLL CCLayerMultiplex : public CCLayer
 {
 protected:
-	unsigned int m_nEnabledLayer;
-	CCArray * m_pLayers;
+    unsigned int m_nEnabledLayer;
+    CCArray*     m_pLayers;
 public:
+    CCLayerMultiplex();
+    virtual ~CCLayerMultiplex();
 
-	CCLayerMultiplex();
-	virtual ~CCLayerMultiplex();
-
-	/** creates a CCLayerMultiplex with one or more layers using a variable argument list. */
-	static CCLayerMultiplex * layerWithLayers(CCLayer* layer, ... );
+    /** creates a CCLayerMultiplex with one or more layers using a variable argument list. */
+    static CCLayerMultiplex * create(CCLayer* layer, ... );
 
     /**
-	 * lua script can not init with undetermined number of variables
-	 * so add these functinons to be used with lua.
-	 */
-	static CCLayerMultiplex * createWithLayer(CCLayer* layer);
-	void addLayer(CCLayer* layer);
-	bool initWithLayer(CCLayer* layer);
+     * lua script can not init with undetermined number of variables
+     * so add these functions to be used with lua.
+     */
+    static CCLayerMultiplex * createWithLayer(CCLayer* layer);
 
-	/** initializes a MultiplexLayer with one or more layers using a variable argument list. */
-	bool initWithLayers(CCLayer* layer, va_list params);
-	/** switches to a certain layer indexed by n. 
-	The current (old) layer will be removed from it's parent with 'cleanup:YES'.
-	*/
-	void switchTo(unsigned int n);
-	/** release the current layer and switches to another layer indexed by n.
-	The current (old) layer will be removed from it's parent with 'cleanup:YES'.
-	*/
-	void switchToAndReleaseMe(unsigned int n);
+    void addLayer(CCLayer* layer);
+
+    /** initializes a MultiplexLayer with one or more layers using a variable argument list. */
+    bool initWithLayers(CCLayer* layer, va_list params);
+    /** switches to a certain layer indexed by n. 
+    The current (old) layer will be removed from it's parent with 'cleanup:YES'.
+    */
+
+    /** initializes a CCMultiplexLayer with an array of layers
+    @since v2.1
+    */
+    bool initWithArray(CCArray* arrayOfLayers);
+
+    void switchTo(unsigned int n);
+    /** release the current layer and switches to another layer indexed by n.
+    The current (old) layer will be removed from it's parent with 'cleanup:YES'.
+    */
+    void switchToAndReleaseMe(unsigned int n);
     
-    CREATE_FUNC(CCLayerMultiplex);
+    //@deprecated: This interface will be deprecated sooner or later.
+    static CCLayerMultiplex* node();
+    
+    static CCLayerMultiplex* create();
+    /** creates a CCMultiplexLayer with an array of layers.
+    @since v2.1
+    */
+    static CCLayerMultiplex* createWithArray(CCArray* arrayOfLayers);
 };
 
 NS_CC_END

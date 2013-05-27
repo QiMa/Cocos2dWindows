@@ -561,7 +561,7 @@ void CCSpriteBatchNode::setTexture(CCTexture2D *texture)
 // CCSpriteSheet Extension
 //implementation CCSpriteSheet (TMXTiledMapExtension)
 
-void CCSpriteBatchNode::addQuadFromSprite(CCSprite *sprite, unsigned int index)
+void CCSpriteBatchNode::insertQuadFromSprite(CCSprite *sprite, unsigned int index)
 {
 	CCAssert( sprite != NULL, "Argument must be non-nil");
 	/// @todo CCAssert( [sprite isKindOfClass:[CCSprite class]], @"CCSpriteSheet only supports CCSprites as children");
