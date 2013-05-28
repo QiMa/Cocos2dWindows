@@ -75,17 +75,26 @@ bool HelloWorld::init()
 		CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
 		pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
+		pLabel->setAnchorPoint(ccp(0,0));
 		pLabel->setColor(ccc3(160, 80, 5));
 		this->addChild(pLabel, 10);
+
+		CCLabelBMFont* label1 = CCLabelBMFont::create("Test",  "bitmapFontTest2.fnt");
+		label1->setPosition(ccp(0,0));
+		label1->setAnchorPoint(ccp(0,0));
+//		label1->setString("Hello");
+
+		label1->setColor(ccc3(160, 80, 5));
+		addChild(label1, 20);
 
 		//this->resetGame();
 		//start = true;
 		//CCSize size = CCDirector::sharedDirector()->getWinSize();
-		CCSprite *b = CCSprite::create("HelloWorld.png");
-		b->setPosition(ccp(0, 0));
-		b->setPosition(ccp(size.width * 0.5, size.height * 0.5));
-		this->addChild(b);
-		SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.wav", true);
+		//CCSprite *b = CCSprite::create("HelloWorld.png");
+		//b->setAnchorPoint(ccp(0,0));
+		//b->setPosition(ccp(size.width * 0.5, size.height * 0.5));
+		//this->addChild(b);
+		//SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.wav", true);
 		//SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.mp3", true);
 		setTouchEnabled(true);
 

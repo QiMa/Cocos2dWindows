@@ -40,6 +40,12 @@
     <Image Include="Assets\HelloWorld.png">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\bitmapFontTest2.bmp">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\bitmapFontTest2.png">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -496,6 +502,9 @@
     </None>
     <None Include="CCTextureAtlasVertexShader.cso">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="Assets\bitmapFontTest2.fnt">
+      <Filter>Assets</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

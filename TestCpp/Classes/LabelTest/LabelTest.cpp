@@ -414,64 +414,65 @@ std::string LabelTTFAlignment::subtitle()
 //------------------------------------------------------------------
 Atlas3::Atlas3()
 {
-    m_time = 0;
+    //m_time = 0;
 
-    CCLayerColor* col = CCLayerColor::create( ccc4(128,128,128,255) );
-    addChild(col, -10);
-    
+    //CCLayerColor* col = CCLayerColor::create( ccc4(128,128,128,255) );
+    //addChild(col, -10);
+     
     CCLabelBMFont* label1 = CCLabelBMFont::create("Test",  "fonts/bitmapFontTest2.fnt");
-    
+    label1->setPosition(ccp(250,240));
+	label1->setString("string");
     // testing anchors
-    label1->setAnchorPoint( ccp(0,0) );
-    addChild(label1, 0, kTagBitmapAtlas1);
-    CCActionInterval* fade = CCFadeOut::create(1.0f);
-    CCActionInterval* fade_in = fade->reverse();
-    CCSequence* seq = CCSequence::create(fade, fade_in, NULL);
-    CCAction* repeat = CCRepeatForever::create(seq);
-    label1->runAction(repeat);
+    //label1->setAnchorPoint( ccp(0,0) );
+    addChild(label1, 20, kTagBitmapAtlas1);
+    //CCActionInterval* fade = CCFadeOut::create(1.0f);
+    //CCActionInterval* fade_in = fade->reverse();
+    //CCSequence* seq = CCSequence::create(fade, fade_in, NULL);
+    //CCAction* repeat = CCRepeatForever::create(seq);
+    //label1->runAction(repeat);
     
 
     // VERY IMPORTANT
     // color and opacity work OK because bitmapFontAltas2 loads a BMP image (not a PNG image)
     // If you want to use both opacity and color, it is recommended to use NON premultiplied images like BMP images
     // Of course, you can also tell XCode not to compress PNG images, but I think it doesn't work as expected
-    CCLabelBMFont *label2 = CCLabelBMFont::create("Test", "fonts/bitmapFontTest2.fnt");
-    // testing anchors
-    label2->setAnchorPoint( ccp(0.5f, 0.5f) );
-    label2->setColor( ccRED );
-    addChild(label2, 0, kTagBitmapAtlas2);
-    label2->runAction( (CCAction*)(repeat->copy()->autorelease()) );
-    
-    CCLabelBMFont* label3 = CCLabelBMFont::create("Test", "fonts/bitmapFontTest2.fnt");
-    // testing anchors
-    label3->setAnchorPoint( ccp(1,1) );
-    addChild(label3, 0, kTagBitmapAtlas3);
-       
-    label1->setPosition( VisibleRect::leftBottom() );
-    label2->setPosition( VisibleRect::center() );
-    label3->setPosition( VisibleRect::rightTop() );
+    //CCLabelBMFont *label2 = CCLabelBMFont::create("Test", "fonts/bitmapFontTest2.fnt");
+    //// testing anchors
+    //label2->setAnchorPoint( ccp(0.5f, 0.5f) );
+    //label2->setColor( ccRED );
+    //addChild(label2, 0, kTagBitmapAtlas2);
+    //label2->runAction( (CCAction*)(repeat->copy()->autorelease()) );
+    //
+    //CCLabelBMFont* label3 = CCLabelBMFont::create("Test", "fonts/bitmapFontTest2.fnt");
+    //// testing anchors
+    //label3->setAnchorPoint( ccp(1,1) );
+    //addChild(label3, 0, kTagBitmapAtlas3);
+    //   
+     //label1->setPosition( VisibleRect::leftBottom() );
+    //label2->setPosition( VisibleRect::center() );
+    //label3->setPosition( VisibleRect::rightTop() );
 
-    schedule( schedule_selector(Atlas3::step) );//:@selector(step:)];
+   // schedule( schedule_selector(Atlas3::step) );//:@selector(step:)];
 }
 
-void Atlas3::step(float dt)
-{
-    m_time += dt;
-    //std::string string;
-    char string[15] = {0};
-    sprintf(string, "%2.2f Test j", m_time);
-    //string.format("%2.2f Test j", m_time);
-    
-    CCLabelBMFont *label1 = (CCLabelBMFont*) getChildByTag(kTagBitmapAtlas1);
-    label1->setString(string);
-    
-    CCLabelBMFont *label2 = (CCLabelBMFont*) getChildByTag(kTagBitmapAtlas2);
-    label2->setString(string);
-    
-    CCLabelBMFont *label3 = (CCLabelBMFont*) getChildByTag(kTagBitmapAtlas3);
-    label3->setString(string);
-
-}
+//void Atlas3::step(float dt)
+//{
+//    m_time += dt;
+//    //std::string string;
+//    char string[15] = {0};
+//    sprintf(string, "%2.2f Test j", m_time);
+//    //string.format("%2.2f Test j", m_time);
+//    
+//    CCLabelBMFont *label1 = (CCLabelBMFont*) getChildByTag(kTagBitmapAtlas1);
+//    label1->setString(string);
+//    
+//    //CCLabelBMFont *label2 = (CCLabelBMFont*) getChildByTag(kTagBitmapAtlas2);
+//    //label2->setString(string);
+//    //
+//    //CCLabelBMFont *label3 = (CCLabelBMFont*) getChildByTag(kTagBitmapAtlas3);
+//    //label3->setString(string);
+//
+//}
 
 std::string Atlas3::title()
 {

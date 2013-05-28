@@ -127,6 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png" />
+    <Image Include="Assets\bitmapFontTest2.bmp" />
+    <Image Include="Assets\bitmapFontTest2.png" />
     <Image Include="Assets\HelloWorld.png" />
     <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
@@ -281,6 +283,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\bitmapFontTest2.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
     <None Include="CCDrawingPixelShader.cso">
       <DeploymentContent>true</DeploymentContent>
     </None>
