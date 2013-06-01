@@ -162,7 +162,7 @@ TestController::TestController()
 		//pMenuItem->setPosition( ccp(size.width*0.5, (/*VisibleRect::top().y*/ 768 - (i + 1) * LINE_SPACE) ));
 		//CCLOG("m_pItemMenu %s position x is %d, y is %d,",  g_aTestNames[i].c_str(), m_pItemMenu->getPosition().x, m_pItemMenu->getPosition().y);
 
-		CCLOG("the ni dong  de  %f, %f",VisibleRect::center().x,VisibleRect::center().y);
+		
     }
 
     m_pItemMenu->setContentSize(CCSizeMake(VisibleRect::getVisibleRect().size.width, (TESTS_COUNT + 1) * (LINE_SPACE)));

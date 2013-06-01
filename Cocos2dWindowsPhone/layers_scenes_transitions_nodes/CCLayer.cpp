@@ -363,13 +363,13 @@ void CCLayer::onExit()
     // remove this layer from the delegates who concern Accelerometer Sensor
     if (m_bIsAccelerometerEnabled)
     {
-       // CCAccelerometer::sharedAccelerometer()->setDelegate(NULL);
+       CCAccelerometer::sharedAccelerometer()->setDelegate(NULL);
     }
 
     // remove this layer from the delegates who concern the kaypad msg
     if (m_bIsKeypadEnabled)
     {
-        //CCKeypadDispatcher::sharedDispatcher()->removeDelegate(this);
+       CCKeypadDispatcher::sharedDispatcher()->removeDelegate(this);
     }
 
 	CCNode::onExit();
@@ -976,13 +976,13 @@ bool CCLayerGradient::initWithColor(const ccColor4B& start, const ccColor4B& end
 
 void CCLayerGradient::updateColor()
 {
-    CCLayerColor::updateColor();
+        CCLayerColor::updateColor();
 
     float h = ccpLength(m_AlongVector);
     if (h == 0)
         return;
 
-    float c = sqrtf(2.0f);
+    double c = sqrt(2.0);
     CCPoint u = ccp(m_AlongVector.x / h, m_AlongVector.y / h);
 
     // Compressed Interpolation mode
@@ -994,40 +994,40 @@ void CCLayerGradient::updateColor()
 
     float opacityf = (float)m_cOpacity / 255.0f;
 
-    ccColor4F S = {
-        m_tColor.r / 255.0f,
-        m_tColor.g / 255.0f,
-        m_tColor.b / 255.0f,
-        m_cStartOpacity * opacityf / 255.0f
+    ccColor4B S = {
+        (unsigned char) m_tColor.r,
+        (unsigned char) m_tColor.g,
+        (unsigned char) m_tColor.b,
+        (unsigned char) (m_cStartOpacity * opacityf)
     };
 
-    ccColor4F E = {
-        m_endColor.r / 255.0f,
-        m_endColor.g / 255.0f,
-        m_endColor.b / 255.0f,
-        m_cEndOpacity * opacityf / 255.0f
+    ccColor4B E = {
+        (unsigned char) m_endColor.r,
+        (unsigned char) m_endColor.g,
+        (unsigned char) m_endColor.b,
+        (unsigned char) (m_cEndOpacity * opacityf)
     };
 
     // (-1, -1)
-    m_pSquareColors[0].r = E.r + (S.r - E.r) * ((c + u.x + u.y) / (2.0f * c));
-    m_pSquareColors[0].g = E.g + (S.g - E.g) * ((c + u.x + u.y) / (2.0f * c));
-    m_pSquareColors[0].b = E.b + (S.b - E.b) * ((c + u.x + u.y) / (2.0f * c));
-    m_pSquareColors[0].a = E.a + (S.a - E.a) * ((c + u.x + u.y) / (2.0f * c));
+    m_pSquareColors[0].r = (CCubyte) (E.r + (S.r - E.r) * ((c + u.x + u.y) / (2.0f * c)));
+    m_pSquareColors[0].g = (CCubyte) (E.g + (S.g - E.g) * ((c + u.x + u.y) / (2.0f * c)));
+    m_pSquareColors[0].b = (CCubyte) (E.b + (S.b - E.b) * ((c + u.x + u.y) / (2.0f * c)));
+    m_pSquareColors[0].a = (CCubyte) (E.a + (S.a - E.a) * ((c + u.x + u.y) / (2.0f * c)));
     // (1, -1)
-    m_pSquareColors[1].r = E.r + (S.r - E.r) * ((c - u.x + u.y) / (2.0f * c));
-    m_pSquareColors[1].g = E.g + (S.g - E.g) * ((c - u.x + u.y) / (2.0f * c));
-    m_pSquareColors[1].b = E.b + (S.b - E.b) * ((c - u.x + u.y) / (2.0f * c));
-    m_pSquareColors[1].a = E.a + (S.a - E.a) * ((c - u.x + u.y) / (2.0f * c));
+    m_pSquareColors[1].r = (CCubyte) (E.r + (S.r - E.r) * ((c - u.x + u.y) / (2.0f * c)));
+    m_pSquareColors[1].g = (CCubyte) (E.g + (S.g - E.g) * ((c - u.x + u.y) / (2.0f * c)));
+    m_pSquareColors[1].b = (CCubyte) (E.b + (S.b - E.b) * ((c - u.x + u.y) / (2.0f * c)));
+    m_pSquareColors[1].a = (CCubyte) (E.a + (S.a - E.a) * ((c - u.x + u.y) / (2.0f * c)));
     // (-1, 1)
-    m_pSquareColors[2].r = E.r + (S.r - E.r) * ((c + u.x - u.y) / (2.0f * c));
-    m_pSquareColors[2].g = E.g + (S.g - E.g) * ((c + u.x - u.y) / (2.0f * c));
-    m_pSquareColors[2].b = E.b + (S.b - E.b) * ((c + u.x - u.y) / (2.0f * c));
-    m_pSquareColors[2].a = E.a + (S.a - E.a) * ((c + u.x - u.y) / (2.0f * c));
+    m_pSquareColors[2].r = (CCubyte) (E.r + (S.r - E.r) * ((c + u.x - u.y) / (2.0f * c)));
+    m_pSquareColors[2].g = (CCubyte) (E.g + (S.g - E.g) * ((c + u.x - u.y) / (2.0f * c)));
+    m_pSquareColors[2].b = (CCubyte) (E.b + (S.b - E.b) * ((c + u.x - u.y) / (2.0f * c)));
+    m_pSquareColors[2].a = (CCubyte) (E.a + (S.a - E.a) * ((c + u.x - u.y) / (2.0f * c)));
     // (1, 1)
-    m_pSquareColors[3].r = E.r + (S.r - E.r) * ((c - u.x - u.y) / (2.0f * c));
-    m_pSquareColors[3].g = E.g + (S.g - E.g) * ((c - u.x - u.y) / (2.0f * c));
-    m_pSquareColors[3].b = E.b + (S.b - E.b) * ((c - u.x - u.y) / (2.0f * c));
-    m_pSquareColors[3].a = E.a + (S.a - E.a) * ((c - u.x - u.y) / (2.0f * c));
+    m_pSquareColors[3].r = (CCubyte) (E.r + (S.r - E.r) * ((c - u.x - u.y) / (2.0f * c)));
+    m_pSquareColors[3].g = (CCubyte) (E.g + (S.g - E.g) * ((c - u.x - u.y) / (2.0f * c)));
+    m_pSquareColors[3].b = (CCubyte) (E.b + (S.b - E.b) * ((c - u.x - u.y) / (2.0f * c)));
+    m_pSquareColors[3].a = (CCubyte) (E.a + (S.a - E.a) * ((c - u.x - u.y) / (2.0f * c)));
 }
 
 const ccColor3B& CCLayerGradient::getStartColor()
