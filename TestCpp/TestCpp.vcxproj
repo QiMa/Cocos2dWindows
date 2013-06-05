@@ -1278,9 +1278,6 @@
     <ProjectReference Include="..\Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj">
       <Project>{8c939c76-a430-450e-9607-56cec95dee2f}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\external\Box2D\Box2DWindowsPhone.vcxproj">
-      <Project>{06ecb3ca-e6cc-4cfb-874e-6979f9dc280b}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\fonts\A Damn Mess.ttf">

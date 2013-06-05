@@ -106,7 +106,7 @@ namespace cocos2d {
 		///** helper contructor to create an array of sequenceable actions given an array */
 		//static CCFiniteTimeAction* actionsWithArray(CCArray *actions);
 		/** for Lua */
-		static CCSequence* actionsWithArrayLua(CCArray *actions);
+		//static CCSequence* actionsWithArrayLua(CCArray *actions);
 
 		/** helper constructor to create an array of sequenceable actions */
 		static CCSequence* create(CCFiniteTimeAction *pAction1, ...);
@@ -228,12 +228,12 @@ namespace cocos2d {
 
 	public:
 		/** helper constructor to create an array of spawned actions */
-		static CCFiniteTimeAction* create(CCFiniteTimeAction *pAction1, ...);
+		static CCSpawn* create(CCFiniteTimeAction *pAction1, ...);
 		/** helper constructor to create an array of spawned actions */
 		static CCSpawn* createWithVariableList(CCFiniteTimeAction *pAction1, va_list args);
 		/** helper contructor to create an array of spawned actions given an array */
-		static CCFiniteTimeAction* create(CCArray *actions);
-		static CCSpawn* actionsWithArrayLua(CCArray *actions);
+		static CCSpawn* create(CCArray *actions);
+//static CCSpawn* actionsWithArrayLua(CCArray *actions);
 		
 		/** creates the Spawn action */
 		static CCSpawn* createWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
