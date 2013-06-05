@@ -1524,7 +1524,17 @@ CCBezierTo* CCBezierTo::create(float t, const ccBezierConfig& c)
 
 	return pBezierTo;
 }
-
+bool CCBezierTo::initWithDuration(float t, const ccBezierConfig &c)
+{
+    bool bRet = false;
+    
+    if (CCActionInterval::initWithDuration(t))
+    {
+        m_sToConfig = c;
+    }
+    
+    return bRet;
+}
 CCObject* CCBezierTo::copyWithZone(CCZone *pZone)
 {
 	CCZone* pNewZone = NULL;

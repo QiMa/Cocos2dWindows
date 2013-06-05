@@ -88,10 +88,10 @@ CCLayer* CreateLayer(int nIndex)
             pLayer = new Issue1327(); break;
         case ACTION_ISSUE1398_LAYER:
             pLayer = new Issue1398(); break;
-        case ACTION_CARDINALSPLINE_LAYER:
-            pLayer = new ActionCardinalSpline(); break;
-        case ACTION_CATMULLROM_LAYER:
-            pLayer = new ActionCatmullRom(); break;
+        //case ACTION_CARDINALSPLINE_LAYER:
+        //    pLayer = new ActionCardinalSpline(); break;
+        //case ACTION_CATMULLROM_LAYER:
+        //    pLayer = new ActionCatmullRom(); break;
         case PAUSERESUMEACTIONS_LAYER:
             pLayer = new PauseResumeActions(); break;
 
@@ -1688,7 +1688,7 @@ void ActionCardinalSpline::onEnter()
 	// Spline with no tension (tension==0)
 	//
     
-    CCCardinalSplineBy *action = CCCardinalSplineBy::create(3, array, 0);/////////////////////////////////////??????
+    CCCardinalSplineBy *action = CCCardinalSplineBy::create(3, array, 0);
     CCActionInterval *reverse = action->reverse();
 	
     CCFiniteTimeAction *seq = CCSequence::create(action, reverse, NULL);

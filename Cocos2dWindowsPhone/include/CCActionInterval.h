@@ -444,6 +444,7 @@ namespace cocos2d {
 	protected:
 		ccBezierConfig m_sConfig;
 		CCPoint m_startPosition;
+		CCPoint m_previousPosition;
 	};
 
 	/** @brief An action that moves the target with a cubic Bezier curve to a destination point.
@@ -458,6 +459,10 @@ namespace cocos2d {
 	public:
 		/** creates the action with a duration and a bezier configuration */
 		static CCBezierTo* create(float t, const ccBezierConfig& c);
+		bool initWithDuration(float t, const ccBezierConfig &c);
+
+	protected:
+		ccBezierConfig m_sToConfig;
 	};
 
 	/** @brief Scales a CCNode object to a zoom factor by modifying it's scale attribute.
