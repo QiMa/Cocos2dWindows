@@ -803,7 +803,7 @@ bool CCLabelBMFont::initWithString(const char *theString, const char *fntFile, f
         m_obAnchorPoint = ccp(0.5f, 0.5f);
         
         m_pReusedChar = new CCSprite();
-        m_pReusedChar->initWithTexture(m_pobTextureAtlas->getTexture(), CCRectMake(0, 0, 0, 0));
+        m_pReusedChar->initWithTexture(m_pobTextureAtlas->getTexture(), CCRectMake(0, 0, 0, 0));//CCAssert
         m_pReusedChar->setBatchNode(this);
         
         this->setString(theString);
@@ -981,7 +981,7 @@ void CCLabelBMFont::createFontChars()
         
         if (! hasSprite)
         {
-            insertQuadFromSprite(fontChar, i);
+            updateQuadFromSprite(fontChar, i);
         }
     }
 

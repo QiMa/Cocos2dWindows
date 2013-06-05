@@ -584,7 +584,28 @@ void CCSpriteBatchNode::insertQuadFromSprite(CCSprite *sprite, unsigned int inde
 	sprite->setDirty(true);
 	sprite->updateTransform();
 }
-
+void CCSpriteBatchNode::updateQuadFromSprite(CCSprite *sprite, unsigned int index)
+{
+    CCAssert(sprite != NULL, "Argument must be non-nil");
+    CCAssert(dynamic_cast<CCSprite*>(sprite) != NULL, "CCSpriteBatchNode only supports CCSprites as children");
+    
+	// make needed room
+	while (index >= m_pobTextureAtlas->getCapacity() || m_pobTextureAtlas->getCapacity() == m_pobTextureAtlas->getTotalQuads())
+    {
+		this->increaseAtlasCapacity();
+    }
+    
+	//
+	// update the quad directly. Don't add the sprite to the scene graph
+	//
+	sprite->setBatchNode(this);
+    sprite->setAtlasIndex(index);
+    
+	sprite->setDirty(true);
+	
+	// UpdateTransform updates the textureAtlas quad
+	sprite->updateTransform();
+}
 CCSpriteBatchNode * CCSpriteBatchNode::addSpriteWithoutQuad(CCSprite*child, unsigned int z, int aTag)
 {
 	CCAssert( child != NULL, "Argument must be non-nil");

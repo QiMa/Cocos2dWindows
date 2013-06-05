@@ -75,18 +75,18 @@ bool HelloWorld::init()
 		CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
 		pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
-		pLabel->setAnchorPoint(ccp(0,0));
+		//pLabel->setAnchorPoint(ccp(0,0));
 		pLabel->setColor(ccc3(160, 80, 5));
 		this->addChild(pLabel, 10);
 
-		CCLabelBMFont* label1 = CCLabelBMFont::create("Test",  "bitmapFontTest2.fnt");
-		label1->setPosition(ccp(0,0));
-		label1->setAnchorPoint(ccp(0,0));
-//		label1->setString("Hello");
-
-		label1->setColor(ccc3(160, 80, 5));
-		addChild(label1, 20);
-
+//		CCLabelBMFont* label1 = CCLabelBMFont::create("Test",  "bitmapFontTest2.fnt");
+//		label1->setPosition(ccp(0,0));
+//		label1->setAnchorPoint(ccp(0,0));
+////		label1->setString("Hello");
+//
+//		label1->setColor(ccc3(160, 80, 5));
+//		addChild(label1, 20);
+//
 		//this->resetGame();
 		//start = true;
 		//CCSize size = CCDirector::sharedDirector()->getWinSize();

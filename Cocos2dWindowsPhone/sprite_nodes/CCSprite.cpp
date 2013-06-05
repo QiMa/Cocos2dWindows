@@ -378,9 +378,9 @@ void CCSprite::useBatchNode(CCSpriteBatchNode *batchNode)
 
 void CCSprite::setTextureRect(const CCRect& rect)
 {
-	/*CCRect rectInPixels = CC_RECT_POINTS_TO_PIXELS(rect);
-	setTextureRectInPixels(rectInPixels, false, rectInPixels.size);*/
-	setTextureRect(rect, false, rect.size);
+	CCRect rectInPixels = CC_RECT_POINTS_TO_PIXELS(rect);
+	setTextureRectInPixels(rectInPixels, false, rectInPixels.size);
+	//setTextureRect(rect, false, rect.size);
 }
 void CCSprite::setTextureRect(const CCRect& rect, bool rotated, const CCSize& untrimmedSize)
 {

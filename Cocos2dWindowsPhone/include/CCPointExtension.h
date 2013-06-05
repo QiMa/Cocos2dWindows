@@ -91,7 +91,7 @@ ccpSub(const CCPoint& v1, const CCPoint& v2)
  @since v0.7.2
  */
 static inline CCPoint
-ccpMult(const CCPoint& v, const CGFloat s)
+	ccpMult(const CCPoint& v, const float s)
 {
 	return ccp(v.x*s, v.y*s);
 }

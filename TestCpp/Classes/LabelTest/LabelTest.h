@@ -69,7 +69,7 @@ class Atlas3 : public AtlasDemo
 public:
     Atlas3();
 
-    //virtual void step(float dt);
+    virtual void step(float dt);
 
     virtual std::string title();
     virtual std::string subtitle();

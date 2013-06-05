@@ -158,7 +158,6 @@ TestController::TestController()
 
         m_pItemMenu->addChild(pMenuItem, i + 10000);
 		pMenuItem->setPosition( ccp( VisibleRect::center().x, (VisibleRect::top().y - (i + 1) * LINE_SPACE) ));
-		pMenuItem->setAnchorPoint(ccp(0,0));
 		//pMenuItem->setPosition( ccp(size.width*0.5, (/*VisibleRect::top().y*/ 768 - (i + 1) * LINE_SPACE) ));
 		//CCLOG("m_pItemMenu %s position x is %d, y is %d,",  g_aTestNames[i].c_str(), m_pItemMenu->getPosition().x, m_pItemMenu->getPosition().y);
 

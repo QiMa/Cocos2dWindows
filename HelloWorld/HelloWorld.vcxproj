@@ -94,7 +94,7 @@
       <AdditionalUsingDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;Cocos2dWindowsPhone.lib;CocosDenshionWindowsPhone.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;Cocos2dWindowsPhone.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
