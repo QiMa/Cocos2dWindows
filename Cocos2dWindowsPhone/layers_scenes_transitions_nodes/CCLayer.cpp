@@ -341,13 +341,13 @@ void CCLayer::onEnter()
     // add this layer to concern the Accelerometer Sensor
     if (m_bIsAccelerometerEnabled)
     {
-       // CCAccelerometer::sharedAccelerometer()->setDelegate(this);
+       CCAccelerometer::sharedAccelerometer()->setDelegate(this);
     }
 
     // add this layer to concern the kaypad msg
     if (m_bIsKeypadEnabled)
     {
-        //CCKeypadDispatcher::sharedDispatcher()->addDelegate(this);
+        CCKeypadDispatcher::sharedDispatcher()->addDelegate(this);
     }
 }
 

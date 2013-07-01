@@ -159,10 +159,10 @@ void LayerTest1::onEnter()
     CCSize s = CCDirector::sharedDirector()->getWinSize();
     CCLayerColor* layer = CCLayerColor::create( ccc4(0xFF, 0x00, 0x00, 0x80), 200, 200); 
     
-    layer->ignoreAnchorPointForPosition(false);
-    layer->setPosition( ccp(s.width/2, s.height/2) );
+	layer->ignoreAnchorPointForPosition(false);
+	layer->setPosition( ccp(s.width/2-layer->getContentSize().width/2, s.height/2-layer->getContentSize().height/2) );
     addChild(layer, 1, kTagLayer);
-}
+}		
 
 void LayerTest1::updateSize(CCPoint &touchLocation)
 {    

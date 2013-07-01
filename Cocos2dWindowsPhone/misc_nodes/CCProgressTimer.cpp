@@ -56,16 +56,16 @@ CCProgressTimer* CCProgressTimer::create(CCSprite* sp)
 
 bool CCProgressTimer::initWithSprite(CCSprite* sp)
 {
-    //setPercentage(0.0f);
-    //m_pVertexData = NULL;
-    //m_nVertexDataCount = 0;
+    setPercentage(0.0f);
+    m_pVertexData = NULL;
+    m_nVertexDataCount = 0;
 
-    //setAnchorPoint(ccp(0.5f,0.5f));
-    //m_eType = kCCProgressTimerTypeRadial;
-    //m_bReverseDirection = false;
-    //setMidpoint(ccp(0.5f, 0.5f));
-    //setBarChangeRate(ccp(1,1));
-    //setSprite(sp);
+    setAnchorPoint(ccp(0.5f,0.5f));
+    m_eType = kCCProgressTimerTypeRadial;
+    m_bReverseDirection = false;
+    setMidpoint(ccp(0.5f, 0.5f));
+    setBarChangeRate(ccp(1,1));
+    setSprite(sp);
     // shader program
     //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
     return this->initWithTexture(sp->getTexture());

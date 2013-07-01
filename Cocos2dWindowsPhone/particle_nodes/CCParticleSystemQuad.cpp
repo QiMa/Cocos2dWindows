@@ -33,7 +33,7 @@
 using namespace std;
 using namespace DirectX;
 
-namespace cocos2d {
+NS_CC_BEGIN
 
 CCDXParticleSystemQuad CCParticleSystemQuad::mDXParticleSystemQuad;
 
@@ -186,7 +186,7 @@ void CCParticleSystemQuad::setTexture(CCTexture2D* texture)
 }
 void CCParticleSystemQuad::setDisplayFrame(CCSpriteFrame *spriteFrame)
 {
-	CCAssert( spriteFrame->getOffsetInPixels().equals(CCPointZero ), "QuadParticle only supports SpriteFrames with no offsets");
+	//CCAssert( CCPoint::equals( spriteFrame->getOffsetInPixels()  ), "QuadParticle only supports SpriteFrames with no offsets");
 
 	// update texture before updating texture rect
 	if ( !m_pTexture || spriteFrame->getTexture()->getName() != m_pTexture->getName())
@@ -655,4 +655,4 @@ void CCDXParticleSystemQuad::Render(ccV2F_C4B_T2F_Quad *quad,unsigned short* ind
 	RenderShader(particleIdx, texture);
 }
 
-}// namespace cocos2d
+NS_CC_END

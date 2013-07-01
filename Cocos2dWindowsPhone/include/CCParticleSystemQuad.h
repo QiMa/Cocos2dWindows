@@ -33,7 +33,7 @@ THE SOFTWARE.
 #include  "CCParticleSystem.h"
 #include <fstream>
 #include <string>
-namespace cocos2d {
+NS_CC_BEGIN
 
 class CCDXParticleSystemQuad;
 class CCSpriteFrame;
@@ -138,7 +138,7 @@ private:
 	bool m_bIsInit;
 };
 
-}// namespace cocos2d
+NS_CC_END
 
 #endif //__CC_PARTICLE_SYSTEM_QUAD_H__
 

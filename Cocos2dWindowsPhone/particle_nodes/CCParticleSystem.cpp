@@ -165,22 +165,10 @@ bool CCParticleSystem::initWithFile(const char *plistFile)
     CCDictionary *dict = CCDictionary::createWithContentsOfFileThreadSafe(m_sPlistFile.c_str());
 
     CCAssert( dict != NULL, "Particles: file not found");
-    
-    // XXX compute path from a path, should define a function somewhere to do it
-    string listFilePath = plistFile;
-    if (listFilePath.find('/') != string::npos)
-    {
-        listFilePath = listFilePath.substr(0, listFilePath.rfind('/') + 1);
-        bRet = this->initWithDictionary(dict, listFilePath.c_str());
-    }
-    else
-    {
-        bRet = this->initWithDictionary(dict, "");
-    }
-    
-    dict->release();
+	bRet = this->initWithDictionary(dict);
+	dict->release();
 
-    return bRet;
+	return bRet;
 }
 
 bool CCParticleSystem::initWithDictionary(CCDictionary *dictionary)

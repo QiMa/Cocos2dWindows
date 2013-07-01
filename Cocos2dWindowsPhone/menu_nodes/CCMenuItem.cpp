@@ -247,7 +247,7 @@ void CCMenuItemLabel::unselected()
 		this->runAction(zoomAction);
 	}
 }
-void CCMenuItemLabel::setIsEnabled(bool enabled)
+void CCMenuItemLabel::setEnabled(bool enabled)
 {
 	if( m_bIsEnabled != enabled ) 
 	{
@@ -558,7 +558,7 @@ void CCMenuItemSprite::unselected()
 	}
 }
 
-void CCMenuItemSprite::setIsEnabled(bool bEnabled)
+void CCMenuItemSprite::setEnabled(bool bEnabled)
 {
 	CCMenuItem::setEnabled(bEnabled);
 
@@ -768,7 +768,7 @@ void CCMenuItemToggle::activate()
 	}
 	CCMenuItem::activate();
 }
-void CCMenuItemToggle::setIsEnabled(bool enabled)
+void CCMenuItemToggle::setEnabled(bool enabled)
 {
 	CCMenuItem::setEnabled(enabled);
 
