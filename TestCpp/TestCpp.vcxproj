@@ -212,7 +212,7 @@
       <DeploymentContent>true</DeploymentContent>
     </Image>
     <Image Include="Assets\fps_images.png" />
-    <Image Include="Assets\HelloWorld.png" />
+    <Image Include="Assets\Hello.png" />
     <Image Include="Assets\Images\arrows.png">
       <DeploymentContent>true</DeploymentContent>
     </Image>

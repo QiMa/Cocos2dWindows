@@ -1,29 +1,33 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010 cocos2d-x.org
 
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 #include "pch.h"
-
 #include "CCTextFieldTTF.h"
 
 #include "CCDirector.h"
 #include "CCEGLView.h"
 
-NS_CC_BEGIN;
+NS_CC_BEGIN
 
 static int _calcCharCount(const char * pszText)
 {
@@ -66,7 +70,7 @@ CCTextFieldTTF::~CCTextFieldTTF()
 //////////////////////////////////////////////////////////////////////////
 
 CCTextFieldTTF * CCTextFieldTTF::textFieldWithPlaceHolder(const char *placeholder, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize)
-{		
+{        
     CCTextFieldTTF *pRet = new CCTextFieldTTF();
     if(pRet && pRet->initWithPlaceHolder("", dimensions, alignment, fontName, fontSize))
     {
@@ -108,7 +112,7 @@ bool CCTextFieldTTF::initWithPlaceHolder(const char *placeholder, const CCSize& 
         CC_SAFE_DELETE(m_pPlaceHolder);
         m_pPlaceHolder = new std::string(placeholder);
     }
-   return CCLabelTTF::initWithString(m_pPlaceHolder->c_str(), fontName, fontSize, dimensions, alignment);
+    return CCLabelTTF::initWithString(m_pPlaceHolder->c_str(), fontName, fontSize, dimensions, alignment);
 }
 bool CCTextFieldTTF::initWithPlaceHolder(const char *placeholder, const char *fontName, float fontSize)
 {
@@ -180,7 +184,7 @@ void CCTextFieldTTF::insertText(const char * text, int len)
     {
         if (m_pDelegate && m_pDelegate->onTextFieldInsertText(this, sInsert.c_str(), len))
         {
-            // delegate doesn't want insert text
+            // delegate doesn't want to insert text
             return;
         }
         
@@ -194,13 +198,13 @@ void CCTextFieldTTF::insertText(const char * text, int len)
         return;
     }
     
-    // '\n' has inserted,  let delegate process first
+    // '\n' inserted, let delegate process first
     if (m_pDelegate && m_pDelegate->onTextFieldInsertText(this, "\n", 1))
     {
         return;
     }
     
-    // if delegate hasn't process, detach with ime as default
+    // if delegate hasn't processed, detach from IME by default
     detachWithIME();
 }
 
@@ -223,11 +227,11 @@ void CCTextFieldTTF::deleteBackward()
 
     if (m_pDelegate && m_pDelegate->onTextFieldDeleteBackward(this, m_pInputText->c_str() + nStrLen - nDeleteLen, nDeleteLen))
     {
-        // delegate don't wan't delete backward
+        // delegate doesn't wan't to delete backwards
         return;
     }
 
-    // if delete all text, show space holder string
+    // if all text deleted, show placeholder string
     if (nStrLen <= nDeleteLen)
     {
         CC_SAFE_DELETE(m_pInputText);
@@ -264,6 +268,16 @@ void CCTextFieldTTF::draw()
     setColor(m_ColorSpaceHolder);
     CCLabelTTF::draw();
     setColor(color);
+}
+
+const ccColor3B& CCTextFieldTTF::getColorSpaceHolder()
+{
+    return m_ColorSpaceHolder;
+}
+
+void CCTextFieldTTF::setColorSpaceHolder(const ccColor3B& color)
+{
+    m_ColorSpaceHolder = color;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -317,4 +331,4 @@ const char * CCTextFieldTTF::getPlaceHolder(void)
     return m_pPlaceHolder->c_str();
 }
 
-NS_CC_END;
+NS_CC_END

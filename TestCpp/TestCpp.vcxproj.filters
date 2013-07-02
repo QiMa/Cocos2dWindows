@@ -62,9 +62,6 @@
     <Filter Include="Classes\FileUtilsTest">
       <UniqueIdentifier>{201b6541-c13d-493d-8794-5fc1262f8a9f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\FontTest">
-      <UniqueIdentifier>{f019f1f0-75e2-4b82-a4c1-bfc8c26b119c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\IntervalTest">
       <UniqueIdentifier>{b4707196-cb55-4bc7-9e46-808642f76843}</UniqueIdentifier>
     </Filter>
@@ -79,9 +76,6 @@
     </Filter>
     <Filter Include="Classes\MenuTest">
       <UniqueIdentifier>{fad094df-1313-4b3d-b5f2-8e0f5cc6167e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\MotionStreakTest">
-      <UniqueIdentifier>{6adf7631-6ffe-4305-99f9-f1a55c2f92f9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\MutiTouchTest">
       <UniqueIdentifier>{74cb282b-a9fa-4b04-a8b1-48ac214c5406}</UniqueIdentifier>
@@ -143,6 +137,12 @@
     <Filter Include="Assets\Particles">
       <UniqueIdentifier>{5a4bc311-e2f2-4da3-842d-17798ba014bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\FontTest">
+      <UniqueIdentifier>{15a6800b-c39c-431d-a437-66cda05afa3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\MotionStreakTest">
+      <UniqueIdentifier>{6adf7631-6ffe-4305-99f9-f1a55c2f92f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -164,9 +164,6 @@
       <Filter>Assets</Filter>
     </Image>
     <Image Include="Assets\Tiles\IconicTileSmall.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\HelloWorld.png">
       <Filter>Assets</Filter>
     </Image>
     <Image Include="Assets\Images\bugs\bug886.jpg">
@@ -772,6 +769,9 @@
     <Image Include="Assets\fps_images.png">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\Hello.png">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -841,9 +841,6 @@
     </ClCompile>
     <ClCompile Include="Classes\FileUtilsTest\FileUtilsTest.cpp">
       <Filter>Classes\FileUtilsTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\FontTest\FontTest.cpp">
-      <Filter>Classes\FontTest</Filter>
     </ClCompile>
     <ClCompile Include="Classes\IntervalTest\IntervalTest.cpp">
       <Filter>Classes\IntervalTest</Filter>
@@ -943,6 +940,9 @@
     </ClCompile>
     <ClCompile Include="Classes\HelloWorldScene.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\FontTest\FontTest.cpp">
+      <Filter>Classes\FontTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1398,9 +1398,6 @@
     <ClInclude Include="Classes\FileUtilsTest\FileUtilsTest.h">
       <Filter>Classes\FileUtilsTest</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\FontTest\FontTest.h">
-      <Filter>Classes\FontTest</Filter>
-    </ClInclude>
     <ClInclude Include="Classes\IntervalTest\IntervalTest.h">
       <Filter>Classes\IntervalTest</Filter>
     </ClInclude>
@@ -1505,6 +1502,9 @@
     </ClInclude>
     <ClInclude Include="Classes\HelloWorldScene.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\FontTest\FontTest.h">
+      <Filter>Classes\FontTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

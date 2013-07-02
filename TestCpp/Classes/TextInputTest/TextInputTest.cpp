@@ -66,6 +66,7 @@ static CCRect getRect(CCNode * pNode)
     rc.origin.x -= rc.size.width / 2;
     rc.origin.y -= rc.size.height / 2;
     return rc;
+	CCLOG("HHHHHHHHHHHH");
 }
 
 //////////////////////////////////////////////////////////////////////////
