@@ -210,43 +210,41 @@ namespace cocos2d {
 		CCActionInterval *m_pInnerAction;
 	};
 
-	/** @brief Spawn a new action immediately
-	*/
-	class CC_DLL CCSpawn : public CCActionInterval
-	{
-	public:
-		~CCSpawn(void);
 
-		/** initializes the Spawn action with the 2 actions to spawn */
-		bool initWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
+class CC_DLL CCSpawn : public CCActionInterval
+{
+public:
+    ~CCSpawn(void);
 
-		virtual CCObject* copyWithZone(CCZone* pZone);
-		virtual void startWithTarget(CCNode *pTarget);
-		virtual void stop(void);
-		virtual void update(float time);
-		virtual CCActionInterval* reverse(void);
+    /** initializes the Spawn action with the 2 actions to spawn */
+    bool initWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
 
-	public:
-		/** helper constructor to create an array of spawned actions */
-		static CCFiniteTimeAction* create(CCFiniteTimeAction *pAction1, ...);
-		/** helper constructor to create an array of spawned actions */
-		static CCSpawn* createWithVariableList(CCFiniteTimeAction *pAction1, va_list args);
-		/** helper contructor to create an array of spawned actions given an array */
-		static CCFiniteTimeAction* create(CCArray *actions);
-		static CCSpawn* actionsWithArrayLua(CCArray *actions);
-		
-		/** creates the Spawn action */
-		static CCSpawn* createWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
+    virtual CCObject* copyWithZone(CCZone* pZone);
+    virtual void startWithTarget(CCNode *pTarget);
+    virtual void stop(void);
+    virtual void update(float time);
+    virtual CCActionInterval* reverse(void);
 
-	protected:
-		CCFiniteTimeAction *m_pOne;
-		CCFiniteTimeAction *m_pTwo;
-	};
+public:
 
-	/** @brief Rotates a CCNode object to a certain angle by modifying it's
-	rotation attribute.
-	The direction will be decided by the shortest angle.
-	*/ 
+    /** helper constructor to create an array of spawned actions */
+    static CCSpawn* create(CCFiniteTimeAction *pAction1, ...);
+    
+    /** helper constructor to create an array of spawned actions */
+    static CCSpawn* createWithVariableList(CCFiniteTimeAction *pAction1, va_list args);
+
+    /** helper constructor to create an array of spawned actions given an array */
+    static CCSpawn* create(CCArray *arrayOfActions);
+
+    /** creates the Spawn action */
+    static CCSpawn* createWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
+
+protected:
+    CCFiniteTimeAction *m_pOne;
+    CCFiniteTimeAction *m_pTwo;
+};
+
+
 	class CC_DLL CCRotateTo : public CCActionInterval
 	{
 	public:

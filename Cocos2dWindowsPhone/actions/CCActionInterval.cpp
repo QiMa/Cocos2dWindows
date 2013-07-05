@@ -638,41 +638,16 @@ CCActionInterval *CCRepeatForever::reverse()
 //
 // Spawn
 //
-CCFiniteTimeAction* CCSpawn::create(CCFiniteTimeAction *pAction1, ...)
+CCSpawn* CCSpawn::create(CCFiniteTimeAction *pAction1, ...)
 {
-	va_list params;
-	va_start(params, pAction1);
+    va_list params;
+    va_start(params, pAction1);
 
-	CCFiniteTimeAction *pNow;
-	CCFiniteTimeAction *pPrev = pAction1;
+    CCSpawn *pRet = CCSpawn::createWithVariableList(pAction1, params);
 
-	while (pAction1)
-	{
-		pNow = va_arg(params, CCFiniteTimeAction*);
-		if (pNow)
-		{
-			pPrev = createWithTwoActions(pPrev, pNow);
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	va_end(params);
-	return pPrev;
-}
-
-CCFiniteTimeAction* CCSpawn::create(CCArray *actions)
-{
-	CCFiniteTimeAction* prev = (CCFiniteTimeAction*)actions->objectAtIndex(0);
-
-	for (unsigned int i = 1; i < actions->count(); ++i)
-	{
-		prev = createWithTwoActions(prev, (CCFiniteTimeAction*)actions->objectAtIndex(i));
-	}
-
-	return prev;
+    va_end(params);
+    
+    return pRet;
 }
 
 CCSpawn* CCSpawn::createWithVariableList(CCFiniteTimeAction *pAction1, va_list args)
@@ -703,125 +678,135 @@ CCSpawn* CCSpawn::createWithVariableList(CCFiniteTimeAction *pAction1, va_list a
     return ((CCSpawn*)pPrev);
 }
 
-CCSpawn* CCSpawn::actionsWithArrayLua(CCArray *actions)
+CCSpawn* CCSpawn::create(CCArray *arrayOfActions)
 {
-    if (actions->count() >= 2)
+    CCSpawn* pRet = NULL;
+    do 
     {
-        CCFiniteTimeAction* prev = (CCFiniteTimeAction*)actions->objectAtIndex(0);
-        
-        for (unsigned int i = 1; i < actions->count(); ++i)
+        unsigned  int count = arrayOfActions->count();
+        CC_BREAK_IF(count == 0);
+        CCFiniteTimeAction* prev = (CCFiniteTimeAction*)arrayOfActions->objectAtIndex(0);
+        if (count > 1)
         {
-            prev = createWithTwoActions(prev, (CCFiniteTimeAction*)actions->objectAtIndex(i));
+            for (unsigned int i = 1; i < arrayOfActions->count(); ++i)
+            {
+                prev = createWithTwoActions(prev, (CCFiniteTimeAction*)arrayOfActions->objectAtIndex(i));
+            }
         }
-        
-        return (CCSpawn*)prev;
-    }
-    return NULL;
+        else
+        {
+            // If only one action is added to CCSpawn, make up a CCSpawn by adding a simplest finite time action.
+            prev = createWithTwoActions(prev, ExtraAction::create());
+        }
+        pRet = (CCSpawn*)prev;
+    }while (0);
+
+    return pRet;
 }
 
 CCSpawn* CCSpawn::createWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2)
 {
-	CCSpawn *pSpawn = new CCSpawn();
-	pSpawn->initWithTwoActions(pAction1, pAction2);
-	pSpawn->autorelease();
+    CCSpawn *pSpawn = new CCSpawn();
+    pSpawn->initWithTwoActions(pAction1, pAction2);
+    pSpawn->autorelease();
 
-	return pSpawn;
+    return pSpawn;
 }
 
 bool CCSpawn:: initWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2)
 {
-	CCAssert(pAction1 != NULL, "");
-	CCAssert(pAction2 != NULL, "");
+    CCAssert(pAction1 != NULL, "");
+    CCAssert(pAction2 != NULL, "");
 
-	bool bRet = false;
+    bool bRet = false;
 
-	float d1 = pAction1->getDuration();
-	float d2 = pAction2->getDuration();
+    float d1 = pAction1->getDuration();
+    float d2 = pAction2->getDuration();
 
-	if (CCActionInterval::initWithDuration(MAX(d1, d2)))
-	{
-		m_pOne = pAction1;
-		m_pTwo = pAction2;
+    if (CCActionInterval::initWithDuration(MAX(d1, d2)))
+    {
+        m_pOne = pAction1;
+        m_pTwo = pAction2;
 
-		if (d1 > d2)
-		{
-			m_pTwo = CCSequence::createWithTwoActions(pAction2, CCDelayTime::create(d1 - d2));
-		} else
-		if (d1 < d2)
-		{
-			m_pOne = CCSequence::createWithTwoActions(pAction1, CCDelayTime::create(d2 - d1));
-		}
+        if (d1 > d2)
+        {
+            m_pTwo = CCSequence::createWithTwoActions(pAction2, CCDelayTime::create(d1 - d2));
+        } 
+        else if (d1 < d2)
+        {
+            m_pOne = CCSequence::createWithTwoActions(pAction1, CCDelayTime::create(d2 - d1));
+        }
 
-		m_pOne->retain();
-		m_pTwo->retain();
+        m_pOne->retain();
+        m_pTwo->retain();
 
-		bRet = true;
-	}
+        bRet = true;
+    }
 
     
-	return bRet;
+    return bRet;
 }
 
 CCObject* CCSpawn::copyWithZone(CCZone *pZone)
 {
-	CCZone* pNewZone = NULL;
-	CCSpawn* pCopy = NULL;
+    CCZone* pNewZone = NULL;
+    CCSpawn* pCopy = NULL;
 
-	if(pZone && pZone->m_pCopyObject) 
-	{
-		//in case of being called at sub class
-		pCopy = (CCSpawn*)(pZone->m_pCopyObject);
-	}
-	else
-	{
-		pCopy = new CCSpawn();
-		pZone = pNewZone = new CCZone(pCopy);
-	}
+    if(pZone && pZone->m_pCopyObject) 
+    {
+        //in case of being called at sub class
+        pCopy = (CCSpawn*)(pZone->m_pCopyObject);
+    }
+    else
+    {
+        pCopy = new CCSpawn();
+        pZone = pNewZone = new CCZone(pCopy);
+    }
 
-	CCActionInterval::copyWithZone(pZone);
+    CCActionInterval::copyWithZone(pZone);
 
-	pCopy->initWithTwoActions((CCFiniteTimeAction*)(m_pOne->copy()->autorelease()), 
-					(CCFiniteTimeAction*)(m_pTwo->copy()->autorelease()));
+    pCopy->initWithTwoActions((CCFiniteTimeAction*)(m_pOne->copy()->autorelease()), 
+                    (CCFiniteTimeAction*)(m_pTwo->copy()->autorelease()));
 
-	CC_SAFE_DELETE(pNewZone);
-	return pCopy;
+    CC_SAFE_DELETE(pNewZone);
+    return pCopy;
 }
 
 CCSpawn::~CCSpawn(void)
 {
-	CC_SAFE_RELEASE(m_pOne);
-	CC_SAFE_RELEASE(m_pTwo);
+    CC_SAFE_RELEASE(m_pOne);
+    CC_SAFE_RELEASE(m_pTwo);
 }
 
 void CCSpawn::startWithTarget(CCNode *pTarget)
 {
-	CCActionInterval::startWithTarget(pTarget);
-	m_pOne->startWithTarget(pTarget);
-	m_pTwo->startWithTarget(pTarget);
+    CCActionInterval::startWithTarget(pTarget);
+    m_pOne->startWithTarget(pTarget);
+    m_pTwo->startWithTarget(pTarget);
 }
 
 void CCSpawn::stop(void)
 {
-	m_pOne->stop();
-	m_pTwo->stop();
-	CCActionInterval::stop();
+    m_pOne->stop();
+    m_pTwo->stop();
+    CCActionInterval::stop();
 }
 
 void CCSpawn::update(float time)
 {
-	if (m_pOne)
-	{
-		m_pOne->update(time);
-	}
-	if (m_pTwo)
-	{
-		m_pTwo->update(time);
-	}
+    if (m_pOne)
+    {
+        m_pOne->update(time);
+    }
+    if (m_pTwo)
+    {
+        m_pTwo->update(time);
+    }
 }
 
 CCActionInterval* CCSpawn::reverse(void)
 {
-	return CCSpawn::createWithTwoActions(m_pOne->reverse(), m_pTwo->reverse());
+    return CCSpawn::createWithTwoActions(m_pOne->reverse(), m_pTwo->reverse());
 }
 
 //
