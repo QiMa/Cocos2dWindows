@@ -127,8 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png" />
-    <Image Include="Assets\bitmapFontTest2.bmp" />
-    <Image Include="Assets\bitmapFontTest2.png" />
+    <Image Include="Assets\gameart.png" />
     <Image Include="Assets\HelloWorld.png" />
     <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
@@ -283,7 +282,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\bitmapFontTest2.fnt">
+    <None Include="Assets\gameart.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="CCDrawingPixelShader.cso">
@@ -339,10 +338,6 @@
     <ProjectReference Include="..\Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj">
       <Project>{8c939c76-a430-450e-9607-56cec95dee2f}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Assets\tamboura.mp3" />
-    <Media Include="Assets\tamboura.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />

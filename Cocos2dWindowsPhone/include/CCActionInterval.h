@@ -106,7 +106,7 @@ namespace cocos2d {
 		///** helper contructor to create an array of sequenceable actions given an array */
 		//static CCFiniteTimeAction* actionsWithArray(CCArray *actions);
 		/** for Lua */
-		//static CCSequence* actionsWithArrayLua(CCArray *actions);
+		static CCSequence* actionsWithArrayLua(CCArray *actions);
 
 		/** helper constructor to create an array of sequenceable actions */
 		static CCSequence* create(CCFiniteTimeAction *pAction1, ...);
@@ -228,12 +228,12 @@ namespace cocos2d {
 
 	public:
 		/** helper constructor to create an array of spawned actions */
-		static CCSpawn* create(CCFiniteTimeAction *pAction1, ...);
+		static CCFiniteTimeAction* create(CCFiniteTimeAction *pAction1, ...);
 		/** helper constructor to create an array of spawned actions */
 		static CCSpawn* createWithVariableList(CCFiniteTimeAction *pAction1, va_list args);
 		/** helper contructor to create an array of spawned actions given an array */
-		static CCSpawn* create(CCArray *actions);
-//static CCSpawn* actionsWithArrayLua(CCArray *actions);
+		static CCFiniteTimeAction* create(CCArray *actions);
+		static CCSpawn* actionsWithArrayLua(CCArray *actions);
 		
 		/** creates the Spawn action */
 		static CCSpawn* createWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
@@ -444,7 +444,6 @@ namespace cocos2d {
 	protected:
 		ccBezierConfig m_sConfig;
 		CCPoint m_startPosition;
-		CCPoint m_previousPosition;
 	};
 
 	/** @brief An action that moves the target with a cubic Bezier curve to a destination point.
@@ -459,10 +458,6 @@ namespace cocos2d {
 	public:
 		/** creates the action with a duration and a bezier configuration */
 		static CCBezierTo* create(float t, const ccBezierConfig& c);
-		bool initWithDuration(float t, const ccBezierConfig &c);
-
-	protected:
-		ccBezierConfig m_sToConfig;
 	};
 
 	/** @brief Scales a CCNode object to a zoom factor by modifying it's scale attribute.
@@ -685,56 +680,32 @@ namespace cocos2d {
 	class CCTexture2D;
 	/** @brief Animates a sprite given the name of an Animation */
 	class CC_DLL CCAnimate : public CCActionInterval
-	{
-	public:
-		~CCAnimate(void);
+{
+public:
+    CCAnimate();
+    ~CCAnimate();
 
-		/** Get animation used for the animate */
-		inline CCAnimation* getAnimation(void) { return m_pAnimation; }
-		/** Set animation used for the animate, the object is retained */
-		inline void setAnimation(CCAnimation *pAnimation) 
-		{
-			CC_SAFE_RETAIN(pAnimation);
-			CC_SAFE_RELEASE(m_pAnimation);
-			m_pAnimation = pAnimation;
-		}
+    /** initializes the action with an Animation and will restore the original frame when the animation is over */
+    bool initWithAnimation(CCAnimation *pAnimation);
 
-		/** initializes the action with an Animation and will restore the original frame when the animation is over */
-		bool initWithAnimation(CCAnimation *pAnimation);
 
-		/** initializes the action with an Animation */
-		bool initWithAnimation(CCAnimation *pAnimation, bool bRestoreOriginalFrame);
+    virtual CCObject* copyWithZone(CCZone* pZone);
+    virtual void startWithTarget(CCNode *pTarget);
+    virtual void stop(void);
+    virtual void update(float t);
+    virtual CCActionInterval* reverse(void);
 
-		/** initializes an action with a duration, animation and depending of the restoreOriginalFrame, it will restore the original frame or not.
-		The 'delay' parameter of the animation will be overridden by the duration parameter.
-		@since v0.99.0
-		*/
-		bool initWithDuration(float duration, CCAnimation *pAnimation, bool bRestoreOriginalFrame);
-
-		virtual CCObject* copyWithZone(CCZone* pZone);
-		virtual void startWithTarget(CCNode *pTarget);
-		virtual void stop(void);
-		virtual void update(float time);
-		virtual CCActionInterval* reverse(void);
-
-	public:
-		/** creates the action with an Animation and will restore the original frame when the animation is over */
-		static CCAnimate* create(CCAnimation *pAnimation);
-
-		/** creates the action with an Animation */
-		static CCAnimate* create(CCAnimation *pAnimation, bool bRestoreOriginalFrame);
-
-		/** creates an action with a duration, animation and depending of the restoreOriginalFrame, it will restore the original frame or not.
-		The 'delay' parameter of the animation will be overridden by the duration parameter.
-		@since v0.99.0
-		*/	
-		static CCAnimate* create(float duration, CCAnimation *pAnimation, bool bRestoreOriginalFrame);
-	protected:
-		CCAnimation *m_pAnimation;
-		CCSpriteFrame *m_pOrigFrame;
-		bool m_bRestoreOriginalFrame;
-	};
-	class CC_DLL CCTargetedAction : public CCActionInterval
+public:
+    /** creates the action with an Animation and will restore the original frame when the animation is over */
+    static CCAnimate* create(CCAnimation *pAnimation);
+    CC_SYNTHESIZE_RETAIN(CCAnimation*, m_pAnimation, Animation)
+protected:
+    std::vector<float>* m_pSplitTimes;
+    int                m_nNextFrame;
+    CCSpriteFrame*  m_pOrigFrame;
+       unsigned int    m_uExecutedLoops;
+};
+class CC_DLL CCTargetedAction : public CCActionInterval
 {
 public:
     CCTargetedAction();

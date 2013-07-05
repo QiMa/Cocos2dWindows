@@ -40,10 +40,7 @@
     <Image Include="Assets\HelloWorld.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\bitmapFontTest2.bmp">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\bitmapFontTest2.png">
+    <Image Include="Assets\gameart.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
@@ -503,16 +500,8 @@
     <None Include="CCTextureAtlasVertexShader.cso">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="Assets\bitmapFontTest2.fnt">
+    <None Include="Assets\gameart.plist">
       <Filter>Assets</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Assets\tamboura.mp3">
-      <Filter>Assets</Filter>
-    </Media>
-    <Media Include="Assets\tamboura.wav">
-      <Filter>Assets</Filter>
-    </Media>
   </ItemGroup>
 </Project>

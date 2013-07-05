@@ -72,30 +72,29 @@ bool HelloWorld::init()
 		}
 
 		
-		CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
+		//CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
-		pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
-		//pLabel->setAnchorPoint(ccp(0,0));
-		pLabel->setColor(ccc3(160, 80, 5));
-		this->addChild(pLabel, 10);
+		//pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
+		//pLabel->setColor(ccc3(160, 80, 5));
+		//this->addChild(pLabel, 10);
 
-//		CCLabelBMFont* label1 = CCLabelBMFont::create("Test",  "bitmapFontTest2.fnt");
-//		label1->setPosition(ccp(0,0));
-//		label1->setAnchorPoint(ccp(0,0));
-////		label1->setString("Hello");
-//
-//		label1->setColor(ccc3(160, 80, 5));
-//		addChild(label1, 20);
-//
-		//this->resetGame();
-		//start = true;
-		//CCSize size = CCDirector::sharedDirector()->getWinSize();
-		//CCSprite *b = CCSprite::create("HelloWorld.png");
-		//b->setAnchorPoint(ccp(0,0));
-		//b->setPosition(ccp(size.width * 0.5, size.height * 0.5));
-		//this->addChild(b);
-		//SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.wav", true);
-		//SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Assets\\tamboura.mp3", true);
+
+		//测试动画效果
+		CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+		cache->addSpriteFramesWithFile("gameart.plist", "gameart.png");
+		CCArray *animFrames = new CCArray(3); 
+		CCSpriteFrame *frame = cache->spriteFrameByName("accordion0.png"); 
+		animFrames->addObject(frame);
+		frame = cache->spriteFrameByName("accordion1.png"); 
+		animFrames->addObject(frame);
+		frame = cache->spriteFrameByName("accordion2.png"); 
+		animFrames->addObject(frame);
+		CCAnimation *animation = CCAnimation::createWithSpriteFrames(animFrames,0.1f);
+		CCSprite *pSprite = CCSprite::createWithSpriteFrameName("accordion0.png");
+		this->addChild(pSprite,80);
+		pSprite->setPosition(ccp(size.width*0.5, size.height*0.5));
+		pSprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+
 		setTouchEnabled(true);
 
 		bRet = true;

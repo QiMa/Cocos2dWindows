@@ -304,19 +304,19 @@ CCSequence* CCSequence::create(CCArray* arrayOfActions)
     return pRet;
 }
 
-//CCSequence* CCSequence::actionsWithArrayLua(CCArray *actions)
-//{
-//    if (actions->count() >= 2)
-//    {
-//        CCFiniteTimeAction* prev = (CCFiniteTimeAction*)actions->objectAtIndex(0);
-//        for (unsigned int i = 1; i < actions->count(); ++i)
-//        {
-//            prev = createWithTwoActions(prev, (CCFiniteTimeAction*)actions->objectAtIndex(i));
-//        }
-//        return (CCSequence*)prev;
-//    }
-//    return NULL;
-//}
+CCSequence* CCSequence::actionsWithArrayLua(CCArray *actions)
+{
+    if (actions->count() >= 2)
+    {
+        CCFiniteTimeAction* prev = (CCFiniteTimeAction*)actions->objectAtIndex(0);
+        for (unsigned int i = 1; i < actions->count(); ++i)
+        {
+            prev = createWithTwoActions(prev, (CCFiniteTimeAction*)actions->objectAtIndex(i));
+        }
+        return (CCSequence*)prev;
+    }
+    return NULL;
+}
 
 bool CCSequence::initWithTwoActions(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo)
 {
@@ -638,17 +638,41 @@ CCActionInterval *CCRepeatForever::reverse()
 //
 // Spawn
 //
-
-CCSpawn* CCSpawn::create(CCFiniteTimeAction *pAction1, ...)
+CCFiniteTimeAction* CCSpawn::create(CCFiniteTimeAction *pAction1, ...)
 {
-    va_list params;
-    va_start(params, pAction1);
+	va_list params;
+	va_start(params, pAction1);
 
-    CCSpawn *pRet = CCSpawn::createWithVariableList(pAction1, params);
+	CCFiniteTimeAction *pNow;
+	CCFiniteTimeAction *pPrev = pAction1;
 
-    va_end(params);
-    
-    return pRet;
+	while (pAction1)
+	{
+		pNow = va_arg(params, CCFiniteTimeAction*);
+		if (pNow)
+		{
+			pPrev = createWithTwoActions(pPrev, pNow);
+		}
+		else
+		{
+			break;
+		}
+	}
+
+	va_end(params);
+	return pPrev;
+}
+
+CCFiniteTimeAction* CCSpawn::create(CCArray *actions)
+{
+	CCFiniteTimeAction* prev = (CCFiniteTimeAction*)actions->objectAtIndex(0);
+
+	for (unsigned int i = 1; i < actions->count(); ++i)
+	{
+		prev = createWithTwoActions(prev, (CCFiniteTimeAction*)actions->objectAtIndex(i));
+	}
+
+	return prev;
 }
 
 CCSpawn* CCSpawn::createWithVariableList(CCFiniteTimeAction *pAction1, va_list args)
@@ -679,135 +703,125 @@ CCSpawn* CCSpawn::createWithVariableList(CCFiniteTimeAction *pAction1, va_list a
     return ((CCSpawn*)pPrev);
 }
 
-CCSpawn* CCSpawn::create(CCArray *arrayOfActions)
+CCSpawn* CCSpawn::actionsWithArrayLua(CCArray *actions)
 {
-    CCSpawn* pRet = NULL;
-    do 
+    if (actions->count() >= 2)
     {
-        unsigned  int count = arrayOfActions->count();
-        CC_BREAK_IF(count == 0);
-        CCFiniteTimeAction* prev = (CCFiniteTimeAction*)arrayOfActions->objectAtIndex(0);
-        if (count > 1)
+        CCFiniteTimeAction* prev = (CCFiniteTimeAction*)actions->objectAtIndex(0);
+        
+        for (unsigned int i = 1; i < actions->count(); ++i)
         {
-            for (unsigned int i = 1; i < arrayOfActions->count(); ++i)
-            {
-                prev = createWithTwoActions(prev, (CCFiniteTimeAction*)arrayOfActions->objectAtIndex(i));
-            }
+            prev = createWithTwoActions(prev, (CCFiniteTimeAction*)actions->objectAtIndex(i));
         }
-        else
-        {
-            // If only one action is added to CCSpawn, make up a CCSpawn by adding a simplest finite time action.
-            prev = createWithTwoActions(prev, ExtraAction::create());
-        }
-        pRet = (CCSpawn*)prev;
-    }while (0);
-
-    return pRet;
+        
+        return (CCSpawn*)prev;
+    }
+    return NULL;
 }
 
 CCSpawn* CCSpawn::createWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2)
 {
-    CCSpawn *pSpawn = new CCSpawn();
-    pSpawn->initWithTwoActions(pAction1, pAction2);
-    pSpawn->autorelease();
+	CCSpawn *pSpawn = new CCSpawn();
+	pSpawn->initWithTwoActions(pAction1, pAction2);
+	pSpawn->autorelease();
 
-    return pSpawn;
+	return pSpawn;
 }
 
 bool CCSpawn:: initWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2)
 {
-    CCAssert(pAction1 != NULL, "");
-    CCAssert(pAction2 != NULL, "");
+	CCAssert(pAction1 != NULL, "");
+	CCAssert(pAction2 != NULL, "");
 
-    bool bRet = false;
+	bool bRet = false;
 
-    float d1 = pAction1->getDuration();
-    float d2 = pAction2->getDuration();
+	float d1 = pAction1->getDuration();
+	float d2 = pAction2->getDuration();
 
-    if (CCActionInterval::initWithDuration(MAX(d1, d2)))
-    {
-        m_pOne = pAction1;
-        m_pTwo = pAction2;
+	if (CCActionInterval::initWithDuration(MAX(d1, d2)))
+	{
+		m_pOne = pAction1;
+		m_pTwo = pAction2;
 
-        if (d1 > d2)
-        {
-            m_pTwo = CCSequence::createWithTwoActions(pAction2, CCDelayTime::create(d1 - d2));
-        } 
-        else if (d1 < d2)
-        {
-            m_pOne = CCSequence::createWithTwoActions(pAction1, CCDelayTime::create(d2 - d1));
-        }
+		if (d1 > d2)
+		{
+			m_pTwo = CCSequence::createWithTwoActions(pAction2, CCDelayTime::create(d1 - d2));
+		} else
+		if (d1 < d2)
+		{
+			m_pOne = CCSequence::createWithTwoActions(pAction1, CCDelayTime::create(d2 - d1));
+		}
 
-        m_pOne->retain();
-        m_pTwo->retain();
+		m_pOne->retain();
+		m_pTwo->retain();
 
-        bRet = true;
-    }
+		bRet = true;
+	}
 
     
-    return bRet;
+	return bRet;
 }
 
 CCObject* CCSpawn::copyWithZone(CCZone *pZone)
 {
-    CCZone* pNewZone = NULL;
-    CCSpawn* pCopy = NULL;
+	CCZone* pNewZone = NULL;
+	CCSpawn* pCopy = NULL;
 
-    if(pZone && pZone->m_pCopyObject) 
-    {
-        //in case of being called at sub class
-        pCopy = (CCSpawn*)(pZone->m_pCopyObject);
-    }
-    else
-    {
-        pCopy = new CCSpawn();
-        pZone = pNewZone = new CCZone(pCopy);
-    }
+	if(pZone && pZone->m_pCopyObject) 
+	{
+		//in case of being called at sub class
+		pCopy = (CCSpawn*)(pZone->m_pCopyObject);
+	}
+	else
+	{
+		pCopy = new CCSpawn();
+		pZone = pNewZone = new CCZone(pCopy);
+	}
 
-    CCActionInterval::copyWithZone(pZone);
+	CCActionInterval::copyWithZone(pZone);
 
-    pCopy->initWithTwoActions((CCFiniteTimeAction*)(m_pOne->copy()->autorelease()), 
-                    (CCFiniteTimeAction*)(m_pTwo->copy()->autorelease()));
+	pCopy->initWithTwoActions((CCFiniteTimeAction*)(m_pOne->copy()->autorelease()), 
+					(CCFiniteTimeAction*)(m_pTwo->copy()->autorelease()));
 
-    CC_SAFE_DELETE(pNewZone);
-    return pCopy;
+	CC_SAFE_DELETE(pNewZone);
+	return pCopy;
 }
 
 CCSpawn::~CCSpawn(void)
 {
-    CC_SAFE_RELEASE(m_pOne);
-    CC_SAFE_RELEASE(m_pTwo);
+	CC_SAFE_RELEASE(m_pOne);
+	CC_SAFE_RELEASE(m_pTwo);
 }
 
 void CCSpawn::startWithTarget(CCNode *pTarget)
 {
-    CCActionInterval::startWithTarget(pTarget);
-    m_pOne->startWithTarget(pTarget);
-    m_pTwo->startWithTarget(pTarget);
+	CCActionInterval::startWithTarget(pTarget);
+	m_pOne->startWithTarget(pTarget);
+	m_pTwo->startWithTarget(pTarget);
 }
 
 void CCSpawn::stop(void)
 {
-    m_pOne->stop();
-    m_pTwo->stop();
-    CCActionInterval::stop();
+	m_pOne->stop();
+	m_pTwo->stop();
+	CCActionInterval::stop();
 }
 
 void CCSpawn::update(float time)
 {
-    if (m_pOne)
-    {
-        m_pOne->update(time);
-    }
-    if (m_pTwo)
-    {
-        m_pTwo->update(time);
-    }
+	if (m_pOne)
+	{
+		m_pOne->update(time);
+	}
+	if (m_pTwo)
+	{
+		m_pTwo->update(time);
+	}
 }
 
 CCActionInterval* CCSpawn::reverse(void)
 {
-    return CCSpawn::createWithTwoActions(m_pOne->reverse(), m_pTwo->reverse());
+	return CCSpawn::createWithTwoActions(m_pOne->reverse(), m_pTwo->reverse());
 }
 
 //
@@ -1524,17 +1538,7 @@ CCBezierTo* CCBezierTo::create(float t, const ccBezierConfig& c)
 
 	return pBezierTo;
 }
-bool CCBezierTo::initWithDuration(float t, const ccBezierConfig &c)
-{
-    bool bRet = false;
-    
-    if (CCActionInterval::initWithDuration(t))
-    {
-        m_sToConfig = c;
-    }
-    
-    return bRet;
-}
+
 CCObject* CCBezierTo::copyWithZone(CCZone *pZone)
 {
 	CCZone* pNewZone = NULL;
@@ -2232,184 +2236,181 @@ CCActionInterval* CCReverseTime::reverse(void)
 //
 CCAnimate* CCAnimate::create(CCAnimation *pAnimation)
 {
-	CCAnimate *pAnimate = new CCAnimate();
-	pAnimate->initWithAnimation(pAnimation, true);
-	pAnimate->autorelease();
+    CCAnimate *pAnimate = new CCAnimate();
+    pAnimate->initWithAnimation(pAnimation);
+    pAnimate->autorelease();
 
-	return pAnimate;
+    return pAnimate;
 }
 
 bool CCAnimate::initWithAnimation(CCAnimation *pAnimation)
 {
-	CCAssert(pAnimation != NULL, "");
+    CCAssert( pAnimation!=NULL, "Animate: argument Animation must be non-NULL");
 
-	return initWithAnimation(pAnimation, true);
-}
+    float singleDuration = pAnimation->getDuration();
 
-CCAnimate* CCAnimate::create(CCAnimation *pAnimation, bool bRestoreOriginalFrame)
-{
-	CCAnimate *pAnimate = new CCAnimate();
-	pAnimate->initWithAnimation(pAnimation, bRestoreOriginalFrame);
-	pAnimate->autorelease();
+    if ( CCActionInterval::initWithDuration(singleDuration * pAnimation->getLoops() ) ) 
+    {
+        m_nNextFrame = 0;
+        setAnimation(pAnimation);
+        m_pOrigFrame = NULL;
+        m_uExecutedLoops = 0;
 
-	return pAnimate;
-}
+        m_pSplitTimes->reserve(pAnimation->getFrames()->count());
 
-bool CCAnimate::initWithAnimation(CCAnimation *pAnimation, bool bRestoreOriginalFrame)
-{
-	CCAssert(pAnimation, "");
+        float accumUnitsOfTime = 0;
+        float newUnitOfTimeValue = singleDuration / pAnimation->getTotalDelayUnits();
 
-	if (CCActionInterval::initWithDuration(pAnimation->getFrames()->count() * pAnimation->getTotalDelayUnits()))
-	{
-		m_bRestoreOriginalFrame = bRestoreOriginalFrame;
-       m_pAnimation = pAnimation;
-		CC_SAFE_RETAIN(m_pAnimation);
-		m_pOrigFrame = NULL;
+        CCArray* pFrames = pAnimation->getFrames();
+        CCARRAY_VERIFY_TYPE(pFrames, CCAnimationFrame*);
 
-		return true;
-	}
-
-	return false;
-}
-
-CCAnimate* CCAnimate::create(float duration, CCAnimation *pAnimation, bool bRestoreOriginalFrame)
-{
-	CCAnimate *pAnimate = new CCAnimate();
-	pAnimate->initWithDuration(duration, pAnimation, bRestoreOriginalFrame);
-	pAnimate->autorelease();
-
-	return pAnimate;
-}
-
-bool CCAnimate::initWithDuration(float duration, CCAnimation *pAnimation, bool bRestoreOriginalFrame)
-{
-	CCAssert(pAnimation != NULL, "");
-
-	if (CCActionInterval::initWithDuration(duration))
-	{
-		m_bRestoreOriginalFrame = bRestoreOriginalFrame;
-		m_pAnimation = pAnimation;
-		CC_SAFE_RETAIN(m_pAnimation);
-		m_pOrigFrame = NULL;
-
-		return true;
-	}
-
-	return false;
+        CCObject* pObj = NULL;
+        CCARRAY_FOREACH(pFrames, pObj)
+        {
+            CCAnimationFrame* frame = (CCAnimationFrame*)pObj;
+            float value = (accumUnitsOfTime * newUnitOfTimeValue) / singleDuration;
+            accumUnitsOfTime += frame->getDelayUnits();
+            m_pSplitTimes->push_back(value);
+        }    
+        return true;
+    }
+    return false;
 }
 
 CCObject* CCAnimate::copyWithZone(CCZone *pZone)
 {
-	CCZone* pNewZone = NULL;
-	CCAnimate* pCopy = NULL;
-	if(pZone && pZone->m_pCopyObject) 
-	{
-		//in case of being called at sub class
-		pCopy = (CCAnimate*)(pZone->m_pCopyObject);
-	}
-	else
-	{
-		pCopy = new CCAnimate();
-		pZone = pNewZone = new CCZone(pCopy);
-	}
+    CCZone* pNewZone = NULL;
+    CCAnimate* pCopy = NULL;
+    if(pZone && pZone->m_pCopyObject) 
+    {
+        //in case of being called at sub class
+        pCopy = (CCAnimate*)(pZone->m_pCopyObject);
+    }
+    else
+    {
+        pCopy = new CCAnimate();
+        pZone = pNewZone = new CCZone(pCopy);
+    }
 
-	CCActionInterval::copyWithZone(pZone);
+    CCActionInterval::copyWithZone(pZone);
 
-	pCopy->initWithDuration(m_fDuration, m_pAnimation, m_bRestoreOriginalFrame);
+    pCopy->initWithAnimation((CCAnimation*)m_pAnimation->copy()->autorelease());
 
-	CC_SAFE_DELETE(pNewZone);
-	return pCopy;
+    CC_SAFE_DELETE(pNewZone);
+    return pCopy;
 }
 
-CCAnimate::~CCAnimate(void)
+CCAnimate::CCAnimate()
+: m_pAnimation(NULL)
+, m_pSplitTimes(new std::vector<float>)
+, m_nNextFrame(0)
+, m_pOrigFrame(NULL)
+, m_uExecutedLoops(0)
 {
-	CC_SAFE_RELEASE(m_pAnimation);
+
+}
+
+CCAnimate::~CCAnimate()
+{
+    CC_SAFE_RELEASE(m_pAnimation);
     CC_SAFE_RELEASE(m_pOrigFrame);
+    CC_SAFE_DELETE(m_pSplitTimes);
 }
 
 void CCAnimate::startWithTarget(CCNode *pTarget)
 {
-	CCActionInterval::startWithTarget(pTarget);
-	CCSprite *pSprite = (CCSprite*)(pTarget);
+    CCActionInterval::startWithTarget(pTarget);
+    CCSprite *pSprite = (CCSprite*)(pTarget);
 
-	CC_SAFE_RELEASE(m_pOrigFrame);
+    CC_SAFE_RELEASE(m_pOrigFrame);
 
-	if (m_bRestoreOriginalFrame)
-	{
-		m_pOrigFrame = pSprite->displayedFrame();
-		m_pOrigFrame->retain();
-	}
+    if (m_pAnimation->getRestoreOriginalFrame())
+    {
+        m_pOrigFrame = pSprite->displayedFrame();
+        m_pOrigFrame->retain();
+    }
+    m_nNextFrame = 0;
+    m_uExecutedLoops = 0;
 }
 
 void CCAnimate::stop(void)
 {
-	if (m_bRestoreOriginalFrame && m_pTarget)
-	{
-		((CCSprite*)(m_pTarget))->setDisplayFrame(m_pOrigFrame);
-	}
+    if (m_pAnimation->getRestoreOriginalFrame() && m_pTarget)
+    {
+        ((CCSprite*)(m_pTarget))->setDisplayFrame(m_pOrigFrame);
+    }
 
-	CCActionInterval::stop();
+    CCActionInterval::stop();
 }
 
-void CCAnimate::update(float time)
+void CCAnimate::update(float t)
 {
-	CCArray *pFrames = m_pAnimation->getFrames();
-	unsigned int numberOfFrames = pFrames->count();
+    // if t==1, ignore. Animation should finish with t==1
+    if( t < 1.0f ) {
+        t *= m_pAnimation->getLoops();
 
-	unsigned int idx = (unsigned int)(time * numberOfFrames);
+        // new loop?  If so, reset frame counter
+        unsigned int loopNumber = (unsigned int)t;
+        if( loopNumber > m_uExecutedLoops ) {
+            m_nNextFrame = 0;
+            m_uExecutedLoops++;
+        }
 
-	if (idx >= numberOfFrames)
-	{
-		idx = numberOfFrames - 1;
-	}
+        // new t for animations
+        t = fmodf(t, 1.0f);
+    }
 
-	CCSprite *pSprite = (CCSprite*)(m_pTarget);
+    CCArray* frames = m_pAnimation->getFrames();
+    unsigned int numberOfFrames = frames->count();
+    CCSpriteFrame *frameToDisplay = NULL;
 
-	CCSpriteFrame *currentFrame = ((CCAnimationFrame*)pFrames->objectAtIndex(idx))->getSpriteFrame();
+    for( unsigned int i=m_nNextFrame; i < numberOfFrames; i++ ) {
+        float splitTime = m_pSplitTimes->at(i);
 
-	if (! pSprite->isFrameDisplayed(currentFrame) )
-	{
-		pSprite->setDisplayFrame(currentFrame);
-	}
+        if( splitTime <= t ) {
+            CCAnimationFrame* frame = (CCAnimationFrame*)frames->objectAtIndex(i);
+            frameToDisplay = frame->getSpriteFrame();
+            ((CCSprite*)m_pTarget)->setDisplayFrame(frameToDisplay);
+
+            CCDictionary* dict = frame->getUserInfo();
+            if( dict )
+            {
+                //TODO: [[NSNotificationCenter defaultCenter] postNotificationName:CCAnimationFrameDisplayedNotification object:target_ userInfo:dict];
+            }
+            m_nNextFrame = i+1;
+        }
+        // Issue 1438. Could be more than one frame per tick, due to low frame rate or frame delta < 1/FPS
+        else {
+            break;
+        }
+    }
 }
 
 CCActionInterval* CCAnimate::reverse(void)
 {
-	CCArray *pOldArray = m_pAnimation->getFrames();
-	CCArray *pNewArray = new CCArray(pOldArray->count());
+    CCArray* pOldArray = m_pAnimation->getFrames();
+    CCArray* pNewArray = CCArray::createWithCapacity(pOldArray->count());
    
-	if (pOldArray->count() > 0)
-	{
-		CCSpriteFrame *pElement;
-		//CCArray::CCMutableArrayRevIterator iter;
-		//for (iter = pOldArray->rbegin(); iter != pOldArray->rend(); iter++)
-		//{
-		//	pElement = *iter;
-		//	if (! pElement)
-		//	{
-		//		break;
-		//	}
+    CCARRAY_VERIFY_TYPE(pOldArray, CCAnimationFrame*);
 
-		//	pNewArray->addObject((CCSpriteFrame*)(pElement->copy()->autorelease()));
-		//}
-		CCObject* pObj = NULL;
-		CCARRAY_FOREACH(pOldArray, pObj)
-		{
-			pElement = (CCSpriteFrame *)pObj;
-			if (! pElement)
-			{
-				break;
-			}
+    if (pOldArray->count() > 0)
+    {
+        CCObject* pObj = NULL;
+        CCARRAY_FOREACH_REVERSE(pOldArray, pObj)
+        {
+            CCAnimationFrame* pElement = (CCAnimationFrame*)pObj;
+            if (! pElement)
+            {
+                break;
+            }
 
-			pNewArray->addObject((CCSpriteFrame*)(pElement->copy()->autorelease()));
-		}
-	}
+            pNewArray->addObject((CCAnimationFrame*)(pElement->copy()->autorelease()));
+        }
+    }
 
-	CCAnimation *pNewAnim = CCAnimation::create(pNewArray, m_pAnimation->getTotalDelayUnits());
-
-	pNewArray->release();
-
-	return CCAnimate::create(m_fDuration, pNewAnim, m_bRestoreOriginalFrame);
+    CCAnimation *newAnim = CCAnimation::create(pNewArray, m_pAnimation->getDelayPerUnit(), m_pAnimation->getLoops());
+    newAnim->setRestoreOriginalFrame(m_pAnimation->getRestoreOriginalFrame());
+    return create(newAnim);
 }
 // CCTargetedAction
 
