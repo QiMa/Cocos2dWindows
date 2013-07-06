@@ -45,7 +45,7 @@ USING_NS_CC;
 
 static CCPoint getCCPointFromScreen(Point point)
 {
-	CCSize viewSize = cocos2d::CCEGLView::sharedOpenGLView()->getSize();
+	CCSize viewSize = cocos2d::CCEGLView::sharedOpenGLView().getSize();
 
 	CCPoint ccPoint;
 	ccPoint.x = ceilf(point.X);
@@ -661,7 +661,7 @@ void DirectXRender::OnWindowSizeChanged(
 	)
 {
 	UpdateForWindowSizeChange();
-	cocos2d::CCEGLView::sharedOpenGLView()->OnWindowSizeChanged();
+	cocos2d::CCEGLView::sharedOpenGLView().OnWindowSizeChanged();
 }
 
 void DirectXRender::OnPointerPressed(
@@ -670,7 +670,7 @@ void DirectXRender::OnPointerPressed(
 	)
 {
 	CCPoint point = getCCPointFromScreen(args->CurrentPoint->Position);
-	cocos2d::CCEGLView::sharedOpenGLView()->OnPointerPressed(args->CurrentPoint->PointerId, point);
+	cocos2d::CCEGLView::sharedOpenGLView().OnPointerPressed(args->CurrentPoint->PointerId, point);
 }
 
 void DirectXRender::OnPointerReleased(
@@ -679,7 +679,7 @@ void DirectXRender::OnPointerReleased(
 	)
 {
 	CCPoint point = getCCPointFromScreen(args->CurrentPoint->Position);
-	cocos2d::CCEGLView::sharedOpenGLView()->OnPointerReleased(args->CurrentPoint->PointerId, point);
+	cocos2d::CCEGLView::sharedOpenGLView().OnPointerReleased(args->CurrentPoint->PointerId, point);
 }
 
 void DirectXRender::OnPointerMoved(
@@ -688,7 +688,7 @@ void DirectXRender::OnPointerMoved(
 	)
 {
 	CCPoint point = getCCPointFromScreen(args->CurrentPoint->Position);
-	cocos2d::CCEGLView::sharedOpenGLView()->OnPointerMoved(args->CurrentPoint->PointerId, point);
+	cocos2d::CCEGLView::sharedOpenGLView().OnPointerMoved(args->CurrentPoint->PointerId, point);
 }
 
 void DirectXRender::OnCharacterReceived(
@@ -696,5 +696,5 @@ void DirectXRender::OnCharacterReceived(
 	_In_ Windows::UI::Core::CharacterReceivedEventArgs^ args
 	)
 {
-	cocos2d::CCEGLView::sharedOpenGLView()->OnCharacterReceived(args->KeyCode);
+	cocos2d::CCEGLView::sharedOpenGLView().OnCharacterReceived(args->KeyCode);
 }

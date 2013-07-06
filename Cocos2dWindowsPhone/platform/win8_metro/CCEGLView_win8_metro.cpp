@@ -190,27 +190,27 @@ void CCEGLView::setFrameSize(float width, float height)
 
 CCSize  CCEGLView::getVisibleSize() const
 {
-    //if (m_eResolutionPolicy == kResolutionNoBorder)
-    //{
+    if (m_eResolutionPolicy == kResolutionNoBorder)
+    {
         return CCSizeMake(m_obScreenSize.width/m_fWinScaleX, m_obScreenSize.height/m_fWinScaleY);
-    //}
-    //else 
-    //{
-    //    return m_obDesignResolutionSize;
-    //}
+    }
+    else 
+    {
+        return m_obDesignResolutionSize;
+    }
 }
 
 CCPoint CCEGLView::getVisibleOrigin() const
 {
-    //if (m_eResolutionPolicy == kResolutionNoBorder)
-    //{
+    if (m_eResolutionPolicy == kResolutionNoBorder)
+    {
         return CCPointMake((m_obDesignResolutionSize.width - m_obScreenSize.width/m_fWinScaleX)/2, 
                            (m_obDesignResolutionSize.height - m_obScreenSize.height/m_fWinScaleY)/2);
-    //}
-    //else 
-    //{
-    //    return CCPointZero;
-    //}
+    }
+    else 
+    {
+        return CCPointZero;
+    }
 }
 void CCEGLView::setTouchDelegate(EGLTouchDelegate * pDelegate)
 {
@@ -299,7 +299,8 @@ void CCEGLView::setDesignResolution(int dx, int dy)
     int viewPortH = (int)(m_sizeInPoints.height * m_fScreenScaleFactor);
 
     // calculate client new width and height
-    m_rcViewPort.left   = LONG((winWidth - viewPortW) / 2);
+    //m_rcViewPort.left   = LONG((winWidth - viewPortW) / 2);
+	m_rcViewPort.left   = LONG((winWidth - viewPortW) / 2);
     m_rcViewPort.top    = LONG((winHeight - viewPortH) / 2);
     m_rcViewPort.right  = LONG(m_rcViewPort.left + viewPortW);
     m_rcViewPort.bottom = LONG(m_rcViewPort.top + viewPortH);
@@ -696,20 +697,10 @@ void CCEGLView::GetClearColor(float* color)
 	color[3] = m_color[3];
 }
 
-CCEGLView* CCEGLView::sharedOpenGLView()
+CCEGLView& CCEGLView::sharedOpenGLView()
 {
-    static CCEGLView* s_pEglView = NULL;
-    if (s_pEglView == NULL)
-    {
-        s_pEglView = new CCEGLView();
-		if(!s_pEglView->Create())
-		{
-			delete s_pEglView;
-			s_pEglView = NULL;
-		}
-    }
-
-    return s_pEglView;
+     CC_ASSERT(s_pMainWindow);
+     return *s_pMainWindow;
 }
 
 void CCEGLView::OnWindowSizeChanged()

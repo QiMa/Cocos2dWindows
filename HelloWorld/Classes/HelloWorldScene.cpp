@@ -72,28 +72,28 @@ bool HelloWorld::init()
 		}
 
 		
-		//CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
+		CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
-		//pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
-		//pLabel->setColor(ccc3(160, 80, 5));
-		//this->addChild(pLabel, 10);
+		pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
+		pLabel->setColor(ccc3(160, 80, 5));
+		this->addChild(pLabel, 10);
 
 
-		//测试动画效果
-		CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
-		cache->addSpriteFramesWithFile("gameart.plist", "gameart.png");
-		CCArray *animFrames = new CCArray(3); 
-		CCSpriteFrame *frame = cache->spriteFrameByName("accordion0.png"); 
-		animFrames->addObject(frame);
-		frame = cache->spriteFrameByName("accordion1.png"); 
-		animFrames->addObject(frame);
-		frame = cache->spriteFrameByName("accordion2.png"); 
-		animFrames->addObject(frame);
-		CCAnimation *animation = CCAnimation::createWithSpriteFrames(animFrames,0.1f);
-		CCSprite *pSprite = CCSprite::createWithSpriteFrameName("accordion0.png");
-		this->addChild(pSprite,80);
-		pSprite->setPosition(ccp(size.width*0.5, size.height*0.5));
-		pSprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+		////测试动画效果
+		//CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+		//cache->addSpriteFramesWithFile("gameart.plist", "gameart.png");
+		//CCArray *animFrames = new CCArray(3); 
+		//CCSpriteFrame *frame = cache->spriteFrameByName("accordion0.png"); 
+		//animFrames->addObject(frame);
+		//frame = cache->spriteFrameByName("accordion1.png"); 
+		//animFrames->addObject(frame);
+		//frame = cache->spriteFrameByName("accordion2.png"); 
+		//animFrames->addObject(frame);
+		//CCAnimation *animation = CCAnimation::createWithSpriteFrames(animFrames,0.1f);
+		//CCSprite *pSprite = CCSprite::createWithSpriteFrameName("accordion0.png");
+		//this->addChild(pSprite,80);
+		//pSprite->setPosition(ccp(size.width*0.5, size.height*0.5));
+		//pSprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
 
 		setTouchEnabled(true);
 

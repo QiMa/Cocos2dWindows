@@ -7,7 +7,7 @@ void VisibleRect::lazyInit()
 {
     if (s_visibleRect.size.width == 0.0f && s_visibleRect.size.height == 0.0f)
     {
-        CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
+        CCEGLView* pEGLView = &CCEGLView::sharedOpenGLView();
         s_visibleRect.origin = pEGLView->getVisibleOrigin();
         s_visibleRect.size = pEGLView->getVisibleSize();
     }

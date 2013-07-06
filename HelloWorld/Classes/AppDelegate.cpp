@@ -44,7 +44,9 @@ bool AppDelegate::initInstance()
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
 
-	CCEGLView* mainView = CCEGLView::sharedOpenGLView();
+	void* buff=_aligned_malloc(sizeof(CCEGLView),16);
+	CCEGLView* mainView = new (buff) CCEGLView();
+	mainView->Create();
 	//mainView->Create();
 	//mainView->setDesignResolution(480, 320);
 	//mainView->setDesignResolution(640, 1066);
@@ -82,12 +84,12 @@ bool AppDelegate::applicationDidFinishLaunching()
 	CCDirector *pDirector = CCDirector::sharedDirector();
 
 
-	pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
+	pDirector->setOpenGLView(&CCEGLView::sharedOpenGLView());
 
 	// turn on display FPS
 	//pDirector->setDisplayFPS(false);
-
-	pDirector->setDeviceOrientation(CCDeviceOrientationLandscapeLeft);
+	pDirector->setDeviceOrientation(kCCDeviceOrientationPortrait);//竖屏的界面，如果是横屏的就改成下面的。
+	//pDirector->setDeviceOrientation(CCDeviceOrientationLandscapeLeft);
 	// set FPS. the default value is 1.0/60 if you don't call this
 	//pDirector->setAnimationInterval(1.0 / 60);
 
