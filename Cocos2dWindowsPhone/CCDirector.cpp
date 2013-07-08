@@ -133,6 +133,11 @@ bool CCDirector::init(void)
     m_pTouchDispatcher = new CCTouchDispatcher();
     m_pTouchDispatcher->init();
 
+	// KeypadDispatcher
+    m_pKeypadDispatcher = new CCKeypadDispatcher();
+
+	// Accelerometer
+    m_pAccelerometer = new CCAccelerometer();
 
 	// create autorelease pool
 	CCPoolManager::sharedPoolManager()->push();
@@ -153,6 +158,8 @@ CCDirector::~CCDirector(void)
 	CC_SAFE_RELEASE(m_pobScenesStack);
 	CC_SAFE_RELEASE(m_pScheduler);
 	CC_SAFE_RELEASE(m_pActionManager);
+	CC_SAFE_RELEASE(m_pKeypadDispatcher);
+	CC_SAFE_DELETE(m_pAccelerometer);
 
 	// pop the autorelease pool
 	CCPoolManager::sharedPoolManager()->pop();

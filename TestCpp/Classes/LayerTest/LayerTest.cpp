@@ -159,7 +159,7 @@ void LayerTest1::onEnter()
     CCSize s = CCDirector::sharedDirector()->getWinSize();
     CCLayerColor* layer = CCLayerColor::create( ccc4(0xFF, 0x00, 0x00, 0x80), 200, 200); 
     
-    layer->ignoreAnchorPointForPosition(false);
+	layer->ignoreAnchorPointForPosition(false);
     layer->setPosition( ccp(s.width/2, s.height/2) );
     addChild(layer, 1, kTagLayer);
 }		
@@ -244,7 +244,7 @@ LayerTestBlend::LayerTestBlend()
 {
     CCSize s = CCDirector::sharedDirector()->getWinSize();
     CCLayerColor* layer1 = CCLayerColor::create( ccc4(255, 255, 255, 80) );
-    
+     layer1->setPosition( ccp(s.width/2, s.height/2) );
     CCSprite* sister1 = CCSprite::create(s_pPathSister1);
     CCSprite* sister2 = CCSprite::create(s_pPathSister2);
     
@@ -308,6 +308,7 @@ LayerGradient::LayerGradient()
     addChild(menu);
     CCSize s = CCDirector::sharedDirector()->getWinSize();
     menu->setPosition(ccp(s.width / 2, 100));
+		layer1->setPosition( ccp(s.width/2, s.height/2) );
 }
 
 void LayerGradient::toggleItem(CCObject *sender)
@@ -400,7 +401,7 @@ void LayerIgnoreAnchorPointRot::onEnter()
     CCSize s = CCDirector::sharedDirector()->getWinSize();
 
     CCLayerColor *l = CCLayerColor::create(ccc4(255, 0, 0, 255), 200, 200);
-
+	l->ignoreAnchorPointForPosition(false);
     l->setAnchorPoint(ccp(0.5f, 0.5f));
     l->setPosition(ccp( s.width/2, s.height/2));
 
@@ -448,7 +449,7 @@ void LayerIgnoreAnchorPointScale::onEnter()
     CCSize s = CCDirector::sharedDirector()->getWinSize();
 
     CCLayerColor *l = CCLayerColor::create(ccc4(255, 0, 0, 255), 200, 200);
-
+	l->ignoreAnchorPointForPosition(false);
     l->setAnchorPoint(ccp(0.5f, 1.0f));
     l->setPosition(ccp( s.width/2, s.height/2));
 

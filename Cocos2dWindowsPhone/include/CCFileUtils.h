@@ -76,6 +76,7 @@ public:
      *  @since v2.1
      */
     void setFilenameLookupDictionary(CCDictionary* pFilenameLookupDict);
+	void loadFilenameLookupDictionaryFromFile(const char* filename);
 	/**
 	@brief   Generate the absolute path of the file.
 	@param   pszRelativePath     The relative path of the file.

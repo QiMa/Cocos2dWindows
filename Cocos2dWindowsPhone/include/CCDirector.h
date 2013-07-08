@@ -150,6 +150,7 @@ class CCEGLView;
 class CCProjectionProtocol;
 class CCNode;
 class CCScheduler;
+class CCKeypadDispatcher;
 /**
 @brief Class that creates and handle the main Window and manages how
 and when to execute the Scenes.

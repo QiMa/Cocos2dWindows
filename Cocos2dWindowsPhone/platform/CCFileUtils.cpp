@@ -23,7 +23,7 @@
 #include "fileapi.h"
 
 
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_AIRPLAY)
+
 
 #include <stack>
 
@@ -713,6 +713,26 @@ void CCFileUtils::setFilenameLookupDictionary(CCDictionary* pFilenameLookupDict)
     m_pFilenameLookupDict = pFilenameLookupDict;
     CC_SAFE_RETAIN(m_pFilenameLookupDict);
 }
+
+void CCFileUtils::loadFilenameLookupDictionaryFromFile(const char* filename)
+{
+    std::string fullPath = this->fullPathForFilename(filename);
+    if (fullPath.length() > 0)
+    {
+        CCDictionary* pDict = CCDictionary::createWithContentsOfFile(fullPath.c_str());
+        if (pDict)
+        {
+            CCDictionary* pMetadata = (CCDictionary*)pDict->objectForKey("metadata");
+            int version = ((CCString*)pMetadata->objectForKey("version"))->intValue();
+            if (version != 1)
+            {
+                CCLOG("cocos2d: ERROR: Invalid filenameLookup dictionary version: %ld. Filename: %s", (long)version, filename);
+                return;
+            }
+            setFilenameLookupDictionary((CCDictionary*)pDict->objectForKey("filenames"));
+        }
+    }
+}
 //////////////////////////////////////////////////////////////////////////
 // Notification support when getFileData from invalid file path.
 //////////////////////////////////////////////////////////////////////////
@@ -796,4 +816,4 @@ NS_CC_END;
     //#include "win8_metro/CCFileUtils_win8_metro.cpp"
 #endif
 
-#endif // (CC_TARGET_PLATFORM != CC_PLATFORM_IOS)
+
