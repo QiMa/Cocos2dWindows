@@ -128,7 +128,8 @@ void RotateWorldMainLayer::onEnter()
 void RotateWorldTestScene::runThisTest()
 {
     CCLayer* pLayer = RotateWorldMainLayer::create();
-
+	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	pLayer->setPosition(size.width/2,size.height/2);
     addChild(pLayer);
     runAction( CCRotateBy::create(4, -360) );
 

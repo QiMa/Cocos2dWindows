@@ -119,6 +119,7 @@ void SpriteDemo::onEnter()
     addChild(menu, 1);    
 
     CCLayerColor *background = CCLayerColor::create(ccc4(255,0,0,255));
+	background->setPosition(ccp(s.width/2,s.height/2));
     addChild(background, -10);
 }
 
