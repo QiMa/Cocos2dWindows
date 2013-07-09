@@ -34,8 +34,8 @@ static TestScene* CreateTestScene(int nIdx)
         pScene = new ActionsEaseTestScene(); break;
     case TEST_MOTION_STREAK:
         pScene = new MotionStreakTestScene(); break;
-  /*  case TEST_DRAW_PRIMITIVES:
-        pScene = new DrawPrimitivesTestScene(); break;*/
+    case TEST_DRAW_PRIMITIVES:
+        pScene = new DrawPrimitivesTestScene(); break;
     case TEST_COCOSNODE:
         pScene = new CocosNodeTestScene(); break;
    case TEST_TOUCHES:

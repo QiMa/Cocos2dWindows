@@ -143,6 +143,9 @@
     <Filter Include="Classes\MotionStreakTest">
       <UniqueIdentifier>{6adf7631-6ffe-4305-99f9-f1a55c2f92f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\DrawPrimitivesTest">
+      <UniqueIdentifier>{51207a7d-d087-4963-a145-92bf1cad24c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -944,6 +947,9 @@
     <ClCompile Include="Classes\FontTest\FontTest.cpp">
       <Filter>Classes\FontTest</Filter>
     </ClCompile>
+    <ClCompile Include="Classes\DrawPrimitivesTest\DrawPrimitivesTest.cpp">
+      <Filter>Classes\DrawPrimitivesTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocos2dorig.h" />
@@ -1505,6 +1511,9 @@
     </ClInclude>
     <ClInclude Include="Classes\FontTest\FontTest.h">
       <Filter>Classes\FontTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\DrawPrimitivesTest\DrawPrimitivesTest.h">
+      <Filter>Classes\DrawPrimitivesTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

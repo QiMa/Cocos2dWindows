@@ -10,7 +10,7 @@
 #include "ParticleTest/ParticleTest.h"
 #include "ActionsEaseTest/ActionsEaseTest.h"
 #include "MotionStreakTest/MotionStreakTest.h"
-//#include "DrawPrimitivesTest/DrawPrimitivesTest.h"
+#include "DrawPrimitivesTest/DrawPrimitivesTest.h"
 #include "TouchesTest/TouchesTest.h"
 #include "MenuTest/MenuTest.h"
 #include "ActionManagerTest/ActionManagerTest.h"
@@ -65,7 +65,7 @@ enum
     TEST_PARTICLE,
     TEST_EASE_ACTIONS,
     TEST_MOTION_STREAK,
-  //  TEST_DRAW_PRIMITIVES,
+    TEST_DRAW_PRIMITIVES,
     TEST_COCOSNODE,
     TEST_TOUCHES,
     TEST_MENU,
@@ -122,7 +122,7 @@ const std::string g_aTestNames[TESTS_COUNT] = {
     "ParticleTest",
     "ActionsEaseTest",
     "MotionStreakTest",
-    //"DrawPrimitivesTest",
+    "DrawPrimitivesTest",
     "NodeTest",
     "TouchesTest",
     "MenuTest",

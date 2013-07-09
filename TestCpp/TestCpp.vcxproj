@@ -639,6 +639,7 @@
     <ClInclude Include="Classes\ClickAndMoveTest\ClickAndMoveTest.h" />
     <ClInclude Include="Classes\controller.h" />
     <ClInclude Include="Classes\CurrentLanguageTest\CurrentLanguageTest.h" />
+    <ClInclude Include="Classes\DrawPrimitivesTest\DrawPrimitivesTest.h" />
     <ClInclude Include="Classes\EffectsAdvancedTest\EffectsAdvancedTest.h" />
     <ClInclude Include="Classes\EffectsTest\EffectsTest.h" />
     <ClInclude Include="Classes\FileUtilsTest\FileUtilsTest.h" />
@@ -831,6 +832,7 @@
     <ClCompile Include="Classes\ClickAndMoveTest\ClickAndMoveTest.cpp" />
     <ClCompile Include="Classes\controller.cpp" />
     <ClCompile Include="Classes\CurrentLanguageTest\CurrentLanguageTest.cpp" />
+    <ClCompile Include="Classes\DrawPrimitivesTest\DrawPrimitivesTest.cpp" />
     <ClCompile Include="Classes\EffectsAdvancedTest\EffectsAdvancedTest.cpp" />
     <ClCompile Include="Classes\EffectsTest\EffectsTest.cpp" />
     <ClCompile Include="Classes\FileUtilsTest\FileUtilsTest.cpp" />

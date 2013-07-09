@@ -826,13 +826,14 @@ std::string ConvertToNode::subtitle()
 NodeOpaqueTest::NodeOpaqueTest()
 {
     CCSprite *background = NULL;
-
+	CCSize s = CCDirector::sharedDirector()->getWinSize();
     for (int i = 0; i < 50; i++)
     {
         background = CCSprite::create("Images/background1.png");
-        ccBlendFunc blendFunc = {CC_ONE, CC_ONE_MINUS_SRC_ALPHA};
-        background->setBlendFunc(blendFunc);
-        background->setAnchorPoint(CCPointZero);
+        //ccBlendFunc blendFunc = {CC_ONE, CC_ONE_MINUS_SRC_ALPHA};
+        //background->setBlendFunc(blendFunc);
+        //background->setAnchorPoint(CCPointZero);
+		background->setPosition(ccp(s.width/2,s.height/2));
         addChild(background);
     }
 }
@@ -852,12 +853,13 @@ std::string NodeOpaqueTest::subtitle()
 NodeNonOpaqueTest::NodeNonOpaqueTest()
  {
     CCSprite *background = NULL;
-
+	CCSize s = CCDirector::sharedDirector()->getWinSize();
     for (int i = 0; i < 50; i++)
     {
-        background = CCSprite::create("Images/background1.jpg");
-        background->setBlendFunc(kCCBlendFuncDisable);
-        background->setAnchorPoint(CCPointZero);
+        background = CCSprite::create("Images/background1.png");
+       /* background->setBlendFunc(kCCBlendFuncDisable);
+        background->setAnchorPoint(CCPointZero);*/
+		background->setPosition(ccp(s.width/2,s.height/2));
         addChild(background);
     }
 }
