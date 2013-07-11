@@ -30,42 +30,51 @@ THE SOFTWARE.
 #include "CCObject.h"
 #include "CCArray.h"
 
-namespace cocos2d {
+NS_CC_BEGIN
+
+/**
+ * @addtogroup base_nodes
+ * @{
+ */
+
 class CC_DLL CCAutoreleasePool : public CCObject
 {
-	CCArray*	m_pManagedObjectArray;	
+    CCArray*    m_pManagedObjectArray;    
 public:
-	CCAutoreleasePool(void);
-	~CCAutoreleasePool(void);
+    CCAutoreleasePool(void);
+    ~CCAutoreleasePool(void);
 
-	void addObject(CCObject *pObject);
-	void removeObject(CCObject *pObject);
+    void addObject(CCObject *pObject);
+    void removeObject(CCObject *pObject);
 
-	void clear();
+    void clear();
 };
 
 class CC_DLL CCPoolManager
 {
-	CCArray*	m_pReleasePoolStack;	
-	CCAutoreleasePool*					m_pCurReleasePool;
+    CCArray*    m_pReleasePoolStack;    
+    CCAutoreleasePool*                    m_pCurReleasePool;
 
-	CCAutoreleasePool* getCurReleasePool();
+    CCAutoreleasePool* getCurReleasePool();
 public:
-	CCPoolManager();
-	~CCPoolManager();
-	void finalize();
-	void push();
-	void pop();
+    CCPoolManager();
+    ~CCPoolManager();
+    void finalize();
+    void push();
+    void pop();
 
-	void removeObject(CCObject* pObject);
-	void addObject(CCObject* pObject);
+    void removeObject(CCObject* pObject);
+    void addObject(CCObject* pObject);
 
-	static CCPoolManager* sharedPoolManager();
-	
-	friend class CCAutoreleasePool;
+    static CCPoolManager* sharedPoolManager();
+    static void purgePoolManager();
 
+    friend class CCAutoreleasePool;
 };
 
-}
+// end of base_nodes group
+/// @}
+
+NS_CC_END
 
 #endif //__AUTORELEASEPOOL_H__

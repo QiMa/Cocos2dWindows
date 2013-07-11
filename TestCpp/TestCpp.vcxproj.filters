@@ -137,14 +137,14 @@
     <Filter Include="Assets\Particles">
       <UniqueIdentifier>{5a4bc311-e2f2-4da3-842d-17798ba014bc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\FontTest">
-      <UniqueIdentifier>{15a6800b-c39c-431d-a437-66cda05afa3e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\MotionStreakTest">
       <UniqueIdentifier>{6adf7631-6ffe-4305-99f9-f1a55c2f92f9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\DrawPrimitivesTest">
       <UniqueIdentifier>{51207a7d-d087-4963-a145-92bf1cad24c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\FontTest">
+      <UniqueIdentifier>{15a6800b-c39c-431d-a437-66cda05afa3e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -845,9 +845,6 @@
     <ClCompile Include="Classes\FileUtilsTest\FileUtilsTest.cpp">
       <Filter>Classes\FileUtilsTest</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\IntervalTest\IntervalTest.cpp">
-      <Filter>Classes\IntervalTest</Filter>
-    </ClCompile>
     <ClCompile Include="Classes\KeypadTest\KeypadTest.cpp">
       <Filter>Classes\KeypadTest</Filter>
     </ClCompile>
@@ -949,6 +946,9 @@
     </ClCompile>
     <ClCompile Include="Classes\DrawPrimitivesTest\DrawPrimitivesTest.cpp">
       <Filter>Classes\DrawPrimitivesTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\IntervalTest\IntervalTest.cpp">
+      <Filter>Classes\IntervalTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

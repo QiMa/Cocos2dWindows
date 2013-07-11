@@ -29,9 +29,14 @@ THE SOFTWARE.
 #include "ccTypes.h"
 
 NS_CC_BEGIN
+
+/**
+ * @addtogroup base_nodes
+ * @{
+ */
+
 class CCZone;
 class CCObject;
-class CCString;
 class CCNode;
 class CCEvent;
 
@@ -45,14 +50,14 @@ class CC_DLL CCObject : public CCCopying
 {
 public:
     // object id, CCScriptSupport need public m_uID
-    unsigned int		m_uID;
+    unsigned int        m_uID;
     // Lua reference id
     int                 m_nLuaID;
 protected:
-    // count of refrence
-    unsigned int		m_uReference;
-    // is the object autoreleased
-    bool		m_bManaged;		
+    // count of references
+    unsigned int        m_uReference;
+    // count of autorelease
+    unsigned int        m_uAutoReleaseCount;
 public:
     CCObject(void);
     virtual ~CCObject(void);
@@ -61,11 +66,11 @@ public:
     void retain(void);
     CCObject* autorelease(void);
     CCObject* copy(void);
-    bool isSingleRefrence(void);
+    bool isSingleReference(void);
     unsigned int retainCount(void);
     virtual bool isEqual(const CCObject* pObject);
-    
-    virtual void update(ccTime dt) {CC_UNUSED_PARAM(dt);};
+
+    virtual void update(float dt) {CC_UNUSED_PARAM(dt);};
     
     friend class CCAutoreleasePool;
 };
@@ -78,7 +83,8 @@ typedef void (CCObject::*SEL_CallFuncND)(CCNode*, void*);
 typedef void (CCObject::*SEL_CallFuncO)(CCObject*);
 typedef void (CCObject::*SEL_MenuHandler)(CCObject*);
 typedef void (CCObject::*SEL_EventHandler)(CCEvent*);
-    
+typedef int (CCObject::*SEL_Compare)(CCObject*);
+
 #define schedule_selector(_SELECTOR) (SEL_SCHEDULE)(&_SELECTOR)
 #define callfunc_selector(_SELECTOR) (SEL_CallFunc)(&_SELECTOR)
 #define callfuncN_selector(_SELECTOR) (SEL_CallFuncN)(&_SELECTOR)
@@ -86,8 +92,12 @@ typedef void (CCObject::*SEL_EventHandler)(CCEvent*);
 #define callfuncO_selector(_SELECTOR) (SEL_CallFuncO)(&_SELECTOR)
 #define menu_selector(_SELECTOR) (SEL_MenuHandler)(&_SELECTOR)
 #define event_selector(_SELECTOR) (SEL_EventHandler)(&_SELECTOR)
-    
-    
+#define compare_selector(_SELECTOR) (SEL_Compare)(&_SELECTOR)
+
+// end of base_nodes group
+/// @}
+
 NS_CC_END
 
-#endif // __COCOA_NSOBJECT_H__
+#endif // __CCOBJECT_H__
+

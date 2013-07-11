@@ -601,7 +601,7 @@ void ParallaxParticle::onEnter()
     m_background->getParent()->removeChild(m_background, true);
     m_background = NULL;
 
-    CCParallaxNode* p = CCParallaxNode::create(); 
+	CCParallaxNode* p = CCParallaxNode::node(); 
     addChild(p, 5);
 
     CCSprite *p1 = CCSprite::create(s_back3);

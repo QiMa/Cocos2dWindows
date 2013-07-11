@@ -30,39 +30,38 @@ THE SOFTWARE.
 /*#include "support/data_support/ccArray.h"*/
 
 NS_CC_BEGIN
+	struct _ccArray;
 
-struct _ccArray;
+	/** @brief CCParallaxNode: A node that simulates a parallax scroller
 
-/** @brief CCParallaxNode: A node that simulates a parallax scroller
+	The children will be moved faster / slower than the parent according the the parallax ratio.
 
-The children will be moved faster / slower than the parent according the the parallax ratio.
-
-*/
-class CC_DLL CCParallaxNode : public CCNode 
-{
-	/** array that holds the offset / ratio of the children */
-	CC_SYNTHESIZE(struct _ccArray *, m_pParallaxArray, ParallaxArray)
-
-public:
-	/** Adds a child to the container with a z-order, a parallax ratio and a position offset
-	It returns self, so you can chain several addChilds.
-	@since v0.8
 	*/
-	CCParallaxNode();
-	virtual ~CCParallaxNode();
-	static CCParallaxNode * create();
-	virtual void addChild(CCNode * child, int z, const CCPoint& parallaxRatio, const CCPoint& positionOffset);
-	// super methods
-	virtual void addChild(CCNode * child, int zOrder, int tag);
-	virtual void removeChild(CCNode* child, bool cleanup);
-	virtual void removeAllChildrenWithCleanup(bool cleanup);
-	virtual void visit(void);
-protected:
-	CCPoint	m_tLastPosition;
-	virtual CCPoint absolutePosition();
-};
+	class CC_DLL CCParallaxNode : public CCNode 
+	{
+		/** array that holds the offset / ratio of the children */
+		CC_SYNTHESIZE(struct _ccArray *, m_pParallaxArray, ParallaxArray)
 
-NS_CC_END
+	public:
+		/** Adds a child to the container with a z-order, a parallax ratio and a position offset
+		It returns self, so you can chain several addChilds.
+		@since v0.8
+		*/
+		CCParallaxNode();
+		virtual ~CCParallaxNode();
+		static CCParallaxNode * node();
+		virtual void addChild(CCNode * child, int z, const CCPoint& parallaxRatio, const CCPoint& positionOffset);
+		// super methods
+		virtual void addChild(CCNode * child, int zOrder, int tag);
+		virtual void removeChild(CCNode* child, bool cleanup);
+		virtual void removeAllChildrenWithCleanup(bool cleanup);
+		virtual void visit(void);
+	protected:
+		CCPoint	m_tLastPosition;
+		virtual CCPoint absolutePosition();
+	};
+
+	NS_CC_END
 #endif //__CCPARALLAX_NODE_H__
 
 
