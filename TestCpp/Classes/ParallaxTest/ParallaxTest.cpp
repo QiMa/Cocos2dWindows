@@ -29,7 +29,7 @@ Parallax1::Parallax1()
     
 
     // Middle layer: a Tile map atlas
-    CCTileMapAtlas *tilemap = CCTileMapAtlas::tileMapAtlasWithTileFile(s_TilesPng, s_LevelMapTga, 16, 16);
+    CCTileMapAtlas *tilemap = CCTileMapAtlas::create(s_TilesPng, s_LevelMapTga, 16, 16);
     tilemap->releaseMap();
     
     // change the transform anchor to 0,0 (optional)
@@ -48,7 +48,7 @@ Parallax1::Parallax1()
 
     
     // create a void node, a parent node
-    CCParallaxNode* voidNode = CCParallaxNode::node();
+	CCParallaxNode* voidNode = CCParallaxNode::create();
     
     // NOW add the 3 layers to the 'void' node
 
@@ -99,7 +99,7 @@ Parallax2::Parallax2()
     
     
     // Middle layer: a Tile map atlas
-    CCTileMapAtlas* tilemap = CCTileMapAtlas::tileMapAtlasWithTileFile(s_TilesPng, s_LevelMapTga, 16, 16);
+    CCTileMapAtlas* tilemap = CCTileMapAtlas::create(s_TilesPng, s_LevelMapTga, 16, 16);
     tilemap->releaseMap();
     
     // change the transform anchor to 0,0 (optional)
@@ -118,7 +118,7 @@ Parallax2::Parallax2()
     
     
     // create a void node, a parent node
-    CCParallaxNode* voidNode = CCParallaxNode::node();
+    CCParallaxNode* voidNode = CCParallaxNode::create();
     
     // NOW add the 3 layers to the 'void' node
     

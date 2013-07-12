@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2008-2010 Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
 
@@ -23,72 +23,81 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
-// For licensing information relating to this distribution please see Third Party Notices file.
-
 #ifndef __CCTILE_MAP_ATLAS__
 #define __CCTILE_MAP_ATLAS__
-#include <string>
-#include <map>
+
+
 #include "CCAtlasNode.h"
+
 NS_CC_BEGIN
 
-	typedef std::map<std::string, int> StringToIntegerDictionary;
-	typedef std::pair<std::string, int> StringToIntegerPair;
-	struct sImageTGA;
-	/** @brief CCTileMapAtlas is a subclass of CCAtlasNode.
+struct sImageTGA;
+class CCDictionary;
 
-	It knows how to render a map based of tiles.
-	The tiles must be in a .PNG format while the map must be a .TGA file.
+/**
+ * @addtogroup tilemap_parallax_nodes
+ * @{
+ */
 
-	For more information regarding the format, please see this post:
-	http://www.cocos2d-iphone.org/archives/27
+/** @brief CCTileMapAtlas is a subclass of CCAtlasNode.
 
-	All features from CCAtlasNode are valid in CCTileMapAtlas
+It knows how to render a map based of tiles.
+The tiles must be in a .PNG format while the map must be a .TGA file.
 
-	IMPORTANT:
-	This class is deprecated. It is maintained for compatibility reasons only.
-	You SHOULD not use this class.
-	Instead, use the newer TMX file format: CCTMXTiledMap
-	*/
-	class CC_DLL CCTileMapAtlas : public CCAtlasNode 
-	{
-		/** TileMap info */
-		CC_PROPERTY(struct sImageTGA*, m_pTGAInfo, TGAInfo);
-	public:
-		CCTileMapAtlas();
-		virtual ~CCTileMapAtlas();
-		/** creates a CCTileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
-		The tile file will be loaded using the TextureMgr.
-		*/
-		static CCTileMapAtlas * tileMapAtlasWithTileFile(const char *tile, const char *mapFile, int tileWidth, int tileHeight);
-		/** initializes a CCTileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
-		The file will be loaded using the TextureMgr.
-		*/
-		bool initWithTileFile(const char *tile, const char *mapFile, int tileWidth, int tileHeight);
-		/** returns a tile from position x,y.
-		For the moment only channel R is used
-		*/
-		ccColor3B tileAt(const CCPoint& position);
-		/** sets a tile at position x,y.
-		For the moment only channel R is used
-		*/
-		void setTile(const ccColor3B& tile, const CCPoint& position);
-		/** dealloc the map from memory */
-		void releaseMap();
-	private:
-		void loadTGAfile(const char *file);
-		void calculateItemsToRender();
-		void updateAtlasValueAt(const CCPoint& pos, const ccColor3B& value, unsigned int index);
-		void updateAtlasValues();
+For more information regarding the format, please see this post:
+http://www.cocos2d-iphone.org/archives/27
 
-	protected:
-		//! x,y to altas dicctionary
-		StringToIntegerDictionary *m_pPosToAtlasIndex;
-		//! numbers of tiles to render
-		int				m_nItemsToRender;
-	};
+All features from CCAtlasNode are valid in CCTileMapAtlas
 
-	NS_CC_END
+IMPORTANT:
+This class is deprecated. It is maintained for compatibility reasons only.
+You SHOULD not use this class.
+Instead, use the newer TMX file format: CCTMXTiledMap
+*/
+class CC_DLL CCTileMapAtlas : public CCAtlasNode 
+{
+    /** TileMap info */
+    CC_PROPERTY(struct sImageTGA*, m_pTGAInfo, TGAInfo);
+public:
+    CCTileMapAtlas();
+    virtual ~CCTileMapAtlas();
+    
+    /** creates a CCTileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
+    The tile file will be loaded using the TextureMgr.
+    */
+    static CCTileMapAtlas * create(const char *tile, const char *mapFile, int tileWidth, int tileHeight);
+   
+    /** initializes a CCTileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
+    The file will be loaded using the TextureMgr.
+    */
+    bool initWithTileFile(const char *tile, const char *mapFile, int tileWidth, int tileHeight);
+    /** returns a tile from position x,y.
+    For the moment only channel R is used
+    */
+    ccColor3B tileAt(const CCPoint& position);
+    /** sets a tile at position x,y.
+    For the moment only channel R is used
+    */
+    void setTile(const ccColor3B& tile, const CCPoint& position);
+    /** dealloc the map from memory */
+    void releaseMap();
+private:
+    void loadTGAfile(const char *file);
+    void calculateItemsToRender();
+    void updateAtlasValueAt(const CCPoint& pos, const ccColor3B& value, unsigned int index);
+    void updateAtlasValues();
+
+protected:
+    //! x,y to atlas dictionary
+    CCDictionary* m_pPosToAtlasIndex;
+    //! numbers of tiles to render
+    int m_nItemsToRender;
+};
+
+// end of tilemap_parallax_nodes group
+/// @}
+
+NS_CC_END
+
 #endif //__CCTILE_MAP_ATLAS__
 

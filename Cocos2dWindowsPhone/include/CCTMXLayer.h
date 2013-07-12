@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2009-2010 Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
 
@@ -23,158 +23,186 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
-// For licensing information relating to this distribution please see Third Party Notices file.
-
 #ifndef __CCTMX_LAYER_H__
 #define __CCTMX_LAYER_H__
+
 #include "CCTMXObjectGroup.h"
 #include "CCAtlasNode.h"
 #include "CCSpriteBatchNode.h"
+#include "CCTMXXMLParser.h"
 NS_CC_BEGIN
 
-	class CCTMXMapInfo;
-	class CCTMXLayerInfo;
-	class CCTMXTilesetInfo;
-	struct _ccCArray;
+class CCTMXMapInfo;
+class CCTMXLayerInfo;
+class CCTMXTilesetInfo;
+struct _ccCArray;
 
-	/** @brief CCTMXLayer represents the TMX layer.
+/**
+ * @addtogroup tilemap_parallax_nodes
+ * @{
+ */
 
-	It is a subclass of CCSpriteBatchNode. By default the tiles are rendered using a CCTextureAtlas.
-	If you modify a tile on runtime, then, that tile will become a CCSprite, otherwise no CCSprite objects are created.
-	The benefits of using CCSprite objects as tiles are:
-	- tiles (CCSprite) can be rotated/scaled/moved with a nice API
+/** @brief CCTMXLayer represents the TMX layer.
 
-	If the layer contains a property named "cc_vertexz" with an integer (in can be positive or negative),
-	then all the tiles belonging to the layer will use that value as their OpenGL vertex Z for depth.
+It is a subclass of CCSpriteBatchNode. By default the tiles are rendered using a CCTextureAtlas.
+If you modify a tile on runtime, then, that tile will become a CCSprite, otherwise no CCSprite objects are created.
+The benefits of using CCSprite objects as tiles are:
+- tiles (CCSprite) can be rotated/scaled/moved with a nice API
 
-	On the other hand, if the "cc_vertexz" property has the "automatic" value, then the tiles will use an automatic vertex Z value.
-	Also before drawing the tiles, CC_ALPHA_TEST will be enabled, and disabled after drawin them. The used alpha func will be:
+If the layer contains a property named "cc_vertexz" with an integer (in can be positive or negative),
+then all the tiles belonging to the layer will use that value as their OpenGL vertex Z for depth.
 
-	glAlphaFunc( CC_GREATER, value )
+On the other hand, if the "cc_vertexz" property has the "automatic" value, then the tiles will use an automatic vertex Z value.
+Also before drawing the tiles, GL_ALPHA_TEST will be enabled, and disabled after drawing them. The used alpha func will be:
 
-	"value" by default is 0, but you can change it from Tiled by adding the "cc_alpha_func" property to the layer.
-	The value 0 should work for most cases, but if you have tiles that are semi-transparent, then you might want to use a differnt
-	value, like 0.5.
+glAlphaFunc( GL_GREATER, value )
 
-	For further information, please see the programming guide:
+"value" by default is 0, but you can change it from Tiled by adding the "cc_alpha_func" property to the layer.
+The value 0 should work for most cases, but if you have tiles that are semi-transparent, then you might want to use a different
+value, like 0.5.
 
-	http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:tiled_maps
+For further information, please see the programming guide:
 
-	@since v0.8.1
-	*/
-	class CC_DLL CCTMXLayer : public CCSpriteBatchNode
-	{
-		/** size of the layer in tiles */
-		CC_SYNTHESIZE_PASS_BY_REF(CCSize, m_tLayerSize, LayerSize);
-		/** size of the map's tile (could be differnt from the tile's size) */
-		CC_SYNTHESIZE_PASS_BY_REF(CCSize, m_tMapTileSize, MapTileSize);
-		/** pointer to the map of tiles */
-		CC_SYNTHESIZE(unsigned int*, m_pTiles, Tiles);
-		/** Tilset information for the layer */
-		CC_PROPERTY(CCTMXTilesetInfo*, m_pTileSet, TileSet);
-		/** Layer orientation, which is the same as the map orientation */
-		CC_SYNTHESIZE(unsigned int, m_uLayerOrientation, LayerOrientation);
-		/** properties from the layer. They can be added using Tiled */
-		CC_PROPERTY(CCDictionary*, m_pProperties, Properties);
-	public:
-		CCTMXLayer();
-		virtual ~CCTMXLayer();
-		/** creates a CCTMXLayer with an tileset info, a layer info and a map info */
-		static CCTMXLayer * layerWithTilesetInfo(CCTMXTilesetInfo *tilesetInfo, CCTMXLayerInfo *layerInfo, CCTMXMapInfo *mapInfo);
-		/** initializes a CCTMXLayer with a tileset info, a layer info and a map info */
-		bool initWithTilesetInfo(CCTMXTilesetInfo *tilesetInfo, CCTMXLayerInfo *layerInfo, CCTMXMapInfo *mapInfo);
+http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:tiled_maps
 
-		/** dealloc the map that contains the tile position from memory.
-		Unless you want to know at runtime the tiles positions, you can safely call this method.
-		If you are going to call layer->tileGIDAt() then, don't release the map
-		*/
-		void releaseMap();
+@since v0.8.1
+Tiles can have tile flags for additional properties. At the moment only flip horizontal and flip vertical are used. These bit flags are defined in CCTMXXMLParser.h.
 
-		/** returns the tile (CCSprite) at a given a tile coordinate.
-		The returned CCSprite will be already added to the CCTMXLayer. Don't add it again.
-		The CCSprite can be treated like any other CCSprite: rotated, scaled, translated, opacity, color, etc.
-		You can remove either by calling:
-		- layer->removeChild(sprite, cleanup);
-		- or layer->removeTileAt(ccp(x,y));
-		*/
-		CCSprite* tileAt(const CCPoint& tileCoordinate);
+@since 1.1
+*/
 
-		/** returns the tile gid at a given tile coordinate.
-		if it returns 0, it means that the tile is empty.
-		This method requires the the tile map has not been previously released (eg. don't call layer->releaseMap())
-		*/
-		unsigned int  tileGIDAt(const CCPoint& tileCoordinate);
+class CC_DLL CCTMXLayer : public CCSpriteBatchNode
+{
+    /** size of the layer in tiles */
+    CC_SYNTHESIZE_PASS_BY_REF(CCSize, m_tLayerSize, LayerSize);
+    /** size of the map's tile (could be different from the tile's size) */
+    CC_SYNTHESIZE_PASS_BY_REF(CCSize, m_tMapTileSize, MapTileSize);
+    /** pointer to the map of tiles */
+    CC_SYNTHESIZE(unsigned int*, m_pTiles, Tiles);
+    /** Tileset information for the layer */
+    CC_PROPERTY(CCTMXTilesetInfo*, m_pTileSet, TileSet);
+    /** Layer orientation, which is the same as the map orientation */
+    CC_SYNTHESIZE(unsigned int, m_uLayerOrientation, LayerOrientation);
+    /** properties from the layer. They can be added using Tiled */
+    CC_PROPERTY(CCDictionary*, m_pProperties, Properties);
+public:
+    CCTMXLayer();
+    virtual ~CCTMXLayer();
+  
+    /** creates a CCTMXLayer with an tileset info, a layer info and a map info */
+    static CCTMXLayer * create(CCTMXTilesetInfo *tilesetInfo, CCTMXLayerInfo *layerInfo, CCTMXMapInfo *mapInfo);
 
-		/** sets the tile gid (gid = tile global id) at a given tile coordinate.
-		The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor -> Tileset Mgr +1.
-		If a tile is already placed at that position, then it will be removed.
-		*/
-		void setTileGID(unsigned int gid, const CCPoint& tileCoordinate);
+    /** initializes a CCTMXLayer with a tileset info, a layer info and a map info */
+    bool initWithTilesetInfo(CCTMXTilesetInfo *tilesetInfo, CCTMXLayerInfo *layerInfo, CCTMXMapInfo *mapInfo);
 
-		/** removes a tile at given tile coordinate */
-		void removeTileAt(const CCPoint& tileCoordinate);
+    /** dealloc the map that contains the tile position from memory.
+    Unless you want to know at runtime the tiles positions, you can safely call this method.
+    If you are going to call layer->tileGIDAt() then, don't release the map
+    */
+    void releaseMap();
 
-		/** returns the position in pixels of a given tile coordinate */
-		CCPoint positionAt(const CCPoint& tileCoordinate);
+    /** returns the tile (CCSprite) at a given a tile coordinate.
+    The returned CCSprite will be already added to the CCTMXLayer. Don't add it again.
+    The CCSprite can be treated like any other CCSprite: rotated, scaled, translated, opacity, color, etc.
+    You can remove either by calling:
+    - layer->removeChild(sprite, cleanup);
+    - or layer->removeTileAt(ccp(x,y));
+    */
+    CCSprite* tileAt(const CCPoint& tileCoordinate);
 
-		/** return the value for the specific property name */
-		CCString *propertyNamed(const char *propertyName);
+    /** returns the tile gid at a given tile coordinate.
+    if it returns 0, it means that the tile is empty.
+    This method requires the the tile map has not been previously released (eg. don't call layer->releaseMap())
+    */
+    unsigned int  tileGIDAt(const CCPoint& tileCoordinate);
 
-		/** Creates the tiles */
-		void setupTiles();
+    /** returns the tile gid at a given tile coordinate. It also returns the tile flags.
+     This method requires the the tile map has not been previously released (eg. don't call [layer releaseMap])
+     */
+    unsigned int tileGIDAt(const CCPoint& tileCoordinate, ccTMXTileFlags* flags);
 
-		/** CCTMXLayer doesn't support adding a CCSprite manually.
-		@warning addchild(z, tag); is not supported on CCTMXLayer. Instead of setTileGID.
-		*/
-		virtual void addChild(CCNode * child, int zOrder, int tag);
-		// super method
-		void removeChild(CCNode* child, bool cleanup);
-		void draw();
+    /** sets the tile gid (gid = tile global id) at a given tile coordinate.
+    The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor -> Tileset Mgr +1.
+    If a tile is already placed at that position, then it will be removed.
+    */
+    void setTileGID(unsigned int gid, const CCPoint& tileCoordinate);
 
-		inline const char* getLayerName(){ return m_sLayerName.c_str(); }
-		inline void setLayerName(const char *layerName){ m_sLayerName = layerName; }
-	private:
-		CCPoint positionForIsoAt(const CCPoint& pos);
-		CCPoint positionForOrthoAt(const CCPoint& pos);
-		CCPoint positionForHexAt(const CCPoint& pos);
+    /** sets the tile gid (gid = tile global id) at a given tile coordinate.
+     The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor -> Tileset Mgr +1.
+     If a tile is already placed at that position, then it will be removed.
+     
+     Use withFlags if the tile flags need to be changed as well
+     */
 
-		CCPoint calculateLayerOffset(const CCPoint& offset);
-	
-		/* optimization methos */
-		CCSprite* appendTileForGID(unsigned int gid, const CCPoint& pos);
-		CCSprite* insertTileForGID(unsigned int gid, const CCPoint& pos);
-		CCSprite* updateTileForGID(unsigned int gid, const CCPoint& pos);
+    void setTileGID(unsigned int gid, const CCPoint& tileCoordinate, ccTMXTileFlags flags);
 
-		/* The layer recognizes some special properties, like cc_vertez */
-		void parseInternalProperties();
-		int vertexZForPos(const CCPoint& pos);
+    /** removes a tile at given tile coordinate */
+    void removeTileAt(const CCPoint& tileCoordinate);
 
-		// index
-		unsigned int atlasIndexForExistantZ(unsigned int z);
-		unsigned int atlasIndexForNewZ(int z);
-	protected:
-		//! name of the layer
-		std::string m_sLayerName;
-		//! TMX Layer supports opacity
-		unsigned char		m_cOpacity;
+    /** returns the position in points of a given tile coordinate */
+    CCPoint positionAt(const CCPoint& tileCoordinate);
 
-		unsigned int		m_uMinGID;
-		unsigned int		m_uMaxGID;
+    /** return the value for the specific property name */
+    CCString *propertyNamed(const char *propertyName);
 
-		//! Only used when vertexZ is used
-		int					m_nVertexZvalue;
-		bool				m_bUseAutomaticVertexZ;
-		float				m_fAlphaFuncValue;
+    /** Creates the tiles */
+    void setupTiles();
 
-		//! used for optimization
-		CCSprite			*m_pReusedTile;
-		_ccCArray			*m_pAtlasIndexArray;
-        
-        // used for retina display
-        float               m_fContentScaleFactor;
-	};
+    /** CCTMXLayer doesn't support adding a CCSprite manually.
+    @warning addchild(z, tag); is not supported on CCTMXLayer. Instead of setTileGID.
+    */
+    virtual void addChild(CCNode * child, int zOrder, int tag);
+    // super method
+    void removeChild(CCNode* child, bool cleanup);
 
-	NS_CC_END
+    inline const char* getLayerName(){ return m_sLayerName.c_str(); }
+    inline void setLayerName(const char *layerName){ m_sLayerName = layerName; }
+private:
+    CCPoint positionForIsoAt(const CCPoint& pos);
+    CCPoint positionForOrthoAt(const CCPoint& pos);
+    CCPoint positionForHexAt(const CCPoint& pos);
+
+    CCPoint calculateLayerOffset(const CCPoint& offset);
+
+    /* optimization methods */
+    CCSprite* appendTileForGID(unsigned int gid, const CCPoint& pos);
+    CCSprite* insertTileForGID(unsigned int gid, const CCPoint& pos);
+    CCSprite* updateTileForGID(unsigned int gid, const CCPoint& pos);
+
+    /* The layer recognizes some special properties, like cc_vertez */
+    void parseInternalProperties();
+    void setupTileSprite(CCSprite* sprite, CCPoint pos, unsigned int gid);
+    CCSprite* reusedTileWithRect(CCRect rect);
+    int vertexZForPos(const CCPoint& pos);
+
+    // index
+    unsigned int atlasIndexForExistantZ(unsigned int z);
+    unsigned int atlasIndexForNewZ(int z);
+protected:
+    //! name of the layer
+    std::string m_sLayerName;
+    //! TMX Layer supports opacity
+    unsigned char        m_cOpacity;
+
+    unsigned int        m_uMinGID;
+    unsigned int        m_uMaxGID;
+
+    //! Only used when vertexZ is used
+    int                    m_nVertexZvalue;
+    bool                m_bUseAutomaticVertexZ;
+	float				m_fAlphaFuncValue;
+    //! used for optimization
+    CCSprite            *m_pReusedTile;
+    ccCArray            *m_pAtlasIndexArray;
+    
+    // used for retina display
+    float               m_fContentScaleFactor;            
+};
+
+// end of tilemap_parallax_nodes group
+/// @}
+
+NS_CC_END
+
 #endif //__CCTMX_LAYER_H__
 

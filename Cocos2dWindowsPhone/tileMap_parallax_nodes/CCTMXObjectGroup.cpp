@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2010      Neophit
 Copyright (c) 2010      Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
@@ -24,31 +24,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
-// For licensing information relating to this distribution please see Third Party Notices file.
 #include "pch.h"
 #include "CCTMXObjectGroup.h"
 #include "ccMacros.h"
+
 NS_CC_BEGIN
 
-	//implementation CCTMXObjectGroup
+//implementation CCTMXObjectGroup
 
-	CCTMXObjectGroup::CCTMXObjectGroup()
-        :m_tPositionOffset(CCPointZero)
-		,m_sGroupName("")		
-	{
+CCTMXObjectGroup::CCTMXObjectGroup()
+    :m_tPositionOffset(CCPointZero)
+    ,m_sGroupName("")        
+{
     m_pObjects = CCArray::create();
     m_pObjects->retain();
     m_pProperties = new CCDictionary();
-	}
-	CCTMXObjectGroup::~CCTMXObjectGroup()
-	{
-		CCLOGINFO( "cocos2d: deallocing.");
-		CC_SAFE_RELEASE(m_pObjects);
-		CC_SAFE_RELEASE(m_pProperties);
-	}
-	CCDictionary * CCTMXObjectGroup::objectNamed(const char *objectName)
-	{
+}
+CCTMXObjectGroup::~CCTMXObjectGroup()
+{
+    CCLOGINFO( "cocos2d: deallocing.");
+    CC_SAFE_RELEASE(m_pObjects);
+    CC_SAFE_RELEASE(m_pProperties);
+}
+CCDictionary* CCTMXObjectGroup::objectNamed(const char *objectName)
+{
     if (m_pObjects && m_pObjects->count() > 0)
     {
         CCObject* pObj = NULL;
@@ -63,32 +62,32 @@ NS_CC_BEGIN
         }
     }
     // object not found
-    return NULL;  	
-	}
-	CCString* CCTMXObjectGroup::propertyNamed(const char* propertyName)
-	{
+    return NULL;    
+}
+CCString* CCTMXObjectGroup::propertyNamed(const char* propertyName)
+{
     return (CCString*)m_pProperties->objectForKey(propertyName);
-	}
+}
 
-	CCDictionary * CCTMXObjectGroup::getProperties()
-	{ 
-		return m_pProperties;
-	}
-	void CCTMXObjectGroup::setProperties(CCDictionary * properties)
-	{
-		CC_SAFE_RETAIN(properties);
-		CC_SAFE_RELEASE(m_pProperties);
-		m_pProperties = properties;
-	}
-	CCArray* CCTMXObjectGroup::getObjects()
-	{
-		return m_pObjects;
-	}
-	void CCTMXObjectGroup::setObjects(CCArray* objects)
-	{
-		CC_SAFE_RETAIN(objects);
-		CC_SAFE_RELEASE(m_pObjects);
-		m_pObjects = objects;
-	}
+CCDictionary* CCTMXObjectGroup::getProperties()
+{ 
+    return m_pProperties;
+}
+void CCTMXObjectGroup::setProperties(CCDictionary * properties)
+{
+    CC_SAFE_RETAIN(properties);
+    CC_SAFE_RELEASE(m_pProperties);
+    m_pProperties = properties;
+}
+CCArray* CCTMXObjectGroup::getObjects()
+{
+    return m_pObjects;
+}
+void CCTMXObjectGroup::setObjects(CCArray* objects)
+{
+    CC_SAFE_RETAIN(objects);
+    CC_SAFE_RELEASE(m_pObjects);
+    m_pObjects = objects;
+}
 
-	NS_CC_END
+NS_CC_END
