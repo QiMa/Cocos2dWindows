@@ -4,7 +4,7 @@
 
 static int sceneIdx = -1; 
 
-#define MAX_LAYER    7
+#define MAX_LAYER    4
 
 CCLayer* nextAction();
 CCLayer* backAction();
@@ -18,9 +18,9 @@ CCLayer* createLayer(int nIndex)
         case 1: return new SpriteProgressToHorizontal();
         case 2: return new SpriteProgressToVertical();
         case 3: return new SpriteProgressToRadialMidpointChanged();
-        case 4: return new SpriteProgressBarVarious();
-        case 5: return new SpriteProgressBarTintAndFade();
-        case 6: return new SpriteProgressWithSpriteFrame();
+        //case 4: return new SpriteProgressBarVarious();
+        //case 5: return new SpriteProgressBarTintAndFade();
+        //case 6: return new SpriteProgressWithSpriteFrame();
     }
 
     return NULL;
@@ -162,14 +162,14 @@ void SpriteProgressToRadial::onEnter()
     CCProgressTo *to1 = CCProgressTo::create(2, 100);
     CCProgressTo *to2 = CCProgressTo::create(2, 100);
 
-    CCProgressTimer *left = CCProgressTimer::create(CCSprite::create(s_pPathSister1));
-    left->setType( kCCProgressTimerTypeRadial );
+    CCProgressTimer *left = CCProgressTimer::progressWithFile(s_pPathSister1);
+    left->setType( kCCProgressTimerTypeRadialCW );
     addChild(left);
     left->setPosition(ccp(100, s.height/2));
     left->runAction( CCRepeatForever::create(to1));
     
-    CCProgressTimer *right = CCProgressTimer::create(CCSprite::create(s_pPathBlock));
-    right->setType(kCCProgressTimerTypeRadial);
+    CCProgressTimer *right = CCProgressTimer::progressWithFile(s_pPathBlock);
+    right->setType(kCCProgressTimerTypeRadialCCW);
     // Makes the ridial CCW
     right->setReverseProgress(true);
     addChild(right);
@@ -197,8 +197,8 @@ void SpriteProgressToHorizontal::onEnter()
     CCProgressTo *to1 = CCProgressTo::create(2, 100);
     CCProgressTo *to2 = CCProgressTo::create(2, 100);
     
-    CCProgressTimer *left = CCProgressTimer::create(CCSprite::create(s_pPathSister1));
-    left->setType(kCCProgressTimerTypeBar);
+    CCProgressTimer *left = CCProgressTimer::progressWithFile(s_pPathSister1);
+    left->setType(kCCProgressTimerTypeHorizontalBarLR);
     //    Setup for a bar starting from the left since the midpoint is 0 for the x
     left->setMidpoint(ccp(0,0));
     //    Setup for a horizontal bar since the bar change rate is 0 for y meaning no vertical change
@@ -207,8 +207,8 @@ void SpriteProgressToHorizontal::onEnter()
     left->setPosition(ccp(100, s.height/2));
     left->runAction( CCRepeatForever::create(to1));
     
-    CCProgressTimer *right = CCProgressTimer::create(CCSprite::create(s_pPathSister2));
-    right->setType(kCCProgressTimerTypeBar);
+    CCProgressTimer *right = CCProgressTimer::progressWithFile(s_pPathSister2);
+    right->setType(kCCProgressTimerTypeHorizontalBarRL);
     //    Setup for a bar starting from the left since the midpoint is 1 for the x
     right->setMidpoint(ccp(1, 0));
     //    Setup for a horizontal bar since the bar change rate is 0 for y meaning no vertical change
@@ -237,8 +237,8 @@ void SpriteProgressToVertical::onEnter()
     CCProgressTo *to1 = CCProgressTo::create(2, 100);
     CCProgressTo *to2 = CCProgressTo::create(2, 100);
     
-    CCProgressTimer *left = CCProgressTimer::create(CCSprite::create(s_pPathSister1));
-    left->setType(kCCProgressTimerTypeBar);
+    CCProgressTimer *left = CCProgressTimer::progressWithFile(s_pPathSister1);
+    left->setType(kCCProgressTimerTypeVerticalBarBT);
 
     //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
     left->setMidpoint(ccp(0,0));
@@ -248,8 +248,8 @@ void SpriteProgressToVertical::onEnter()
     left->setPosition(ccp(100, s.height/2));
     left->runAction( CCRepeatForever::create(to1));
     
-    CCProgressTimer *right = CCProgressTimer::create(CCSprite::create(s_pPathSister2));
-    right->setType(kCCProgressTimerTypeBar);
+    CCProgressTimer *right = CCProgressTimer::progressWithFile(s_pPathSister2);
+    right->setType(kCCProgressTimerTypeVerticalBarTB);
     //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
     right->setMidpoint(ccp(0, 1));
     //    Setup for a vertical bar since the bar change rate is 0 for x meaning no horizontal change
@@ -280,19 +280,20 @@ void SpriteProgressToRadialMidpointChanged::onEnter()
     /**
    *  Our image on the left should be a radial progress indicator, clockwise
    */
-    CCProgressTimer *left = CCProgressTimer::create(CCSprite::create(s_pPathBlock));
-    left->setType(kCCProgressTimerTypeRadial);
+
+    CCProgressTimer *left = CCProgressTimer::progressWithFile(s_pPathBlock);
+    left->setType(kCCProgressTimerTypeRadialCW);
     addChild(left);
-    left->setMidpoint(ccp(0.25f, 0.75f));
+    left->setAnchorPoint(ccp(0.25f, 0.75f));
     left->setPosition(ccp(100, s.height/2));
     left->runAction(CCRepeatForever::create((CCActionInterval *)action->copy()->autorelease()));
 
     /**
    *  Our image on the left should be a radial progress indicator, counter clockwise
    */
-    CCProgressTimer *right = CCProgressTimer::create(CCSprite::create(s_pPathBlock));
-    right->setType(kCCProgressTimerTypeRadial);
-    right->setMidpoint(ccp(0.75f, 0.25f));
+    CCProgressTimer *right = CCProgressTimer::progressWithFile(s_pPathBlock);
+    right->setType(kCCProgressTimerTypeRadialCW);
+    right->setAnchorPoint(ccp(0.75f, 0.25f));
 
     /**
    *  Note the reverse property (default=NO) is only added to the right image. That's how
@@ -321,8 +322,8 @@ void SpriteProgressBarVarious::onEnter()
 
     CCProgressTo *to = CCProgressTo::create(2, 100);
 
-    CCProgressTimer *left = CCProgressTimer::create(CCSprite::create(s_pPathSister1));
-    left->setType(kCCProgressTimerTypeBar);
+    CCProgressTimer *left = CCProgressTimer::progressWithFile(s_pPathSister1);
+    left->setType(kCCProgressTimerTypeVerticalBarTB);
 
     //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
     left->setMidpoint(ccp(0.5f, 0.5f));
@@ -332,7 +333,7 @@ void SpriteProgressBarVarious::onEnter()
     left->setPosition(ccp(100, s.height/2));
     left->runAction(CCRepeatForever::create((CCActionInterval *)to->copy()->autorelease()));
 
-    CCProgressTimer *middle = CCProgressTimer::create(CCSprite::create(s_pPathSister2));
+    CCProgressTimer *middle = CCProgressTimer::progressWithFile(s_pPathSister2);
     middle->setType(kCCProgressTimerTypeBar);
     //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
     middle->setMidpoint(ccp(0.5f, 0.5f));
