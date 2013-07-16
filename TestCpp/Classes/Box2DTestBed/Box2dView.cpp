@@ -1,4 +1,4 @@
-#include"pch.h"
+#include "pch.h"
 #include "Box2dView.h"
 #include "GLES-Render.h"
 #include "Test.h"
@@ -192,15 +192,15 @@ void Box2DView::draw()
 {
     CCLayer::draw();
 
-    ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
+    //ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
 
-    kmGLPushMatrix();
+    //kmGLPushMatrix();
 
     m_test->m_world->DrawDebugData();
 
-    kmGLPopMatrix();
+    //kmGLPopMatrix();
 
-    CHECK_GL_ERROR_DEBUG();
+    //CHECK_GL_ERROR_DEBUG();
 }
 
 Box2DView::~Box2DView()

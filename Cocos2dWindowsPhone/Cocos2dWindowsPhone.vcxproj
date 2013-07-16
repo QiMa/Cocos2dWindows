@@ -539,6 +539,9 @@
     <ClInclude Include="include\kazmath\vec2.h" />
     <ClInclude Include="include\kazmath\vec3.h" />
     <ClInclude Include="include\kazmath\vec4.h" />
+    <ClInclude Include="include\pthread.h" />
+    <ClInclude Include="include\sched.h" />
+    <ClInclude Include="include\semaphore.h" />
     <ClInclude Include="include\SimpleAudioEngine.h" />
   </ItemGroup>
   <ItemGroup>

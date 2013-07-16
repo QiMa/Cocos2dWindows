@@ -866,6 +866,15 @@
     <ClInclude Include="include\SimpleAudioEngine.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\pthread.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sched.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\semaphore.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include=".\shaders\CCDrawingPixelShader.hlsl">

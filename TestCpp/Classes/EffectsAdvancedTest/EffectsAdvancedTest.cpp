@@ -27,19 +27,19 @@ void Effect1::onEnter()
     // in this case:
     //     Lens3D is Grid3D and it's size is (15,10)
     //     Waves3D is Grid3D and it's size is (15,10)
-    /*
+    
     CCSize size = CCDirector::sharedDirector()->getWinSize();
     CCActionInterval* lens = CCLens3D::create(0.0f, CCSizeMake(15,10), ccp(size.width/2,size.height/2), 240);
     CCActionInterval* waves = CCWaves3D::create(10, CCSizeMake(15,10), 18, 15);
 
     CCFiniteTimeAction* reuse = CCReuseGrid::create(1);
-    CCActionInterval* delay = CCDelayTime::create(8);*/
+    CCActionInterval* delay = CCDelayTime::create(8);
 
-    //CCActionInterval* orbit = CCOrbitCamera::create(5, 1, 2, 0, 180, 0, -90);
-    //CCActionInterval* orbit_back = orbit->reverse();
+    CCActionInterval* orbit = CCOrbitCamera::create(5, 1, 2, 0, 180, 0, -90);
+    CCActionInterval* orbit_back = orbit->reverse();
 
-    //target->runAction( CCRepeatForever::create( CCSequence::create( orbit, orbit_back, NULL)  ) );
-    //target->runAction( CCSequence::create(lens, delay, reuse, waves, NULL) );
+    target->runAction( CCRepeatForever::create( CCSequence::create( orbit, orbit_back, NULL)  ) );
+    target->runAction( CCSequence::create(lens, delay, reuse, waves, NULL) );
 }
 
 std::string Effect1::title()

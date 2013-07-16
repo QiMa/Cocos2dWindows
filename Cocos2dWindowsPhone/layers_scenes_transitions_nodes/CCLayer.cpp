@@ -479,7 +479,7 @@ CCLayerColor::CCLayerColor()
 : m_cOpacity(0)
 , m_tColor( ccc3(0,0,0) )
 {
-	m_bIsRelativeAnchorPoint = true;
+	//m_bIsRelativeAnchorPoint = true;
     // default blend function
 	m_tBlendFunc.src = CC_BLEND_SRC;
 	m_tBlendFunc.dst = CC_BLEND_DST;

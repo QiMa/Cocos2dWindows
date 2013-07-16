@@ -41,16 +41,16 @@ TEXTURE2D_CREATE_FUNC(TexturePVRRGB565);
 TEXTURE2D_CREATE_FUNC(TexturePVRRGB565v3);
 TEXTURE2D_CREATE_FUNC(TexturePVRRGB888);
 TEXTURE2D_CREATE_FUNC(TexturePVRRGB888v3);
-TEXTURE2D_CREATE_FUNC(TexturePVRA8);
+//TEXTURE2D_CREATE_FUNC(TexturePVRA8);
 TEXTURE2D_CREATE_FUNC(TexturePVRA8v3);
-TEXTURE2D_CREATE_FUNC(TexturePVRI8);
+//TEXTURE2D_CREATE_FUNC(TexturePVRI8);
 TEXTURE2D_CREATE_FUNC(TexturePVRI8v3);
-TEXTURE2D_CREATE_FUNC(TexturePVRAI88);
+//TEXTURE2D_CREATE_FUNC(TexturePVRAI88);
 TEXTURE2D_CREATE_FUNC(TexturePVRAI88v3);
 TEXTURE2D_CREATE_FUNC(TexturePVRBadEncoding);
 TESTLAYER_CREATE_FUNC(TexturePNG);
 TESTLAYER_CREATE_FUNC(TextureJPEG);
-TESTLAYER_CREATE_FUNC(TextureTIFF);
+//TESTLAYER_CREATE_FUNC(TextureTIFF);
 TESTLAYER_CREATE_FUNC(TexturePixelFormat);
 TESTLAYER_CREATE_FUNC(TextureBlend);
 TESTLAYER_CREATE_FUNC(TextureAsync);
@@ -90,17 +90,17 @@ static NEWTEXTURE2DTESTFUNC createFunctions[] =
     createTexturePVRRGB565v3,
     createTexturePVRRGB888,
     createTexturePVRRGB888v3,
-    createTexturePVRA8,
+   // createTexturePVRA8,
     createTexturePVRA8v3,
-    createTexturePVRI8,
+   // createTexturePVRI8,
     createTexturePVRI8v3,
-    createTexturePVRAI88,
+   // createTexturePVRAI88,
     createTexturePVRAI88v3,
     
     createTexturePVRBadEncoding,
     createTexturePNG,
     createTextureJPEG,
-    createTextureTIFF,
+ //   createTextureTIFF,
     createTexturePixelFormat,
     createTextureBlend,
     createTextureAsync,

@@ -976,6 +976,9 @@ CCLayer* createParticleLayer(int nIndex)
 {
     switch(nIndex)
     {
+/*********************************************
+Ô­°æµÄË³Ğò
+
         case 0: return new ParticleReorder();
         case 1: return new ParticleBatchHybrid();
         case 2: return new ParticleBatchMultipleEmitters();
@@ -1020,7 +1023,62 @@ CCLayer* createParticleLayer(int nIndex)
         case 40: return new ReorderParticleSystems();
         case 41: return new PremultipliedAlphaTest();
         case 42: return new PremultipliedAlphaTest2();
-        default:
+***************************************************/
+/***************************************************
+·½±ã²âÊÔµÄË³Ğò
+***************************************************/
+
+	case 0: return new DemoFlower();
+	case 1: return new DemoGalaxy();
+	case 2: return new DemoFirework();
+	case 3: return new DemoSpiral();
+	case 4: return new DemoSun();
+	case 5: return new DemoMeteor();
+	case 6: return new DemoFire();
+	case 7: return new DemoSmoke();
+	case 8: return new DemoExplosion();
+	case 9: return new DemoSnow();
+	case 10: return new DemoRain();
+	case 11: return new DemoBigFlower();
+	case 12: return new DemoRotFlower();
+	case 13: return new DemoModernArt();
+	case 14: return new DemoRing();
+	case 15: return new ParallaxParticle();
+
+	case 16: return new DemoParticleFromFile("debian");
+
+	case 17: return new DemoParticleFromFile("Upsidedown");
+	case 18: return new DemoParticleFromFile("Flower");
+	case 19: return new DemoParticleFromFile("Spiral");
+	case 20: return new DemoParticleFromFile("Galaxy");
+
+	case 21: return new RadiusMode1();
+	case 22: return new RadiusMode2();
+	case 23: return new Issue704();
+	case 24: return new PremultipliedAlphaTest2();
+	case 25: return new Issue1201();
+	case 26: return new Issue870();
+
+	case 27: return new DemoParticleFromFile("ExplodingRing");
+	case 28: return new DemoParticleFromFile("LavaFlow");
+	case 29: return new DemoParticleFromFile("SpinningPeas");
+	case 30: return new DemoParticleFromFile("SpookyPeas");
+	case 31: return new DemoParticleFromFile("BoilingFoam");
+	case 32: return new DemoParticleFromFile("Phoenix");
+	case 33: return new DemoParticleFromFile("lines");
+	case 34: return new DemoParticleFromFile("BurstPipe");
+	case 35: return new DemoParticleFromFile("Comet");
+	case 36: return new MultipleParticleSystems();
+	case 37: return new MultipleParticleSystemsBatched();
+	case 38: return new AddAndDeleteParticleSystems();
+	case 39: return new ReorderParticleSystems();
+	case 40: return new PremultipliedAlphaTest();
+
+	case 41: return new ParticleReorder();
+	case 42: return new ParticleBatchHybrid();
+	case 43: return new ParticleBatchMultipleEmitters();
+
+    default:
             break;
     }
 
@@ -1114,7 +1172,7 @@ void ParticleDemo::onEnter(void)
     // moving background
     m_background = CCSprite::create(s_back3);
     addChild(m_background, 5);
-    m_background->setPosition( ccp(s.width/2, s.height-180) );
+    m_background->setPosition( ccp(s.width/2, s.height/2) );
     
     CCActionInterval* move = CCMoveBy::create(4, ccp(300,0) );
     CCActionInterval* move_back = move->reverse();
