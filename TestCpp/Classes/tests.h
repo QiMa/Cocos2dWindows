@@ -85,7 +85,7 @@ enum
 //    TEST_CHIPMUNK,
 //#endif
     //TEST_BOX2D,
-    TEST_BOX2DBED,
+    //TEST_BOX2DBED,
     TEST_EFFECT_ADVANCE,
     TEST_ACCELEROMRTER,
     TEST_KEYPAD,
@@ -142,7 +142,7 @@ const std::string g_aTestNames[TESTS_COUNT] = {
 //    "ChipmunkTest",
 //#endif
     //"Box2dTest",
-   "Box2dTestBed",
+   //"Box2dTestBed",
     "EffectAdvancedTest",
     "Accelerometer",
     "KeypadTest",
