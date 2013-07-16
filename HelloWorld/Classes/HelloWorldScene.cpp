@@ -79,21 +79,13 @@ bool HelloWorld::init()
 		this->addChild(pLabel, 10);
 
 
-		////测试动画效果
-		//CCSpriteFrameCache *cache = CCSpriteFrameCache::sharedSpriteFrameCache();
-		//cache->addSpriteFramesWithFile("gameart.plist", "gameart.png");
-		//CCArray *animFrames = new CCArray(3); 
-		//CCSpriteFrame *frame = cache->spriteFrameByName("accordion0.png"); 
-		//animFrames->addObject(frame);
-		//frame = cache->spriteFrameByName("accordion1.png"); 
-		//animFrames->addObject(frame);
-		//frame = cache->spriteFrameByName("accordion2.png"); 
-		//animFrames->addObject(frame);
-		//CCAnimation *animation = CCAnimation::createWithSpriteFrames(animFrames,0.1f);
-		//CCSprite *pSprite = CCSprite::createWithSpriteFrameName("accordion0.png");
-		//this->addChild(pSprite,80);
-		//pSprite->setPosition(ccp(size.width*0.5, size.height*0.5));
-		//pSprite->runAction(CCRepeatForever::create(CCAnimate::create(animation)));
+		CCSprite* pSprite = CCSprite::create("HelloWorld.png");
+
+		// position the sprite on the center of the screen
+		pSprite->setPosition(ccp(size.width/2 , size.height/2 ));
+
+		// add the sprite as a child to this layer
+		this->addChild(pSprite, 0);
 
 		setTouchEnabled(true);
 

@@ -88,8 +88,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 
 	// turn on display FPS
 	//pDirector->setDisplayFPS(false);
-	pDirector->setDeviceOrientation(kCCDeviceOrientationPortrait);//竖屏的界面，如果是横屏的就改成下面的。
-	//pDirector->setDeviceOrientation(CCDeviceOrientationLandscapeLeft);
+	//pDirector->setDeviceOrientation(kCCDeviceOrientationPortrait);//竖屏的界面，如果是横屏的就改成下面的。
+	pDirector->setDeviceOrientation(CCDeviceOrientationLandscapeLeft);
 	// set FPS. the default value is 1.0/60 if you don't call this
 	//pDirector->setAnimationInterval(1.0 / 60);
 
