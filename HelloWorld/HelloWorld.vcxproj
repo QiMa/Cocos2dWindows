@@ -127,8 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png" />
-    <Image Include="Assets\gameart.png" />
-    <Image Include="Assets\HelloWorld.png" />
+    <Image Include="Assets\HelloWorld720p.png" />
+    <Image Include="Assets\HelloWorldWVGA.png" />
+    <Image Include="Assets\HelloWorldXGA.png" />
     <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
     <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />
@@ -282,9 +283,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\gameart.plist">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="CCDrawingPixelShader.cso">
       <DeploymentContent>true</DeploymentContent>
     </None>

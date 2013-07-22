@@ -31,7 +31,7 @@ class  AppDelegate : private cocos2d::CCApplication
 public:
 	AppDelegate();
 	virtual ~AppDelegate();
-
+	
     /**
     @brief	Implement for initialize OpenGL instance, set source path, etc...
     */
@@ -58,6 +58,9 @@ public:
 
 	virtual void applicationViewStateChanged(int newState, int oldState){};
 	virtual void deviceBackBttonPressed(Platform::Object^ sender, BackPressedEventArgs^ args){};
+//**************************************************************************************
+	static int JudgeDevice();
+//**************************************************************************************
 };
 
 #endif // _APP_DELEGATE_H_

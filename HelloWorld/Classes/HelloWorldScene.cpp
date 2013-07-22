@@ -17,7 +17,7 @@
 */
 
 #include "pch.h"
-
+#include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "CCCommon.h"
 #include "BasicLoader.h"
@@ -30,6 +30,9 @@ using namespace cocos2d;
 using namespace Windows::Foundation;
 using namespace Windows::Devices::Sensors;
 using namespace CocosDenshion;
+//**************************************************************************************
+int g_deviceResolutionInPiels1;//接收从AppDelegate里面传过来的值g_deviceResolutionInPiels
+//**************************************************************************************
 HelloWorld::~HelloWorld()
 {
 
@@ -70,16 +73,36 @@ bool HelloWorld::init()
 		{
 			break;
 		}
-
-		
+//**************************************************************************************
+		g_deviceResolutionInPiels1=AppDelegate::JudgeDevice();
+//**************************************************************************************		
 		CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
 		pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
 		pLabel->setColor(ccc3(160, 80, 5));
 		this->addChild(pLabel, 10);
-
-
-		CCSprite* pSprite = CCSprite::create("HelloWorld.png");
+//**************************************************************************************
+		CCSprite* pSprite=NULL;
+		CCLabelTTF* pLabelDevice=NULL;
+		if(g_deviceResolutionInPiels1==DeviceResolutionInPixels_720p)
+		{
+		 pSprite= CCSprite::create("HelloWorld720p.png");
+		 pLabelDevice= CCLabelTTF::create("720*1280", "Times New Roman", 24);
+		}
+		if(g_deviceResolutionInPiels1==DeviceResolutionInPixels_WVGA)
+		{
+		 pSprite= CCSprite::create("HelloWorldWVGA.png");
+		 pLabelDevice= CCLabelTTF::create("480*800", "Times New Roman", 24);
+		}
+		if(g_deviceResolutionInPiels1 == DeviceResolutionInPixels_WXGA)
+		{
+		 pSprite= CCSprite::create("HelloWorldXGA.png");
+		 pLabelDevice= CCLabelTTF::create("768*1280", "Times New Roman", 24);
+		}
+//**************************************************************************************
+		pLabelDevice->setPosition( ccp(size.width * 0.5, size.height * 0.4) );
+		pLabelDevice->setColor(ccc3(160, 80, 5));
+		this->addChild(pLabelDevice, 10);
 
 		// position the sprite on the center of the screen
 		pSprite->setPosition(ccp(size.width/2 , size.height/2 ));

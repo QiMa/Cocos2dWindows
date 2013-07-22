@@ -37,10 +37,13 @@
     <Image Include="Assets\Tiles\IconicTileSmall.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\HelloWorld.png">
+    <Image Include="Assets\HelloWorld720p.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\gameart.png">
+    <Image Include="Assets\HelloWorldWVGA.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\HelloWorldXGA.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
@@ -499,9 +502,6 @@
     </None>
     <None Include="CCTextureAtlasVertexShader.cso">
       <Filter>Shaders</Filter>
-    </None>
-    <None Include="Assets\gameart.plist">
-      <Filter>Assets</Filter>
     </None>
   </ItemGroup>
 </Project>

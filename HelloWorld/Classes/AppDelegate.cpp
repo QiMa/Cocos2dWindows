@@ -26,7 +26,15 @@
 
 #include "CCEGLView.h"
 USING_NS_CC;
-
+//***************************************************************************************************
+int g_deviceResolutionInPiels;
+int g_device;//a用来将g_deviceResolutionInPiels的值从AppDelegate中传到HelloWorldScene中去。
+int AppDelegate::JudgeDevice()
+{
+	g_device=g_deviceResolutionInPiels;
+	return g_device;
+}
+//***************************************************************************************************
 AppDelegate::AppDelegate()
 {
 }
@@ -56,16 +64,25 @@ bool AppDelegate::initInstance()
 	case DeviceResolutionInPixels_WVGA: 
 		{
 			mainView->setDesignResolution(480, 800);
+//**************************************************************************************
+			g_deviceResolutionInPiels = DeviceResolutionInPixels_WVGA;
+//**************************************************************************************
 			break;
 		}
 	case DeviceResolutionInPixels_720p: 
 		{
 			mainView->setDesignResolution(720, 1280);
+//**************************************************************************************
+			g_deviceResolutionInPiels = DeviceResolutionInPixels_720p;
+//**************************************************************************************
 			break;
 		}	
 	case DeviceResolutionInPixels_WXGA: 
 		{
 			mainView->setDesignResolution(768, 1280);
+//**************************************************************************************
+			g_deviceResolutionInPiels = DeviceResolutionInPixels_WXGA;
+//**************************************************************************************
 			break;
 		}
 	}
