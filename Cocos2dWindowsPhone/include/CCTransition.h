@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2008-2010 Ricardo Quesada
 Copyright (c) 2011      Zynga Inc.
 
@@ -24,12 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-// For licensing information relating to this distribution please see Third Party Notices file.
-
 #ifndef __CCTRANSITION_H__
 #define __CCTRANSITION_H__
 
 #include "CCScene.h"
+#include "ccTypes.h"
 
 NS_CC_BEGIN
 
@@ -579,3 +578,4 @@ public:
 NS_CC_END
 
 #endif // __CCTRANSITION_H__
+

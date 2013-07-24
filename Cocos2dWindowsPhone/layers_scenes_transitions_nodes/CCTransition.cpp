@@ -1,26 +1,29 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* Copyright (c) 2010-2011 cocos2d-x.org
-* Copyright (c) 2008-2010 Ricardo Quesada
-* Copyright (c) 2011      Zynga Inc.
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010-2012 cocos2d-x.org
+Copyright (c) 2008-2010 Ricardo Quesada
+Copyright (c) 2011      Zynga Inc.
 
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 #include "pch.h"
-
 #include "CCTransition.h"
 #include "CCCamera.h"
 #include "CCPointExtension.h"
@@ -30,10 +33,11 @@
 #include "CCActionInstant.h"
 #include "CCActionEase.h"
 #include "CCActionCamera.h"
-#include "CCLayer.h"
-#include "CCActionGrid.h"
-#include "CCRenderTexture.h"
 #include "CCActionTiledGrid.h"
+#include "CCActionGrid.h"
+#include "CCLayer.h"
+#include "CCRenderTexture.h"
+
 
 NS_CC_BEGIN
 
@@ -80,11 +84,8 @@ bool CCTransitionScene::initWithDuration(float t, CCScene *scene)
         m_pOutScene->retain();
 
         CCAssert( m_pInScene != m_pOutScene, "Incoming scene must be different from the outgoing scene" );
-
-        // disable events while transitions
-        CCDirector* pDirector = CCDirector::sharedDirector();
-        pDirector->getTouchDispatcher()->setDispatchEvents(false);
-        this->sceneOrder();
+        
+        sceneOrder();
 
         return true;
     }
@@ -135,16 +136,15 @@ void CCTransitionScene::finish()
 void CCTransitionScene::setNewScene(float dt)
 {    
     CC_UNUSED_PARAM(dt);
-    // [self unschedule:_cmd]; 
-    // "_cmd" is a local variable automatically defined in a method 
-    // that contains the selector for the method
+
     this->unschedule(schedule_selector(CCTransitionScene::setNewScene));
-    CCDirector *director = CCDirector::sharedDirector();
+    
     // Before replacing, save the "send cleanup to scene"
+    CCDirector *director = CCDirector::sharedDirector();
     m_bIsSendCleanupToScene = director->isSendCleanupToScene();
+    
     director->replaceScene(m_pInScene);
-    // enable events while transitions
-    director->getTouchDispatcher()->setDispatchEvents(true);
+    
     // issue #267
     m_pOutScene->setVisible(true);
 }
@@ -160,17 +160,28 @@ void CCTransitionScene::hideOutShowIn()
 void CCTransitionScene::onEnter()
 {
     CCScene::onEnter();
-    m_pInScene->onEnter();
+    
+    // disable events while transitions
+    CCDirector::sharedDirector()->getTouchDispatcher()->setDispatchEvents(false);
+    
     // outScene should not receive the onEnter callback
+    // only the onExitTransitionDidStart
+    m_pOutScene->onExitTransitionDidStart();
+    
+    m_pInScene->onEnter();
 }
 
 // custom onExit
 void CCTransitionScene::onExit()
 {
     CCScene::onExit();
+    
+    // enable events while transitions
+    CCDirector::sharedDirector()->getTouchDispatcher()->setDispatchEvents(true);
+    
     m_pOutScene->onExit();
 
-    // inScene should not receive the onExit callback
+    // m_pInScene should not receive the onEnter callback
     // only the onEnterTransitionDidFinish
     m_pInScene->onEnterTransitionDidFinish();
 }
@@ -379,7 +390,7 @@ CCActionInterval* CCTransitionMoveInL::easeActionWithAction(CCActionInterval* ac
 void CCTransitionMoveInL::initScenes()
 {
     CCSize s = CCDirector::sharedDirector()->getWinSize();
-    m_pInScene->setPosition( ccp(-s.width,0) );
+    m_pInScene->setPosition(ccp(-s.width,0));
 }
 
 //
@@ -1370,7 +1381,7 @@ void CCTransitionTurnOffTiles::onEnter()
     int x = (int)(12 * aspect);
     int y = 12;
 
-    CCTurnOffTiles* toff = CCTurnOffTiles::create( m_fDuration, CCSizeMake(x,y));
+    CCTurnOffTiles* toff = CCTurnOffTiles::create(m_fDuration, CCSizeMake(x,y));
     CCActionInterval* action = easeActionWithAction(toff);
     m_pOutScene->runAction
     (

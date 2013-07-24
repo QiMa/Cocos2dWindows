@@ -1044,40 +1044,38 @@ CCLayer* createParticleLayer(int nIndex)
 	case 13: return new DemoModernArt();
 	case 14: return new DemoRing();
 	case 15: return new ParallaxParticle();
-
 	case 16: return new DemoParticleFromFile("debian");
-
 	case 17: return new DemoParticleFromFile("Upsidedown");
 	case 18: return new DemoParticleFromFile("Flower");
 	case 19: return new DemoParticleFromFile("Spiral");
 	case 20: return new DemoParticleFromFile("Galaxy");
 	case 21: return new DemoParticleFromFile("ExplodingRing");
 	case 22: return new DemoParticleFromFile("LavaFlow");
-	//case 23: return new DemoParticleFromFile("SpinningPeas");
-	//case 23: return new DemoParticleFromFile("SpookyPeas");
 	case 23: return new DemoParticleFromFile("BoilingFoam");
 	case 24: return new DemoParticleFromFile("Phoenix");
-	//case 25: return new DemoParticleFromFile("lines");
-	case 25: return new DemoParticleFromFile("BurstPipe");
-	//case 26: return new DemoParticleFromFile("Comet");
-		
+	case 25: return new DemoParticleFromFile("BurstPipe");	
 	case 26: return new RadiusMode1();
 	case 27: return new RadiusMode2();
 	case 28: return new Issue704();
 	case 29: return new PremultipliedAlphaTest2();
 	case 30: return new Issue1201();
 	case 31: return new Issue870();
-
-
 	case 32: return new MultipleParticleSystems();
-	case 33: return new MultipleParticleSystemsBatched();
-	case 34: return new AddAndDeleteParticleSystems();
-	case 35: return new ReorderParticleSystems();
-	case 36: return new PremultipliedAlphaTest();
+	case 33: return new DemoParticleFromFile("SpinningPeas");
+	case 34: return new DemoParticleFromFile("SpookyPeas");
+	case 35: return new DemoParticleFromFile("Comet");
+	
 
-	case 37: return new ParticleReorder();
-	case 38: return new ParticleBatchHybrid();
-	case 39: return new ParticleBatchMultipleEmitters();
+
+	case 36: return new AddAndDeleteParticleSystems();
+	case 37: return new MultipleParticleSystemsBatched();
+	case 38: return new ReorderParticleSystems();
+	case 39: return new PremultipliedAlphaTest();
+	case 40: return new ParticleReorder();
+	case 41: return new ParticleBatchHybrid();
+	case 42: return new ParticleBatchMultipleEmitters();
+
+   
 
     default:
             break;

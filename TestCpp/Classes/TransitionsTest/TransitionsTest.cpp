@@ -202,7 +202,7 @@ static int s_nSceneIdx = 0;
 CCTransitionScene* createTransition(int nIndex, float t, CCScene* s)
 {
     // fix bug #486, without setDepthTest(false), FlipX,Y will flickers
-   // CCDirector::sharedDirector()->setDepthTest(false);
+    CCDirector::sharedDirector()->setDepthTest(false);
 
     switch(nIndex)
     {

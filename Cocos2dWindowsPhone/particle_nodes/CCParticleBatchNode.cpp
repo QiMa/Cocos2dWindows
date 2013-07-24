@@ -95,18 +95,15 @@ bool CCParticleBatchNode::initWithTexture(CCTexture2D *tex, unsigned int capacit
 
 
 	
-	m_tBlendFunc.src = CC_BLEND_SRC;
-	m_tBlendFunc.dst = CC_BLEND_DST;
     m_pTextureAtlas = new CCTextureAtlas();
     m_pTextureAtlas->initWithTexture(tex, capacity);
-	updateBlendFunc();
-	//CCAssert(false, "Not implemented."); 
-    //// no lazy alloc in this node
+
+    // no lazy alloc in this node
     m_pChildren = new CCArray();
     m_pChildren->initWithCapacity(capacity);
-	m_pChildren->retain();
 
-
+    m_tBlendFunc.src = CC_BLEND_SRC;
+    m_tBlendFunc.dst = CC_BLEND_DST;
 
     //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
     
