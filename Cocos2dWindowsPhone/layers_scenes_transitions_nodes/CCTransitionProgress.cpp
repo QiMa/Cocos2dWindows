@@ -217,7 +217,7 @@ CCProgressTimer* CCTransitionProgressHorizontal::progressTimerNodeWithRenderText
     
     // but it is flipped upside down so we flip the sprite
     pNode->getSprite()->setFlipY(true);
-    pNode->setType( kCCProgressTimerTypeBar);
+    pNode->setType( kCCProgressTimerTypeHorizontalBarLR);
     
     pNode->setMidpoint(ccp(1, 0));
     pNode->setBarChangeRate(ccp(1,0));
@@ -250,7 +250,7 @@ CCProgressTimer* CCTransitionProgressVertical::progressTimerNodeWithRenderTextur
     
     // but it is flipped upside down so we flip the sprite
     pNode->getSprite()->setFlipY(true);
-    pNode->setType(kCCProgressTimerTypeBar);
+    pNode->setType(kCCProgressTimerTypeVerticalBarBT);
     
     pNode->setMidpoint(ccp(0, 0));
     pNode->setBarChangeRate(ccp(0,1));
