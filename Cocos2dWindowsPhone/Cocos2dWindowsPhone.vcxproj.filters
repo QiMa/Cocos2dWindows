@@ -931,9 +931,4 @@
       <Filter>kazmath\src</Filter>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="kazmath\src\CMakeLists.txt">
-      <Filter>kazmath\src</Filter>
-    </Text>
-  </ItemGroup>
 </Project>

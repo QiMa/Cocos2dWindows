@@ -375,23 +375,12 @@ void LayerIgnoreAnchorPointPos::onEnter()
 
     menu->setPosition(ccp(s.width/2, s.height/2));
 }
-int m=0;
+
 void LayerIgnoreAnchorPointPos::onToggle(CCObject* pObject)
 {
-	m++;
-	if(m==3){
-		CCNode* pLayer = this->getChildByTag(kLayerIgnoreAnchorPoint);
-		pLayer->setAnchorPoint(ccp(0.5f, 1.0f));
-		m=m-3;
-	}
-	if(m==1){
     CCNode* pLayer = this->getChildByTag(kLayerIgnoreAnchorPoint);
-    //bool ignore = pLayer->isIgnoreAnchorPointForPosition();
-    //pLayer->ignoreAnchorPointForPosition(! ignore);
-	pLayer->setAnchorPoint(ccp(0,0));
-	m++;
-}
-
+    bool ignore = pLayer->getIsRelativeAnchorPoint();
+    pLayer->setIsRelativeAnchorPoint(! ignore);
 }
 
 std::string LayerIgnoreAnchorPointPos::title()
@@ -412,7 +401,7 @@ void LayerIgnoreAnchorPointRot::onEnter()
     CCSize s = CCDirector::sharedDirector()->getWinSize();
 
     CCLayerColor *l = CCLayerColor::create(ccc4(255, 0, 0, 255), 200, 200);
-	l->ignoreAnchorPointForPosition(false);
+
     l->setAnchorPoint(ccp(0.5f, 0.5f));
     l->setPosition(ccp( s.width/2, s.height/2));
 
@@ -434,22 +423,12 @@ void LayerIgnoreAnchorPointRot::onEnter()
 
     menu->setPosition(ccp(s.width/2, s.height/2));
 }
-int n=0;
+
 void LayerIgnoreAnchorPointRot::onToggle(CCObject* pObject)
 {
-	n++;
-	if(n==3){
-		CCNode* pLayer = this->getChildByTag(kLayerIgnoreAnchorPoint);
-		pLayer->setAnchorPoint(ccp(0.5f, 1.0f));
-		n=n-3;
-	}
-	if(n==1){
     CCNode* pLayer = this->getChildByTag(kLayerIgnoreAnchorPoint);
-    //bool ignore = pLayer->isIgnoreAnchorPointForPosition();
-    //pLayer->ignoreAnchorPointForPosition(! ignore);
-	pLayer->setAnchorPoint(ccp(0,0));
-	n++;
-}
+    bool ignore = pLayer->getIsRelativeAnchorPoint();
+    pLayer->setIsRelativeAnchorPoint(! ignore);
 }
 
 std::string LayerIgnoreAnchorPointRot::title()
@@ -461,7 +440,7 @@ std::string LayerIgnoreAnchorPointRot::subtitle()
 {
     return "Ignoring Anchor Point for rotations";
 }
-int i=0;
+
 // LayerIgnoreAnchorPointScale
 void LayerIgnoreAnchorPointScale::onEnter()
 {
@@ -470,7 +449,7 @@ void LayerIgnoreAnchorPointScale::onEnter()
     CCSize s = CCDirector::sharedDirector()->getWinSize();
 
     CCLayerColor *l = CCLayerColor::create(ccc4(255, 0, 0, 255), 200, 200);
-	l->ignoreAnchorPointForPosition(false);
+
     l->setAnchorPoint(ccp(0.5f, 1.0f));
     l->setPosition(ccp( s.width/2, s.height/2));
 
@@ -498,21 +477,9 @@ void LayerIgnoreAnchorPointScale::onEnter()
 
 void LayerIgnoreAnchorPointScale::onToggle(CCObject* pObject)
 {
-	i++;
-	if(i==3){
-		CCNode* pLayer = this->getChildByTag(kLayerIgnoreAnchorPoint);
-		pLayer->setAnchorPoint(ccp(0.5f, 1.0f));
-		i=i-3;
-	}
-	if(i==1){
     CCNode* pLayer = this->getChildByTag(kLayerIgnoreAnchorPoint);
-    //bool ignore = pLayer->isIgnoreAnchorPointForPosition();
-    //pLayer->ignoreAnchorPointForPosition(! ignore);
-	pLayer->setAnchorPoint(ccp(0,0));
-	i++;
-}
-
-	
+    bool ignore = pLayer->getIsRelativeAnchorPoint();
+    pLayer->setIsRelativeAnchorPoint(! ignore);
 }
 
 std::string LayerIgnoreAnchorPointScale::title()
@@ -568,4 +535,3 @@ string LayerExtendedBlendOpacityTest::subtitle()
 {
     return "You should see 3 layers";
 }
-

@@ -598,9 +598,6 @@
   <ItemGroup>
     <None Include="kazmath\src\ChangeLog" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="kazmath\src\CMakeLists.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />
   <ImportGroup Label="ExtensionTargets">

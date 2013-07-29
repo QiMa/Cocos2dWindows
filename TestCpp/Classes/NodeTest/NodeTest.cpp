@@ -855,7 +855,7 @@ NodeNonOpaqueTest::NodeNonOpaqueTest()
 	
     for (int i = 0; i < 50; i++)
     {
-        background = CCSprite::create("Images/background1.jpg");
+        background = CCSprite::create("Images/background1.png");
         background->setBlendFunc(kCCBlendFuncDisable);
         background->setAnchorPoint(CCPointZero);
         addChild(background);
