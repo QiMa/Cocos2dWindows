@@ -194,7 +194,20 @@ xcopy /S *.h ..\..\HelloWorld\include\Box2D\ /y</Command>
     <ClCompile Include="Collision\Shapes\b2EdgeShape.cpp" />
     <ClCompile Include="Collision\Shapes\b2PolygonShape.cpp" />
     <ClCompile Include="Common\b2BlockAllocator.cpp" />
-    <ClCompile Include="Common\b2Draw.cpp" />
+    <ClCompile Include="Common\b2Draw.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="Common\b2Math.cpp" />
     <ClCompile Include="Common\b2Settings.cpp" />
     <ClCompile Include="Common\b2StackAllocator.cpp" />
