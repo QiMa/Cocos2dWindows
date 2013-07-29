@@ -28,6 +28,10 @@ THE SOFTWARE.
 #include "CCCommon.h"
 #include "CCTouch.h"
 #include "CCSet.h"
+#include "CCAccelerometer.h"
+#include <map>
+#include <string>
+#include <list>
 
 typedef struct lua_State lua_State;
 
@@ -215,6 +219,8 @@ public:
     /** functions for keypad event */
     virtual int executeLayerKeypadEvent(CCLayer* pLayer, int eventType) = 0;
 
+	/** execute a accelerometer event */
+	virtual int executeAccelerometerEvent(CCLayer* pLayer, CCAcceleration* pAccelerationValue) = 0;
     /** execute a accelerometer event */
 //    virtual int executeAccelerometerEvent(CCLayer* pLayer, CCAcceleration* pAccelerationValue) = 0;
     /** function for assert test */

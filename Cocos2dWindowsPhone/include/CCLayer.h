@@ -78,7 +78,7 @@ public:
 	virtual void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
 	virtual void ccTouchesCancelled(CCSet *pTouches, CCEvent *pEvent);
 	
-    virtual void didAccelerate(CCAcceleration* pAccelerationValue) {CC_UNUSED_PARAM(pAccelerationValue);}
+   // virtual void didAccelerate(CCAcceleration* pAccelerationValue) {CC_UNUSED_PARAM(pAccelerationValue);}
 
 	/** If isTouchEnabled, this method is called onEnter. Override it to change the
 	way CCLayer receives touch events.
@@ -120,6 +120,9 @@ public:
     virtual void setAccelerometerEnabled(bool value);
     virtual void setAccelerometerInterval(double interval);
 
+	virtual void didAccelerate(CCAcceleration* pAccelerationValue);
+	void registerScriptAccelerateHandler(int nHandler);
+	void unregisterScriptAccelerateHandler(void);
 	    /** whether or not it will receive keypad events
     You can enable / disable accelerometer events with this property.
     it's new in cocos2d-x
@@ -144,6 +147,7 @@ private:
 	 ccTouchesMode m_eTouchMode;
     // Script touch events handler
     CCTouchScriptHandlerEntry* m_pScriptHandlerEntry;
+	CCScriptHandlerEntry* m_pScriptAccelerateHandlerEntry;
     int  excuteScriptTouchHandler(int nEventType, CCTouch *pTouch);
     int  excuteScriptTouchHandler(int nEventType, CCSet *pTouches);
 protected:   

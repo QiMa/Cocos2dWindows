@@ -244,6 +244,27 @@ void CCLayer::setAccelerometerInterval(double interval) {
         }
     }
 }
+void CCLayer::didAccelerate(CCAcceleration* pAccelerationValue)
+{
+   CC_UNUSED_PARAM(pAccelerationValue);
+   if ( m_eScriptType != kScriptTypeNone)
+   {
+       CCScriptEngineManager::sharedManager()->getScriptEngine()->executeAccelerometerEvent(this, pAccelerationValue);
+   }
+}
+
+void CCLayer::registerScriptAccelerateHandler(int nHandler)
+{
+    unregisterScriptAccelerateHandler();
+    m_pScriptAccelerateHandlerEntry = CCScriptHandlerEntry::create(nHandler);
+    m_pScriptAccelerateHandlerEntry->retain();
+}
+
+void CCLayer::unregisterScriptAccelerateHandler(void)
+{
+    CC_SAFE_RELEASE_NULL(m_pScriptAccelerateHandlerEntry);
+}
+
 
 
 
