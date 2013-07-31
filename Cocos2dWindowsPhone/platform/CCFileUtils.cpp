@@ -20,6 +20,7 @@
 
 #include "CCFileUtils.h"
 #include "CCDirector.h"
+
 #include "fileapi.h"
 
 
@@ -389,13 +390,13 @@ std::string CCFileUtils::fullPathForFilename(const char* pszFileName)
 
             fullpath = this->getPathForFilename(newFileName, *resOrderIter, *searchPathsIter);
 
-    //        if (GetFileAttributesA(fullpath.c_str()) != -1)
-    //        {
-    //            // Adding the full path to cache if the file was found.
-    //            s_fullPathCache.insert(std::pair<std::string, std::string>(pszFileName, fullpath));
-				////CCLOG("Returning path: %s", fullpath.c_str());
-    //            return fullpath;
-    //        }
+//            if (GetFileAttributes(fullpath.c_str()) != -1)
+            {
+                // Adding the full path to cache if the file was found.
+                s_fullPathCache.insert(std::pair<std::string, std::string>(pszFileName, fullpath));
+				//CCLOG("Returning path: %s", fullpath.c_str());
+                return fullpath;
+            }
         }
     }
 

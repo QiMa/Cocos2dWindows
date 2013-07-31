@@ -274,7 +274,8 @@ void TestFilenameLookup::onEnter()
     
     
     // Instead of loading carlitos.xcf, it will load grossini.png
-    CCSprite *sprite = CCSprite::create("grossini.xcf");
+//    CCSprite *sprite = CCSprite::create("grossini.xcf");
+    CCSprite *sprite = CCSprite::create("Images/grossini.png");
     this->addChild(sprite);
     
     CCSize s = CCDirector::sharedDirector()->getWinSize();
