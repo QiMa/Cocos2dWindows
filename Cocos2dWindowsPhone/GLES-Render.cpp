@@ -6,7 +6,7 @@
 #include <string.h>
 #include <cmath>
 #include "DirectXHelper.h"
-#include "BasicLoader.h"
+
 
 using namespace std;
 using namespace DirectX;
@@ -398,26 +398,26 @@ void GLESDebugDraw::RenderVertexBuffer()
 
 bool GLESDebugDraw::InitializeShader(WCHAR* fxFilename)
 {
-	//BasicLoader^ loader = ref new BasicLoader(CCID3D11Device);
+	BasicLoader^ loader = ref new BasicLoader(CCID3D11Device);
 
-	//D3D11_INPUT_ELEMENT_DESC layoutDesc[] =
-	//{
-	//	{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-	//	{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-	//};
+	D3D11_INPUT_ELEMENT_DESC layoutDesc[] =
+	{
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+	};
 
-	//loader->LoadShader(
-	//	L"CCDrawingVertexShader.cso",
-	//	layoutDesc,
-	//	ARRAYSIZE(layoutDesc),
-	//	&m_vertexShader,
-	//	&m_layout
-	//	);
+	loader->LoadShader(
+		L"CCDrawingVertexShader.cso",
+		layoutDesc,
+		ARRAYSIZE(layoutDesc),
+		&m_vertexShader,
+		&m_layout
+		);
 
-	//loader->LoadShader(
-	//	L"CCDrawingPixelShader.cso",
-	//	&m_pixelShader
-	//	);
+	loader->LoadShader(
+		L"CCDrawingPixelShader.cso",
+		&m_pixelShader
+		);
 
 	return true;
 }

@@ -1,6 +1,6 @@
 #ifndef RENDER_H
 #define RENDER_H
-
+#include "BasicLoader.h"
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
 
@@ -19,7 +19,7 @@ enum DXBox2DDrawingType
 };
 // This class implements debug drawing callbacks that are invoked
 // inside b2World::Step.
-class GLESDebugDraw : public b2Draw
+class CC_DLL GLESDebugDraw : public b2Draw
 {
 	struct MatrixBufferType
 	{

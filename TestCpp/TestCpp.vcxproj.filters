@@ -962,9 +962,6 @@
     <ClCompile Include="Classes\Box2DTestBed\Box2dView.cpp">
       <Filter>Classes\Box2DTestBed</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\Box2DTestBed\GLES-Render.cpp">
-      <Filter>Classes\Box2DTestBed</Filter>
-    </ClCompile>
     <ClCompile Include="Classes\Box2DTestBed\Test.cpp">
       <Filter>Classes\Box2DTestBed</Filter>
     </ClCompile>
@@ -1540,9 +1537,6 @@
       <Filter>Classes\DrawPrimitivesTest</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Box2DTestBed\Box2dView.h">
-      <Filter>Classes\Box2DTestBed</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\Box2DTestBed\GLES-Render.h">
       <Filter>Classes\Box2DTestBed</Filter>
     </ClInclude>
     <ClInclude Include="Classes\Box2DTestBed\Test.h">

@@ -626,7 +626,6 @@
     <ClInclude Include="Classes\AppDelegate.h" />
     <ClInclude Include=".\cocos2dorig.h" />
     <ClInclude Include="Classes\Box2DTestBed\Box2dView.h" />
-    <ClInclude Include="Classes\Box2DTestBed\GLES-Render.h" />
     <ClInclude Include="Classes\Box2DTestBed\Test.h" />
     <ClInclude Include="Classes\Box2DTestBed\Tests\AddPair.h" />
     <ClInclude Include="Classes\Box2DTestBed\Tests\ApplyForce.h" />
@@ -868,7 +867,6 @@
     <ClCompile Include="Classes\AppDelegate.cpp" />
     <ClCompile Include=".\cocos2dorig.cpp" />
     <ClCompile Include="Classes\Box2DTestBed\Box2dView.cpp" />
-    <ClCompile Include="Classes\Box2DTestBed\GLES-Render.cpp" />
     <ClCompile Include="Classes\Box2DTestBed\Test.cpp" />
     <ClCompile Include="Classes\Box2DTestBed\TestEntries.cpp" />
     <ClCompile Include="Classes\Box2DTest\Box2dTest.cpp" />

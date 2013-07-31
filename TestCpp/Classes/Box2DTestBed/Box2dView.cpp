@@ -52,14 +52,13 @@ bool MenuLayer::initWithEntryID(int entryId)
 	CCSize visibleSize = pDirector->getVisibleSize();
 
     m_entryID = entryId;
-    
     setTouchEnabled( true );
-    
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
     Box2DView* view = Box2DView::viewWithEntryID( entryId );
     addChild(view, 0, kTagBox2DNode);
     view->setScale(15);
     view->setAnchorPoint( ccp(0,0) );
-    view->setPosition( ccp(visibleOrigin.x+visibleSize.width/2, visibleOrigin.y+visibleSize.height/3) );
+    view->setPosition( ccp(size.width/2, size.height/2) );
 //#if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
 //    CCLabelBMFont* label = CCLabelBMFont::create(view->title().c_str(),  "fonts/arial16.fnt");
 //#else    

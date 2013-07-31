@@ -502,6 +502,7 @@
     <ClCompile Include="cocosdension\SimpleAudioEngine.cpp">
       <Filter>cocosdension</Filter>
     </ClCompile>
+    <ClCompile Include="GLES-Render.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocoa\CCNS.h">
@@ -873,6 +874,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\semaphore.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GLES-Render.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
