@@ -29,7 +29,7 @@
 #include "support/ccUtils.h"
 #include "CCStdC.h"
 #include "CCFileUtils.h"
-//#include "support/zip_support/ZipUtils.h"
+#include "ZipUtils.h"
 
 #include <cctype>
 
@@ -437,11 +437,11 @@ bool CCTexturePVR::initWithContentsOfFile(const char* path)
         
     if (lowerCase.find(".ccz") != std::string::npos)
     {
-        //pvrlen = ZipUtils::ccInflateCCZFile(path, &pvrdata);
+        pvrlen = ZipUtils::ccInflateCCZFile(path, &pvrdata);
     }
     else if (lowerCase.find(".gz") != std::string::npos)
     {
-        //pvrlen = ZipUtils::ccInflateGZipFile(path, &pvrdata);
+        pvrlen = ZipUtils::ccInflateGZipFile(path, &pvrdata);
     }
     else
     {
