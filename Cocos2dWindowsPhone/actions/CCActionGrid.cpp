@@ -1,30 +1,35 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* Copyright (c) 2010-2011 cocos2d-x.org
-* Copyright (c) 2009      On-Core 
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010-2012 cocos2d-x.org
+Copyright (c) 2009      On-Core 
 
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 #include "pch.h"
 #include "CCActionGrid.h"
 #include "CCDirector.h"
 #include "CCGrid.h"
+#include "CCZone.h"
 
 NS_CC_BEGIN
-	// implementation of CCGridAction
+// implementation of CCGridAction
 
 CCGridAction* CCGridAction::create(float duration, const CCSize& gridSize)
 {
@@ -91,320 +96,335 @@ void CCGridAction::startWithTarget(CCNode *pTarget)
 
 CCGridBase* CCGridAction::getGrid(void)
 {
-	// Abstract class needs implementation
-	CCAssert(0, "");
+    // Abstract class needs implementation
+    CCAssert(0, "");
 
-	return NULL;
+    return NULL;
 }
 
 CCActionInterval* CCGridAction::reverse(void)
 {
-	return CCReverseTime::create(this);
+    return CCReverseTime::create(this);
 }
 
 CCObject* CCGridAction::copyWithZone(CCZone *pZone)
 {
-	CCZone* pNewZone = NULL;
-	CCGridAction* pCopy = NULL;
-	if(pZone && pZone->m_pCopyObject) 
-	{
-		//in case of being called at sub class
-		pCopy = (CCGridAction*)(pZone->m_pCopyObject);
-	}
-	else
-	{
-		pCopy = new CCGridAction();
-		pZone = pNewZone = new CCZone(pCopy);
-	}
+    CCZone* pNewZone = NULL;
+    CCGridAction* pCopy = NULL;
+    if(pZone && pZone->m_pCopyObject) 
+    {
+        //in case of being called at sub class
+        pCopy = (CCGridAction*)(pZone->m_pCopyObject);
+    }
+    else
+    {
+        pCopy = new CCGridAction();
+        pZone = pNewZone = new CCZone(pCopy);
+    }
 
-	CCActionInterval::copyWithZone(pZone);
+    CCActionInterval::copyWithZone(pZone);
 
-	pCopy->initWithDuration(m_fDuration, m_sGridSize);
-
-	CC_SAFE_DELETE(pNewZone);
-	return pCopy;
+    pCopy->initWithDuration(m_fDuration, m_sGridSize);
+    
+    CC_SAFE_DELETE(pNewZone);
+    return pCopy;
 }
 
 // implementation of Grid3DAction
 
 CCGridBase* CCGrid3DAction::getGrid(void)
 {
-	return CCGrid3D::create(m_sGridSize);
+    return CCGrid3D::create(m_sGridSize);
 }
 
-ccVertex3F CCGrid3DAction::vertex(const CCPoint& pos)
+ccVertex3F CCGrid3DAction::vertex(const CCPoint& position)
 {
-	CCGrid3D *g = (CCGrid3D*)m_pTarget->getGrid();
-	return g->vertex(pos);
+    CCGrid3D *g = (CCGrid3D*)m_pTarget->getGrid();
+    return g->vertex(position);
 }
 
-ccVertex3F CCGrid3DAction::originalVertex(const CCPoint& pos)
+ccVertex3F CCGrid3DAction::originalVertex(const CCPoint& position)
 {
-	CCGrid3D *g = (CCGrid3D*)m_pTarget->getGrid();
-	return g->originalVertex(pos);
+    CCGrid3D *g = (CCGrid3D*)m_pTarget->getGrid();
+    return g->originalVertex(position);
 }
 
-void CCGrid3DAction::setVertex(const CCPoint& pos, const ccVertex3F& vertex)
+void CCGrid3DAction::setVertex(const CCPoint& position, const ccVertex3F& vertex)
 {
-	CCGrid3D *g = (CCGrid3D*)m_pTarget->getGrid();
-	g->setVertex(pos, vertex);
+    CCGrid3D *g = (CCGrid3D*)m_pTarget->getGrid();
+    g->setVertex(position, vertex);
 }
 
 // implementation of TiledGrid3DAction
 
 CCGridBase* CCTiledGrid3DAction::getGrid(void)
 {
-	return CCTiledGrid3D::create(m_sGridSize);
+    return CCTiledGrid3D::create(m_sGridSize);
 }
 
 ccQuad3 CCTiledGrid3DAction::tile(const CCPoint& pos)
 {
-	CCTiledGrid3D *g = (CCTiledGrid3D*)m_pTarget->getGrid();
-	return g->tile(pos);
+    CCTiledGrid3D *g = (CCTiledGrid3D*)m_pTarget->getGrid();
+    return g->tile(pos);
 }
 
 ccQuad3 CCTiledGrid3DAction::originalTile(const CCPoint& pos)
 {
-	CCTiledGrid3D *g = (CCTiledGrid3D*)m_pTarget->getGrid();
-	return g->originalTile(pos);
+    CCTiledGrid3D *g = (CCTiledGrid3D*)m_pTarget->getGrid();
+    return g->originalTile(pos);
 }
 
 void CCTiledGrid3DAction::setTile(const CCPoint& pos, const ccQuad3& coords)
 {
-	CCTiledGrid3D *g = (CCTiledGrid3D*)m_pTarget->getGrid();
-	return g->setTile(pos, coords);
+    CCTiledGrid3D *g = (CCTiledGrid3D*)m_pTarget->getGrid();
+    return g->setTile(pos, coords);
+}
+
+CCTiledGrid3DAction* CCTiledGrid3DAction::create(float duration, const CCSize& gridSize)
+{
+    CCTiledGrid3DAction* pRet = new CCTiledGrid3DAction();
+    if (pRet && pRet->initWithDuration(duration, gridSize))
+    {
+        pRet->autorelease();
+    }
+    else
+    {
+        CC_SAFE_DELETE(pRet);
+    }
+    return pRet;
 }
 
 // implementation CCAccelDeccelAmplitude
 
-CCAccelDeccelAmplitude* CCAccelDeccelAmplitude::create(CCAction *pAction, ccTime duration)
+CCAccelDeccelAmplitude* CCAccelDeccelAmplitude::create(CCAction *pAction, float duration)
 {
-	CCAccelDeccelAmplitude *pRet = new CCAccelDeccelAmplitude();
-	if (pRet)
-	{
-		if (pRet->initWithAction(pAction, duration))
-		{
-			pRet->autorelease();
-		}
-		else
-		{
-			CC_SAFE_DELETE(pRet);
-		}
-	}
+    CCAccelDeccelAmplitude *pRet = new CCAccelDeccelAmplitude();
+    if (pRet)
+    {
+        if (pRet->initWithAction(pAction, duration))
+        {
+            pRet->autorelease();
+        }
+        else
+        {
+            CC_SAFE_DELETE(pRet);
+        }
+    }
 
-	return pRet;
+    return pRet;
 }
 
-bool CCAccelDeccelAmplitude::initWithAction(CCAction *pAction, ccTime duration)
+bool CCAccelDeccelAmplitude::initWithAction(CCAction *pAction, float duration)
 {
-	if (CCActionInterval::initWithDuration(duration))
-	{
-		m_fRate = 1.0f;
-		m_pOther = (CCActionInterval*)(pAction);
-		pAction->retain();
+    if (CCActionInterval::initWithDuration(duration))
+    {
+        m_fRate = 1.0f;
+        m_pOther = (CCActionInterval*)(pAction);
+        pAction->retain();
 
-		return true;
-	}
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 CCAccelDeccelAmplitude::~CCAccelDeccelAmplitude(void)
 {
-	CC_SAFE_RELEASE(m_pOther);
+    CC_SAFE_RELEASE(m_pOther);
 }
 
 void CCAccelDeccelAmplitude::startWithTarget(CCNode *pTarget)
 {
-	CCActionInterval::startWithTarget(pTarget);
-	m_pOther->startWithTarget(pTarget);
+    CCActionInterval::startWithTarget(pTarget);
+    m_pOther->startWithTarget(pTarget);
 }
 
-void CCAccelDeccelAmplitude::update(ccTime time)
+void CCAccelDeccelAmplitude::update(float time)
 {
-	float f = time * 2;
+    float f = time * 2;
 
-	if (f > 1)
-	{
-		f -= 1;
-		f = 1 - f;
-	}
+    if (f > 1)
+    {
+        f -= 1;
+        f = 1 - f;
+    }
 
-	((CCAccelDeccelAmplitude*)(m_pOther))->setAmplitudeRate(powf(f, m_fRate));
+    ((CCAccelDeccelAmplitude*)(m_pOther))->setAmplitudeRate(powf(f, m_fRate));
 }
 
 CCActionInterval* CCAccelDeccelAmplitude::reverse(void)
 {
-	return CCAccelDeccelAmplitude::create(m_pOther->reverse(), m_fDuration);
+    return CCAccelDeccelAmplitude::create(m_pOther->reverse(), m_fDuration);
 }
 
 // implementation of AccelAmplitude
 
-CCAccelAmplitude* CCAccelAmplitude::create(CCAction *pAction, ccTime duration)
+CCAccelAmplitude* CCAccelAmplitude::create(CCAction *pAction, float duration)
 {
-	CCAccelAmplitude *pRet = new CCAccelAmplitude();
-	if (pRet)
-	{
-		if (pRet->initWithAction(pAction, duration))
-		{
-			pRet->autorelease();
-		}
-		else
-		{
-			CC_SAFE_DELETE(pRet);
-		}
-	}
+    CCAccelAmplitude *pRet = new CCAccelAmplitude();
+    if (pRet)
+    {
+        if (pRet->initWithAction(pAction, duration))
+        {
+            pRet->autorelease();
+        }
+        else
+        {
+            CC_SAFE_DELETE(pRet);
+        }
+    }
 
-	return pRet;
+    return pRet;
 }
 
-bool CCAccelAmplitude::initWithAction(CCAction *pAction, ccTime duration)
+bool CCAccelAmplitude::initWithAction(CCAction *pAction, float duration)
 {
-	if (CCActionInterval::initWithDuration(duration))
-	{
-		m_fRate = 1.0f;
-		m_pOther = (CCActionInterval*)(pAction);
-		pAction->retain();
+    if (CCActionInterval::initWithDuration(duration))
+    {
+        m_fRate = 1.0f;
+        m_pOther = (CCActionInterval*)(pAction);
+        pAction->retain();
 
-		return true;
-	}
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 CCAccelAmplitude::~CCAccelAmplitude(void)
 {
-	CC_SAFE_DELETE(m_pOther);
+    CC_SAFE_DELETE(m_pOther);
 }
 
 void CCAccelAmplitude::startWithTarget(CCNode *pTarget)
 {
-	CCActionInterval::startWithTarget(pTarget);
-	m_pOther->startWithTarget(pTarget);
+    CCActionInterval::startWithTarget(pTarget);
+    m_pOther->startWithTarget(pTarget);
 }
 
-void CCAccelAmplitude::update(ccTime time)
+void CCAccelAmplitude::update(float time)
 {
-	((CCAccelAmplitude*)(m_pOther))->setAmplitudeRate(powf(time, m_fRate));
-	m_pOther->update(time);
+    ((CCAccelAmplitude*)(m_pOther))->setAmplitudeRate(powf(time, m_fRate));
+    m_pOther->update(time);
 }
 
 CCActionInterval* CCAccelAmplitude::reverse(void)
 {
-	return CCAccelAmplitude::create(m_pOther->reverse(), m_fDuration);
+    return CCAccelAmplitude::create(m_pOther->reverse(), m_fDuration);
 }
 
 // DeccelAmplitude
 
-CCDeccelAmplitude* CCDeccelAmplitude::create(CCAction *pAction, ccTime duration)
+CCDeccelAmplitude* CCDeccelAmplitude::create(CCAction *pAction, float duration)
 {
-	CCDeccelAmplitude *pRet = new CCDeccelAmplitude();
-	if (pRet)
-	{
-		if (pRet->initWithAction(pAction, duration))
-		{
-			pRet->autorelease();
-		}
-		else
-		{
-			CC_SAFE_DELETE(pRet);
-		}
-	}
+    CCDeccelAmplitude *pRet = new CCDeccelAmplitude();
+    if (pRet)
+    {
+        if (pRet->initWithAction(pAction, duration))
+        {
+            pRet->autorelease();
+        }
+        else
+        {
+            CC_SAFE_DELETE(pRet);
+        }
+    }
 
-	return pRet;
+    return pRet;
 }
 
-bool CCDeccelAmplitude::initWithAction(CCAction *pAction, ccTime duration)
+
+bool CCDeccelAmplitude::initWithAction(CCAction *pAction, float duration)
 {
-	if (CCActionInterval::initWithDuration(duration))
-	{
-		m_fRate = 1.0f;
-		m_pOther = (CCActionInterval*)(pAction);
-		pAction->retain();
+    if (CCActionInterval::initWithDuration(duration))
+    {
+        m_fRate = 1.0f;
+        m_pOther = (CCActionInterval*)(pAction);
+        pAction->retain();
 
-		return true;
-	}
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 CCDeccelAmplitude::~CCDeccelAmplitude(void)
 {
-	CC_SAFE_RELEASE(m_pOther);
+    CC_SAFE_RELEASE(m_pOther);
 }
 
 void CCDeccelAmplitude::startWithTarget(CCNode *pTarget)
 {
-	CCActionInterval::startWithTarget(pTarget);
-	m_pOther->startWithTarget(pTarget);
+    CCActionInterval::startWithTarget(pTarget);
+    m_pOther->startWithTarget(pTarget);
 }
 
-void CCDeccelAmplitude::update(ccTime time)
+void CCDeccelAmplitude::update(float time)
 {
-	((CCDeccelAmplitude*)(m_pOther))->setAmplitudeRate(powf((1 - time), m_fRate));
-	m_pOther->update(time);
+    ((CCDeccelAmplitude*)(m_pOther))->setAmplitudeRate(powf((1 - time), m_fRate));
+    m_pOther->update(time);
 }
 
 CCActionInterval* CCDeccelAmplitude::reverse(void)
 {
-	return CCDeccelAmplitude::create(m_pOther->reverse(), m_fDuration);
+    return CCDeccelAmplitude::create(m_pOther->reverse(), m_fDuration);
 }
 
 // implementation of StopGrid
 
 void CCStopGrid::startWithTarget(CCNode *pTarget)
 {
-	CCActionInstant::startWithTarget(pTarget);
+    CCActionInstant::startWithTarget(pTarget);
 
-	CCGridBase *pGrid = m_pTarget->getGrid();
-	if (pGrid && pGrid->isActive())
-	{
-		pGrid->setActive(false);
-	}
+    CCGridBase *pGrid = m_pTarget->getGrid();
+    if (pGrid && pGrid->isActive())
+    {
+        pGrid->setActive(false);
+    }
 }
 
 CCStopGrid* CCStopGrid::create(void)
 {
-	CCStopGrid* pAction = new CCStopGrid();
-	pAction->autorelease();
+    CCStopGrid* pAction = new CCStopGrid();
+    pAction->autorelease();
 
-	return pAction;
+    return pAction;
 }
-
 // implementation of CCReuseGrid
 
 CCReuseGrid* CCReuseGrid::create(int times)
 {
-	CCReuseGrid *pAction = new CCReuseGrid();
-	if (pAction)
-	{
-		if (pAction->initWithTimes(times))
-		{
-			pAction->autorelease();
-		}
-		else
-		{
-			CC_SAFE_DELETE(pAction);
-		}
-	}
+    CCReuseGrid *pAction = new CCReuseGrid();
+    if (pAction)
+    {
+        if (pAction->initWithTimes(times))
+        {
+            pAction->autorelease();
+        }
+        else
+        {
+            CC_SAFE_DELETE(pAction);
+        }
+    }
 
-	return pAction;
+    return pAction;
 }
 
 bool CCReuseGrid::initWithTimes(int times)
 {
-	m_nTimes = times;
+    m_nTimes = times;
 
-	return true;
+    return true;
 }
 
 void CCReuseGrid::startWithTarget(CCNode *pTarget)
 {
-	CCActionInstant::startWithTarget(pTarget);
+    CCActionInstant::startWithTarget(pTarget);
 
-	if (m_pTarget->getGrid() && m_pTarget->getGrid()->isActive())
-	{
-		m_pTarget->getGrid()->setReuseGrid(m_pTarget->getGrid()->getReuseGrid() + m_nTimes);
-	}
+    if (m_pTarget->getGrid() && m_pTarget->getGrid()->isActive())
+    {
+        m_pTarget->getGrid()->setReuseGrid(m_pTarget->getGrid()->getReuseGrid() + m_nTimes);
+    }
 }
+
 NS_CC_END

@@ -91,7 +91,7 @@ NS_CC_BEGIN
 
 	public:
 		/** creates the action with size and duration */
-        static CCTiledGrid3DAction* actionWithSize(const CCSize& gridSize, ccTime duration);
+    static CCTiledGrid3DAction* create(float duration, const CCSize& gridSize);
 	};
 
 	/** @brief CCAccelDeccelAmplitude action */
