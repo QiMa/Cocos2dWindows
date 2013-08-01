@@ -108,10 +108,11 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
-      <AdditionalDependencies>d3d11.lib;.\libraries\x86\zlib.lib;.\libraries\x86\libpng.lib;.\libraries\x86\libjpeg.lib;.\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;.\libraries\x86\zlib.lib;.\libraries\x86\libpng.lib;.\libraries\x86\libjpeg.lib;.\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;Box2DWindowsPhone.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>..\$(Platform)\$(Configuration)\Box2DWindowsPhone;</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>
