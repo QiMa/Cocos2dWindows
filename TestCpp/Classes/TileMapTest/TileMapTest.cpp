@@ -1356,7 +1356,7 @@ enum
 
 static int sceneIdx = -1; 
 
-#define MAX_LAYER    21
+#define MAX_LAYER    28
 
 CCLayer* createTileMapLayer(int nIndex)
 {
@@ -1397,7 +1397,7 @@ CCLayer* createTileMapLayer(int nIndex)
 /****************************************
 ∑Ω±„≤‚ ‘µƒÀ≥–Ú£∫
 ***********************************************/
-        case 0: return new TMXIsoZorder();
+        //case 0: return new TMXIsoZorder();
         case 1: return new TMXOrthoZorder(); 
         case 2: return new TMXOrthoTest();
         case 3: return new TMXOrthoTest2();
@@ -1422,13 +1422,14 @@ CCLayer* createTileMapLayer(int nIndex)
         case 19: return new TMXBug787();
 
         case 20: return new TMXGIDObjectsTest();
-		    //case 20: return new TMXOrthoFlipTest();
-			//case 21: return new TMXOrthoFlipRunTimeTest();
-			//  case 22: return new TMXOrthoFromXMLTest();
-			// case 2: return new TMXIsoVertexZ();
-			//case 3: return new TMXOrthoVertexZ();  
-			//case 7: return new TMXOrthoTest4();
-			//case 13: return new TMXReadWriteTest();
+		case 21: return new TMXOrthoFlipTest();
+		case 22: return new TMXOrthoFlipRunTimeTest();
+
+		//case 23: return new TMXOrthoFromXMLTest();
+		/*case 23: return new TMXIsoVertexZ();*/
+		case 0: return new TMXOrthoVertexZ();  
+		case 24: return new TMXOrthoTest4();
+		//case 27: return new TMXReadWriteTest();
     }
 
     return NULL;

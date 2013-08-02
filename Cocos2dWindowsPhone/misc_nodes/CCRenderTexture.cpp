@@ -30,7 +30,7 @@
 #include "CCFileUtils.h"
 #include "CCGL.h"
 
-namespace cocos2d { 
+NS_CC_BEGIN
 
 // implementation CCRenderTexture
 CCRenderTexture::CCRenderTexture()
@@ -547,4 +547,4 @@ void CCRenderTexture::ClearRenderTarget(ID3D11DeviceContext* deviceContext, ID3D
 
 	return;
 }
-} // namespace cocos2d
+NS_CC_END

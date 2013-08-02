@@ -32,7 +32,7 @@ THE SOFTWARE.
 #include "CCObject.h"
 #include "CCArray.h"
 
-NS_CC_BEGIN
+namespace   cocos2d {
 
 //Forward definition for CCData
 class CCData;
@@ -87,7 +87,7 @@ public:
 	bool initWithContentsOfFile(const char* path);
 
 	/** creates and initializes a CCTexturePVR with a path */
-	static CCTexturePVR * pvrTextureWithContentsOfFile(const char* path);
+	static CCTexturePVR * create(const char* path);
 
 	CC_PROPERTY_READONLY(CCuint, m_uName, Name)
 	CC_PROPERTY_READONLY(unsigned int, m_uWidth, Width)
@@ -132,7 +132,7 @@ protected:
 	*/
 	struct CCPVRMipmap m_asMipmaps[CC_PVRMIPMAP_MAX];
 };
-NS_CC_END 
+}//namespace   cocos2d 
 
 
 #endif //__CCPVRTEXTURE_H__

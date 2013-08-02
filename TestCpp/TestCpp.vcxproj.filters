@@ -2093,6 +2093,9 @@
     <None Include="Assets\animations\animations-2.plist">
       <Filter>Assets\animations</Filter>
     </None>
+    <None Include="Assets\TileMaps\ortho-rotation-test.tmx">
+      <Filter>Assets\TileMaps</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\fonts\A Damn Mess.ttf">

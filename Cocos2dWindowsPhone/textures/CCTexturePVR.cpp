@@ -33,7 +33,7 @@
 
 #include <cctype>
 
-NS_CC_BEGIN
+namespace   cocos2d {
 
 #define PVR_TEXTURE_FLAG_TYPE_MASK	0xff
 #define PVR_TEXTURE_FLAG_FLIPPED_MASK 0x10000
@@ -474,7 +474,7 @@ bool CCTexturePVR::initWithContentsOfFile(const char* path)
 	return true;
 }
 
-CCTexturePVR * CCTexturePVR::pvrTextureWithContentsOfFile(const char* path)
+CCTexturePVR * CCTexturePVR::create(const char* path)
 {
 	CCTexturePVR * pTexture = new CCTexturePVR();
 	if(true == pTexture->initWithContentsOfFile(path))
@@ -488,4 +488,4 @@ CCTexturePVR * CCTexturePVR::pvrTextureWithContentsOfFile(const char* path)
     }
 }
 
-NS_CC_END
+}//namespace   cocos2d 

@@ -1237,6 +1237,9 @@
     <None Include="Assets\TileMaps\ortho-objects.tmx">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="Assets\TileMaps\ortho-rotation-test.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
     <None Include="Assets\TileMaps\orthogonal-test-movelayer.tmx">
       <DeploymentContent>true</DeploymentContent>
     </None>
