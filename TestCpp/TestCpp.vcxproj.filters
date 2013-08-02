@@ -155,6 +155,12 @@
     <Filter Include="Classes\Box2DTest">
       <UniqueIdentifier>{30b82cbb-ae70-406e-965b-a9ea926efeee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\SchedulerTest">
+      <UniqueIdentifier>{c76a7212-54fb-4938-8f8f-40457bae4714}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\extensions">
+      <UniqueIdentifier>{031fc20a-1eeb-489d-9ca5-a817834d8e67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -784,6 +790,60 @@
     <Image Include="Assets\Hello.png">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="Assets\extensions\background.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\button.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\buttonBackground.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\buttonHighlighted.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\CCControlColourPickerSpriteSheet.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\green_edit.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\orange_edit.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\ribbon.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\sliderProgress.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\sliderProgress2.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\sliderThumb.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\sliderTrack.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\sliderTrack2.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\switch-mask.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\switch-off.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\switch-on.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\switch-thumb.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
+    <Image Include="Assets\extensions\yellow_edit.png">
+      <Filter>Assets\extensions</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -970,6 +1030,9 @@
     </ClCompile>
     <ClCompile Include="Classes\Box2DTest\Box2dTest.cpp">
       <Filter>Classes\Box2DTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\SchedulerTest\SchedulerTest.cpp">
+      <Filter>Classes\SchedulerTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1680,6 +1743,9 @@
     <ClInclude Include="Classes\Box2DTest\Box2dTest.h">
       <Filter>Classes\Box2DTest</Filter>
     </ClInclude>
+    <ClInclude Include="Classes\SchedulerTest\SchedulerTest.h">
+      <Filter>Classes\SchedulerTest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="WMAppManifest.xml" />
@@ -2095,6 +2161,9 @@
     </None>
     <None Include="Assets\TileMaps\ortho-rotation-test.tmx">
       <Filter>Assets\TileMaps</Filter>
+    </None>
+    <None Include="Assets\extensions\CCControlColourPickerSpriteSheet.plist">
+      <Filter>Assets\extensions</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

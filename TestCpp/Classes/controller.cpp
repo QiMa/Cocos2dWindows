@@ -60,8 +60,8 @@ static TestScene* CreateTestScene(int nIdx)
         pScene = new TextInputTestScene(); break;
     case TEST_SPRITE:
         pScene = new SpriteTestScene(); break;
-    //case TEST_SCHEDULER:
-    //    pScene = new SchedulerTestScene(); break;
+    case TEST_SCHEDULER:
+        pScene = new SchedulerTestScene(); break;
     //case TEST_RENDERTEXTURE:
     //    pScene = new RenderTextureScene(); break;
     case TEST_TEXTURE2D:

@@ -503,6 +503,10 @@
       <Filter>cocosdension</Filter>
     </ClCompile>
     <ClCompile Include="GLES-Render.cpp" />
+    <ClCompile Include="CCControlSlider.cpp" />
+    <ClCompile Include="CCControl.cpp" />
+    <ClCompile Include="CCInvocation.cpp" />
+    <ClCompile Include="CCControlUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocoa\CCNS.h">
@@ -877,6 +881,18 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\GLES-Render.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCControlSlider.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCControl.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCInvocation.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCControlUtils.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

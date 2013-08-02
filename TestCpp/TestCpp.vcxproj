@@ -151,6 +151,24 @@
       <DeploymentContent>true</DeploymentContent>
     </Image>
     <Image Include="Assets\ApplicationIcon.png" />
+    <Image Include="Assets\extensions\background.png" />
+    <Image Include="Assets\extensions\button.png" />
+    <Image Include="Assets\extensions\buttonBackground.png" />
+    <Image Include="Assets\extensions\buttonHighlighted.png" />
+    <Image Include="Assets\extensions\CCControlColourPickerSpriteSheet.png" />
+    <Image Include="Assets\extensions\green_edit.png" />
+    <Image Include="Assets\extensions\orange_edit.png" />
+    <Image Include="Assets\extensions\ribbon.png" />
+    <Image Include="Assets\extensions\sliderProgress.png" />
+    <Image Include="Assets\extensions\sliderProgress2.png" />
+    <Image Include="Assets\extensions\sliderThumb.png" />
+    <Image Include="Assets\extensions\sliderTrack.png" />
+    <Image Include="Assets\extensions\sliderTrack2.png" />
+    <Image Include="Assets\extensions\switch-mask.png" />
+    <Image Include="Assets\extensions\switch-off.png" />
+    <Image Include="Assets\extensions\switch-on.png" />
+    <Image Include="Assets\extensions\switch-thumb.png" />
+    <Image Include="Assets\extensions\yellow_edit.png" />
     <Image Include="Assets\fonts\arial-unicode-26.png">
       <DeploymentContent>true</DeploymentContent>
     </Image>
@@ -713,6 +731,7 @@
     <ClInclude Include="Classes\PerformanceTest\PerformanceTouchesTest.h" />
     <ClInclude Include="Classes\RotateWorldTest\RotateWorldTest.h" />
     <ClInclude Include="Classes\SceneTest\SceneTest.h" />
+    <ClInclude Include="Classes\SchedulerTest\SchedulerTest.h" />
     <ClInclude Include="Classes\SpriteTest\SpriteTest.h" />
     <ClInclude Include="Classes\testBasic.h" />
     <ClInclude Include="Classes\testResource.h" />
@@ -910,6 +929,7 @@
     <ClCompile Include="Classes\PerformanceTest\PerformanceTouchesTest.cpp" />
     <ClCompile Include="Classes\RotateWorldTest\RotateWorldTest.cpp" />
     <ClCompile Include="Classes\SceneTest\SceneTest.cpp" />
+    <ClCompile Include="Classes\SchedulerTest\SchedulerTest.cpp" />
     <ClCompile Include="Classes\SpriteTest\SpriteTest.cpp" />
     <ClCompile Include="Classes\testBasic.cpp" />
     <ClCompile Include="Classes\TextInputTest\TextInputTest.cpp" />
@@ -954,6 +974,9 @@
     </None>
     <None Include="Assets\animations\grossini_gray.plist">
       <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\extensions\CCControlColourPickerSpriteSheet.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
     </None>
     <None Include="Assets\fonts\arial-unicode-26.fnt">
       <DeploymentContent>true</DeploymentContent>

@@ -447,7 +447,20 @@ public:
 	@since v0.8.2
 	*/
 	CCRect boundingBox(void);
-
+	    /**
+     * Sets the CCActionManager object that is used by all actions.
+     *
+     * @warning If you set a new CCActionManager, then previously created actions will be removed.
+     *
+     * @param actionManager     A CCActionManager object that is used by all actions.
+     */
+    virtual void setActionManager(CCActionManager* actionManager);
+    /**
+     * Gets the CCActionManager object that is used by all actions.
+     * @see setActionManager(CCActionManager*)
+     * @return A CCActionManager object.
+     */
+    virtual CCActionManager* getActionManager();
 	/** returns a "local" axis aligned bounding box of the node in pixels.
 	The returned box is relative only to its parent.
 	The returned box is in Points.

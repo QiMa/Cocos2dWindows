@@ -22,7 +22,7 @@
 #include "LabelTest/LabelTest.h"
 #include "TextInputTest/TextInputTest.h"
 #include "SpriteTest/SpriteTest.h"
-//#include "SchedulerTest/SchedulerTest.h"
+#include "SchedulerTest/SchedulerTest.h"
 //#include "RenderTextureTest/RenderTextureTest.h"
 #include "Box2DTest/Box2dTest.h"
 #include "Box2DTestBed/Box2dView.h"
@@ -78,7 +78,7 @@ enum
     TEST_LABEL,
     TEST_TEXT_INPUT,
     TEST_SPRITE,
-   // TEST_SCHEDULER,
+    TEST_SCHEDULER,
     //TEST_RENDERTEXTURE,
     TEST_TEXTURE2D,
 //#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
@@ -135,7 +135,7 @@ const std::string g_aTestNames[TESTS_COUNT] = {
     "LabelTest",
     "TextInputTest",
     "SpriteTest",
-   // "SchedulerTest",
+    "SchedulerTest",
    // "RenderTextureTest",
     "Texture2DTest",
 //#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)

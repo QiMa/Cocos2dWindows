@@ -1397,7 +1397,7 @@ CCLayer* createTileMapLayer(int nIndex)
 /****************************************
 ∑Ω±„≤‚ ‘µƒÀ≥–Ú£∫
 ***********************************************/
-        //case 0: return new TMXIsoZorder();
+        case 0: return new TMXIsoZorder();
         case 1: return new TMXOrthoZorder(); 
         case 2: return new TMXOrthoTest();
         case 3: return new TMXOrthoTest2();
@@ -1425,10 +1425,11 @@ CCLayer* createTileMapLayer(int nIndex)
 		case 21: return new TMXOrthoFlipTest();
 		case 22: return new TMXOrthoFlipRunTimeTest();
 
+
 		//case 23: return new TMXOrthoFromXMLTest();
-		/*case 23: return new TMXIsoVertexZ();*/
-		case 0: return new TMXOrthoVertexZ();  
-		case 24: return new TMXOrthoTest4();
+		/*case 24: return new TMXIsoVertexZ();*/
+		/*case 25: return new TMXOrthoVertexZ();  
+		case 26: return new TMXOrthoTest4();*/
 		//case 27: return new TMXReadWriteTest();
     }
 

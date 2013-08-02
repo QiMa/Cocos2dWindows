@@ -219,9 +219,9 @@ THE SOFTWARE.
 
 
 // text_input_node
-//#include "CCIMEDelegate.h"
-//#include "CCIMEDispatcher.h"
-//#include "CCTextFieldTTF.h"
+#include "CCIMEDelegate.h"
+#include "CCIMEDispatcher.h"
+#include "CCTextFieldTTF.h"
 
 
 // textures
@@ -249,13 +249,13 @@ THE SOFTWARE.
 
 // root
 #include "CCCamera.h"
-//#include "CCConfiguration.h"
+#include "CCConfiguration.h"
 #include "CCDirector.h"
 #include "CCScheduler.h"
 
 
 #include "CCUserDefault.h"
-
+#include "CCControlSlider.h"
 
 
 // havn't implement on wophone

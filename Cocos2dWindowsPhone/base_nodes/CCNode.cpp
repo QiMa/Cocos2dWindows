@@ -1034,7 +1034,20 @@ void CCNode::unregisterScriptHandler(void)
         m_nScriptHandler = 0;
     }
 }
+void CCNode::setActionManager(CCActionManager* actionManager)
+{
+    if( actionManager != m_pActionManager ) {
+        this->stopAllActions();
+        CC_SAFE_RETAIN(actionManager);
+        CC_SAFE_RELEASE(m_pActionManager);
+        m_pActionManager = actionManager;
+    }
+}
 
+CCActionManager* CCNode::getActionManager()
+{
+    return m_pActionManager;
+}
 CCAction * CCNode::runAction(CCAction* action)
 {
 	CCAssert( action != NULL, "Argument must be non-nil");

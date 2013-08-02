@@ -282,6 +282,10 @@
     <ClCompile Include=".\tileMap_parallax_nodes\CCTMXXMLParser.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchDispatcher.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchHandler.cpp" />
+    <ClCompile Include="CCControl.cpp" />
+    <ClCompile Include="CCControlSlider.cpp" />
+    <ClCompile Include="CCControlUtils.cpp" />
+    <ClCompile Include="CCInvocation.cpp" />
     <ClCompile Include="cocoa\CCArray.cpp" />
     <ClCompile Include="cocoa\CCDictionary.cpp" />
     <ClCompile Include="cocoa\CCString.cpp" />
@@ -526,7 +530,11 @@
     <ClInclude Include="cocosdension\corewrappers.h" />
     <ClInclude Include="cocosdension\MediaStreamer.h" />
     <ClInclude Include="include\CCApplication_win8_metro.h" />
+    <ClInclude Include="include\CCControl.h" />
+    <ClInclude Include="include\CCControlSlider.h" />
+    <ClInclude Include="include\CCControlUtils.h" />
     <ClInclude Include="include\CCFileUtils.h" />
+    <ClInclude Include="include\CCInvocation.h" />
     <ClInclude Include="include\CCMenu.h" />
     <ClInclude Include="include\ccTypeInfo.h" />
     <ClInclude Include="include\GLES-Render.h" />
