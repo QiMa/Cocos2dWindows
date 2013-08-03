@@ -22,7 +22,7 @@
 
 #include "cocos2d.h"
 #include "controller.h"
-#include "HelloWorldScene.h"
+
 
 #include "CCEGLView.h"
 USING_NS_CC;

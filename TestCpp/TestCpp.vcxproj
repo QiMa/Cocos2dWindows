@@ -710,7 +710,6 @@
     <ClInclude Include="Classes\EffectsTest\EffectsTest.h" />
     <ClInclude Include="Classes\FileUtilsTest\FileUtilsTest.h" />
     <ClInclude Include="Classes\FontTest\FontTest.h" />
-    <ClInclude Include="Classes\HelloWorldScene.h" />
     <ClInclude Include="Classes\IntervalTest\IntervalTest.h" />
     <ClInclude Include="Classes\KeypadTest\KeypadTest.h" />
     <ClInclude Include="Classes\LabelTest\LabelTest.h" />
@@ -908,7 +907,6 @@
     <ClCompile Include="Classes\EffectsTest\EffectsTest.cpp" />
     <ClCompile Include="Classes\FileUtilsTest\FileUtilsTest.cpp" />
     <ClCompile Include="Classes\FontTest\FontTest.cpp" />
-    <ClCompile Include="Classes\HelloWorldScene.cpp" />
     <ClCompile Include="Classes\IntervalTest\IntervalTest.cpp" />
     <ClCompile Include="Classes\KeypadTest\KeypadTest.cpp" />
     <ClCompile Include="Classes\LabelTest\LabelTest.cpp" />

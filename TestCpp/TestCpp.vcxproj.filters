@@ -1007,9 +1007,6 @@
     <ClCompile Include="Classes\VisibleRect.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\HelloWorldScene.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Classes\FontTest\FontTest.cpp">
       <Filter>Classes\FontTest</Filter>
     </ClCompile>
@@ -1588,9 +1585,6 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="Classes\VisibleRect.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\HelloWorldScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="Classes\FontTest\FontTest.h">
