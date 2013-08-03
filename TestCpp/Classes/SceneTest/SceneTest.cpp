@@ -203,7 +203,7 @@ void SceneTestLayer3::item0Clicked(CCObject* pSender)
 {
     CCScene *newScene = CCScene::create();
     newScene->addChild(SceneTestLayer3::create());
-    //CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5, newScene, ccc3(0,255,255)));
+    CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5, newScene, ccc3(0,255,255)));
 }
 
 void SceneTestLayer3::item1Clicked(CCObject* pSender)
