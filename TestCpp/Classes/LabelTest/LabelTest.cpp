@@ -1514,9 +1514,11 @@ LabelBMFontBounds::LabelBMFontBounds()
     // CCLabelBMFont
     label1 = CCLabelBMFont::create("Testing Glyph Designer", "fonts/boundsTestFont.fnt");
     
-    
+	label1->setIsRelativeAnchorPoint(false);
+	label1->setPosition(ccp(s.width/2-label1->getContentSize().width/2, s.height/2-label1->getContentSize().height/2));
+	CCLog("the point is %f,%f",s.width/2, s.height/2);
     addChild(label1);
-    label1->setPosition(ccp(s.width/2, s.height/2));
+
 }
 
 string LabelBMFontBounds::title()
