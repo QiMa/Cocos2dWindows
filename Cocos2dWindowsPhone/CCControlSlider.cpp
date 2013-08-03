@@ -78,16 +78,14 @@ CCControlSlider* CCControlSlider::create(CCSprite * backgroundSprite, CCSprite* 
 
  bool CCControlSlider::initWithSprites(CCSprite * backgroundSprite, CCSprite* progressSprite, CCSprite* thumbSprite)
  {
-     if (CCControl::init())
+   if (CCControl::init())
      {
         CCAssert(backgroundSprite,  "Background sprite must be not nil");
         CCAssert(progressSprite,    "Progress sprite must be not nil");
         CCAssert(thumbSprite,       "Thumb sprite must be not nil");
 
-        //ignoreAnchorPointForPosition(false);
-		//暂时保留1.0版本的实现方式
-		setIsRelativeAnchorPoint(true);
 
+		setIsRelativeAnchorPoint(true);
         setTouchEnabled(true);
 
         this->setBackgroundSprite(backgroundSprite);
@@ -105,7 +103,7 @@ CCControlSlider* CCControlSlider::create(CCSprite * backgroundSprite, CCSprite* 
         addChild(m_backgroundSprite);
 
         // Add the progress bar
-        m_progressSprite->setAnchorPoint(ccp(0.0f, 0.5f));
+        m_progressSprite->setAnchorPoint(ccp(0.0f-0.5f, 0.0f));
         m_progressSprite->setPosition(ccp(0.0f, this->getContentSize().height / 2));
         addChild(m_progressSprite);
 
