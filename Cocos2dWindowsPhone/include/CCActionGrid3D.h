@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2009      On-Core
 
 http://www.cocos2d-x.org
@@ -22,13 +22,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
-// For licensing information relating to this distribution please see Third Party Notices file.
-
 #ifndef __ACTION_CCGRID3D_ACTION_H__
 #define __ACTION_CCGRID3D_ACTION_H__
 
 #include "CCActionGrid.h"
+
 NS_CC_BEGIN
 
 /**
@@ -98,7 +96,9 @@ public:
     inline float getLensEffect(void) { return m_fLensEffect; }
     /** Set lens center position */
     inline void setLensEffect(float fLensEffect) { m_fLensEffect = fLensEffect; }
-    
+    /** Set whether lens is concave */
+    inline void setConcave(bool bConcave) { m_bConcave = bConcave; }
+  
     inline const CCPoint& getPosition(void) { return m_position; }
     void setPosition(const CCPoint& position);
 
@@ -116,6 +116,8 @@ protected:
     float m_fRadius;
     /** lens effect. Defaults to 0.7 - 0 means no effect, 1 is very strong effect */
     float m_fLensEffect;
+    /** lens is concave. (true = concave, false = convex) default is convex i.e. false */
+    bool m_bConcave;
 
     bool    m_bDirty;
 };
