@@ -375,19 +375,19 @@ LabelTTFAlignment::LabelTTFAlignment()
 
     CCLabelTTF* ttf0 = CCLabelTTF::create("Alignment 0\nnew line", "Helvetica", 12,
                                           CCSizeMake(256, 32), kCCTextAlignmentLeft);
-    ttf0->setPosition(ccp(s.width/2,(s.height/6)*2));
+	ttf0->setPosition(ccp(s.width/2-100,(s.height/6)*2));
     ttf0->setAnchorPoint(ccp(0.5f,0.5f));
     this->addChild(ttf0);
 
     CCLabelTTF* ttf1 = CCLabelTTF::create("Alignment 1\nnew line", "Helvetica", 12,
                                           CCSizeMake(245, 32), kCCTextAlignmentCenter);
-    ttf1->setPosition(ccp(s.width/2,(s.height/6)*3));
+	ttf1->setPosition(ccp(s.width/2,(s.height/6)*3));
     ttf1->setAnchorPoint(ccp(0.5f,0.5f));
     this->addChild(ttf1);
 
     CCLabelTTF* ttf2 = CCLabelTTF::create("Alignment 2\nnew line", "Helvetica", 12,
                                           CCSizeMake(245, 32), kCCTextAlignmentRight);
-    ttf2->setPosition(ccp(s.width/2,(s.height/6)*4));
+	ttf2->setPosition(ccp(s.width/2+100,(s.height/6)*4));
     ttf2->setAnchorPoint(ccp(0.5f,0.5f));
     this->addChild(ttf2);
 }
@@ -503,9 +503,8 @@ Atlas4::Atlas4()
     addChild(label);
     
     CCSize s = CCDirector::sharedDirector()->getWinSize();
+	label->setPosition( ccp(s.width/2-label->getContentSize().width/2, s.height/2-label->getContentSize().height/2) );
     
-    label->setPosition( ccp(s.width/2, s.height/2) );
-    label->setAnchorPoint( ccp(0.5f, 0.5f) );
     
     
     CCSprite* BChar = (CCSprite*) label->getChildByTag(0);
@@ -538,7 +537,7 @@ Atlas4::Atlas4()
     // Bottom Label
     CCLabelBMFont *label2 = CCLabelBMFont::create("00.0", "fonts/bitmapFontTest.fnt");
     addChild(label2, 0, kTagBitmapAtlas2);
-    label2->setPosition( ccp(s.width/2.0f, 80) );
+	label2->setPosition( ccp(s.width/2.0f-label2->getContentSize().width/2, 80) );
     
     CCSprite* lastChar = (CCSprite*) label2->getChildByTag(3);
     lastChar->runAction( (CCAction*)(rot_4ever->copy()->autorelease()) );
@@ -594,7 +593,7 @@ Atlas5::Atlas5()
     
     CCSize s = CCDirector::sharedDirector()->getWinSize();
     
-    label->setPosition( ccp(s.width/2, s.height/2) );
+	label->setPosition( ccp(s.width/2-label->getContentSize().width/2, s.height/2-label->getContentSize().height/2) );
     label->setAnchorPoint( ccp(0.5f, 0.5f) );
 }
 
@@ -626,17 +625,17 @@ Atlas6::Atlas6()
     CCLabelBMFont* label = NULL;
     label = CCLabelBMFont::create("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
     addChild(label);
-    label->setPosition( ccp(s.width/2, s.height/2+50) );
+	label->setPosition( ccp(s.width/2-label->getContentSize().width/2, s.height/2+50-label->getContentSize().height/2) );
     label->setAnchorPoint( ccp(0.5f, 0.5f) ) ;
     
     label = CCLabelBMFont::create("fafefifofu", "fonts/bitmapFontTest5.fnt");
     addChild(label);
-    label->setPosition( ccp(s.width/2, s.height/2) );
+    label->setPosition( ccp(s.width/2-label->getContentSize().width/2, s.height/2-label->getContentSize().height/2) );
     label->setAnchorPoint( ccp(0.5f, 0.5f) );
 
     label = CCLabelBMFont::create("aeiou", "fonts/bitmapFontTest5.fnt");
     addChild(label);
-    label->setPosition( ccp(s.width/2, s.height/2-50) );
+    label->setPosition( ccp(s.width/2-label->getContentSize().width/2, s.height/2-50-label->getContentSize().height/2) );
     label->setAnchorPoint( ccp(0.5f, 0.5f) ); 
 }
 
@@ -669,18 +668,18 @@ AtlasBitmapColor::AtlasBitmapColor()
     label = CCLabelBMFont::create("Blue", "fonts/bitmapFontTest5.fnt");
     label->setColor( ccBLUE );
     addChild(label);
-    label->setPosition( ccp(s.width/2, s.height/4) );
+	label->setPosition( ccp(s.width/2-label->getContentSize().width/2, s.height/4-label->getContentSize().height/2) );
     label->setAnchorPoint( ccp(0.5f, 0.5f) );
 
     label = CCLabelBMFont::create("Red", "fonts/bitmapFontTest5.fnt");
     addChild(label);
-    label->setPosition( ccp(s.width/2, 2*s.height/4) );
+	label->setPosition( ccp(s.width/2-label->getContentSize().width/2, 2*s.height/4-label->getContentSize().height/2) );
     label->setAnchorPoint( ccp(0.5f, 0.5f) );
     label->setColor( ccRED );
 
     label = CCLabelBMFont::create("G", "fonts/bitmapFontTest5.fnt");
     addChild(label);
-    label->setPosition( ccp(s.width/2, 3*s.height/4) );
+	label->setPosition( ccp(s.width/2-label->getContentSize().width/2, 3*s.height/4-label->getContentSize().height/2) );
     label->setAnchorPoint( ccp(0.5f, 0.5f) );
     label->setColor( ccGREEN );
     label->setString("Green");
@@ -866,7 +865,7 @@ LabelBMFontHD::LabelBMFontHD()
     // CCLabelBMFont
     CCLabelBMFont *label1 = CCLabelBMFont::create("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");
     addChild(label1);
-    label1->setPosition(ccp(s.width/2, s.height/2));
+	label1->setPosition(ccp(s.width/2-label1->getContentSize().width/2, s.height/2-label1->getContentSize().height/2));
 }
 
 std::string LabelBMFontHD::title()
@@ -893,7 +892,7 @@ LabelAtlasHD::LabelAtlasHD()
     label1->setAnchorPoint(ccp(0.5f, 0.5f));
 
     addChild(label1);
-    label1->setPosition(ccp(s.width/2, s.height/2));
+	label1->setPosition(ccp(s.width/2, s.height/2));
 }
 
 std::string LabelAtlasHD::title()
@@ -921,7 +920,7 @@ LabelGlyphDesigner::LabelGlyphDesigner()
     // CCLabelBMFont
     CCLabelBMFont *label1 = CCLabelBMFont::create("Testing Glyph Designer", "fonts/futura-48.fnt");
     addChild(label1);
-    label1->setPosition(ccp(s.width/2, s.height/2));
+	label1->setPosition(ccp(s.width/2-label1->getContentSize().width/2, s.height/2-label1->getContentSize().height/2));
 }
 
 std::string LabelGlyphDesigner::title()
@@ -1373,11 +1372,11 @@ BMFontOneAtlas::BMFontOneAtlas()
 
     CCLabelBMFont *label1 = CCLabelBMFont::create("This is Helvetica", "fonts/helvetica-32.fnt", kCCLabelAutomaticWidth, kCCTextAlignmentLeft, CCPointZero);
     addChild(label1);
-    label1->setPosition(ccp(s.width/2, s.height/3*2));
+	label1->setPosition(ccp(s.width/2-label1->getContentSize().width/2, s.height/3*2-label1->getContentSize().height/2));
 
     CCLabelBMFont *label2 = CCLabelBMFont::create("And this is Geneva", "fonts/geneva-32.fnt", kCCLabelAutomaticWidth, kCCTextAlignmentLeft, ccp(0, 128));
     addChild(label2);
-    label2->setPosition(ccp(s.width/2, s.height/3*1));
+	label2->setPosition(ccp(s.width/2-label2->getContentSize().width/2, s.height/3*1-label2->getContentSize().height/2));
 }
 
 std::string BMFontOneAtlas::title()
@@ -1398,20 +1397,20 @@ BMFontUnicode::BMFontUnicode()
     const char *japanese = ((CCString*)strings->objectForKey("japanese"))->m_sString.c_str();
     const char *spanish = ((CCString*)strings->objectForKey("spanish"))->m_sString.c_str();
 
-
+	
     CCSize s = CCDirector::sharedDirector()->getWinSize();
 
     CCLabelBMFont *label1 = CCLabelBMFont::create(spanish, "fonts/arial-unicode-26.fnt", 200, kCCTextAlignmentLeft);
     addChild(label1);
-    label1->setPosition(ccp(s.width/2, s.height/4*3));
+	label1->setPosition(ccp(s.width/2-label1->getContentSize().width/2, s.height/4*3-label1->getContentSize().height/2));
 
     CCLabelBMFont *label2 = CCLabelBMFont::create(chinese, "fonts/arial-unicode-26.fnt");
     addChild(label2);
-    label2->setPosition(ccp(s.width/2, s.height/4*2));
+	label2->setPosition(ccp(s.width/2-label2->getContentSize().width/2, s.height/4*2-label2->getContentSize().height/2));
 
     CCLabelBMFont *label3 = CCLabelBMFont::create(japanese, "fonts/arial-unicode-26.fnt");
     addChild(label3);
-    label3->setPosition(ccp(s.width/2, s.height/4*1));
+	label3->setPosition(ccp(s.width/2-label3->getContentSize().width/2, s.height/4*1-label3->getContentSize().height/2));
 }
 
 std::string BMFontUnicode::title()
@@ -1437,7 +1436,7 @@ BMFontInit::BMFontInit()
     bmFont->setFntFile("fonts/helvetica-32.fnt");
     bmFont->setString("It is working!");
     this->addChild(bmFont);
-    bmFont->setPosition(ccp(s.width/2,s.height/4*2));
+	bmFont->setPosition(ccp(s.width/2-bmFont->getContentSize().width/2,s.height/4*2-bmFont->getContentSize().height/2));
 }
 
 std::string BMFontInit::title()
@@ -1490,8 +1489,8 @@ Issue1343::Issue1343()
     this->addChild(bmFont);
     bmFont->release();
     bmFont->setScale(0.3f);
-
-    bmFont->setPosition(ccp(s.width/2,s.height/4*2));
+	bmFont->setIsRelativeAnchorPoint(false);
+	bmFont->setPosition(ccp(s.width/2,s.height/4*2));
 }
 
 std::string Issue1343::title()
