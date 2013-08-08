@@ -4,67 +4,52 @@
 ////----#include "cocos2d.h"
 #include "../testBasic.h"
 
-//USING_NS_CC;
+//using namespace cocos2d;
 
 class MotionStreakTest : public CCLayer
 {
 public:
-    MotionStreakTest(void);
-    ~MotionStreakTest(void);
+	MotionStreakTest(void);
+	~MotionStreakTest(void);
 
-    virtual std::string title();
-    virtual std::string subtitle();
-    virtual void onEnter();
+	virtual std::string title();
+	virtual void onEnter();
 
-    void restartCallback(CCObject* pSender);
-    void nextCallback(CCObject* pSender);
-    void backCallback(CCObject* pSender);
-    void modeCallback(CCObject* pSender);
-protected:
-    CCMotionStreak *streak;
+	void restartCallback(CCObject* pSender);
+	void nextCallback(CCObject* pSender);
+	void backCallback(CCObject* pSender);
 };
 
 class MotionStreakTest1 : public MotionStreakTest
 {
 protected:
-    CCNode*        m_root;
-    CCNode*        m_target;
+	CCNode*		m_root;
+	CCNode*		m_target;
+	CCMotionStreak*		m_streak;
 
 public:
-    virtual void onEnter();
-    void onUpdate(float delta);
-    virtual std::string title();
+	virtual void onEnter();
+	void onUpdate(ccTime delta);
+	virtual std::string title();
 };
 
 class MotionStreakTest2 : public MotionStreakTest
 {
 protected:
-    CCNode*        m_root;
-    CCNode*        m_target;
+	CCNode*		m_root;
+	CCNode*		m_target;
+	CCMotionStreak*		m_streak;
 
 public:
-    virtual void onEnter();
-    void ccTouchesMoved(CCSet* touches, CCEvent* event);
-    virtual std::string title();
-};
-
-class Issue1358 : public MotionStreakTest
-{
-public:
-    virtual std::string title();
-    virtual std::string subtitle();
-    virtual void onEnter();
-    virtual void update(float dt);
-private:
-    CCPoint m_center;
-    float m_fRadius;
-    float m_fAngle;
+	virtual void onEnter();
+	void ccTouchesMoved(CCSet* touches, CCEvent* event);
+	virtual std::string title();
 };
 
 class MotionStreakTestScene : public TestScene
 {
 public:
-	virtual void runThisTest();
+    virtual void runThisTest();
 };
 
 //CCLayer* nextAction();

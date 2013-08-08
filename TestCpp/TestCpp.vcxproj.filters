@@ -2159,6 +2159,12 @@
     <None Include="Assets\extensions\CCControlColourPickerSpriteSheet.plist">
       <Filter>Assets\extensions</Filter>
     </None>
+    <None Include="CCRibbonSegmentPixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCRibbonSegmentVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\fonts\A Damn Mess.ttf">

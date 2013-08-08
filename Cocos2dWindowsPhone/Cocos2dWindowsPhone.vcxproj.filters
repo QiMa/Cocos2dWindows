@@ -945,6 +945,12 @@
     <FxCompile Include=".\shaders\CCTextureAtlasVertexShader.hlsl">
       <Filter>shaders</Filter>
     </FxCompile>
+    <FxCompile Include="shaders\CCRibbonSegmentPixelShader.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shaders\CCRibbonSegmentVertexShader.hlsl">
+      <Filter>shaders</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="kazmath\src\ChangeLog">
