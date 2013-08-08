@@ -618,5 +618,11 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="Assets\DebugFont.spritefont" />
+    <None Include="CCRibbonSegmentPixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCRibbonSegmentVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

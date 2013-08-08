@@ -503,5 +503,11 @@
     <None Include="CCTextureAtlasVertexShader.cso">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="CCRibbonSegmentPixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCRibbonSegmentVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
