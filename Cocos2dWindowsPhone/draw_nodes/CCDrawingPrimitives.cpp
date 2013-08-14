@@ -215,7 +215,43 @@ void ccDrawCatmullRom( CCPointArray *points, unsigned int segments )
 
 void ccDrawCardinalSpline( CCPointArray *config, float tension,  unsigned int segments )
 {
-   CCAssert(false,"Not implemented!");
+	ccVertex2F* vertices = new ccVertex2F[segments + 1];
+
+	unsigned int p;
+	float lt;
+	float deltaT = 1.0f / config->count();
+
+
+	for( unsigned int i=0; i < segments+1;i++) {
+
+
+		float dt = (float)i / segments;
+
+
+		// border
+		if( dt == 1 ) {
+			p = config->count() - 1;
+			lt = 1;
+		} else {
+			p = dt / deltaT;
+			lt = (dt - deltaT * (float)p) / deltaT;
+		}
+
+
+		// Interpolate
+		CCPoint pp0 = config->getControlPointAtIndex(p-1);
+		CCPoint pp1 = config->getControlPointAtIndex(p+0);
+		CCPoint pp2 = config->getControlPointAtIndex(p+1);
+		CCPoint pp3 = config->getControlPointAtIndex(p+2);
+
+
+		CCPoint newPos = ccCardinalSplineAt( pp0, pp1, pp2, pp3, tension, lt);
+		vertices[i].x = newPos.x;
+		vertices[i].y = newPos.y;
+	}
+
+	CCDrawingPrimitive::Drawing(vertices, segments + 1,DrawingPoints);	
+
 }
 
 void CCDrawingPrimitive::D3DColor4f(float red, float green, float blue, float alpha)
