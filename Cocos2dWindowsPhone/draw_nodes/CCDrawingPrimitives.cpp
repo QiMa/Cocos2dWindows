@@ -250,7 +250,7 @@ void ccDrawCardinalSpline( CCPointArray *config, float tension,  unsigned int se
 		vertices[i].y = newPos.y;
 	}
 
-	CCDrawingPrimitive::Drawing(vertices, segments + 1,DrawingPoints);	
+	CCDrawingPrimitive::Drawing(vertices, segments + 1,DrawingPolyClosed);	
 
 }
 

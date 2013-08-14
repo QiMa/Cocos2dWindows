@@ -90,8 +90,8 @@ CCLayer* CreateLayer(int nIndex)
             pLayer = new Issue1398(); break;
         //case ACTION_CARDINALSPLINE_LAYER:
         //    pLayer = new ActionCardinalSpline(); break;
-        //case ACTION_CATMULLROM_LAYER:
-        //    pLayer = new ActionCatmullRom(); break;
+        case ACTION_CATMULLROM_LAYER:
+            pLayer = new ActionCatmullRom(); break;
         case PAUSERESUMEACTIONS_LAYER:
             pLayer = new PauseResumeActions(); break;
 
@@ -1724,17 +1724,17 @@ void ActionCardinalSpline::draw()
     ActionsDemo::draw();
 	
 	// move to 50,50 since the "by" path will start at 50,50
-	kmGLPushMatrix();
-	kmGLTranslatef(50, 50, 0);
+	//kmGLPushMatrix();
+	//kmGLTranslatef(50, 50, 0);
 	ccDrawCardinalSpline(m_pArray, 0, 100);
-	kmGLPopMatrix();
-    
-    CCSize s = CCDirector::sharedDirector()->getWinSize();
-    
-	kmGLPushMatrix();
-	kmGLTranslatef(s.width/2, 50, 0);
+	//kmGLPopMatrix();
+ //   
+ //   CCSize s = CCDirector::sharedDirector()->getWinSize();
+ //   
+	//kmGLPushMatrix();
+	//kmGLTranslatef(s.width/2, 50, 0);
 	ccDrawCardinalSpline(m_pArray, 1, 100);
-	kmGLPopMatrix();
+	//kmGLPopMatrix();
 }
 
 string ActionCardinalSpline::title()
